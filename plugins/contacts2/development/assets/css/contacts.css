@@ -1,0 +1,248 @@
+.action-buttons{clear:both;padding:5px 0;text-align:center;}
+.action-buttons.floatingMenu{background:rgba(222,222,222,0.6);border-top:1px solid #fa951f;position:fixed;left:0;bottom:0;width:100%;}
+.edit_contact_wrapper{background:#fff;padding:5px;}
+.edit_contact_wrapper:after{clear:both;content:'';display:table;}
+
+
+.expanded-section {
+    background: #f8f8f8;
+    border-width: 1px;
+    border-style: solid;
+    clear: both;
+    margin-top: 3em;
+}
+
+.expanded-section:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.expanded-section:empty {
+    display: none;
+}
+
+.edit_heading {
+    background: var(--primary);
+    border-width: 0 0 1px;
+    border-style: solid;
+    padding: 19px 21px 13px;
+}
+
+.edit_heading-row {
+    display: flex;
+}
+
+.edit_heading-title {
+    font-weight: 200;
+    flex: 1;
+}
+
+.edit_heading-title strong {
+    font-weight: bolder;
+}
+
+.heading-buttons .dropdown-menu {
+    text-transform: uppercase;
+}
+
+.contact-labels {
+    margin-top: 7px;
+}
+
+.contact-label {
+    background: #fff;
+    display: inline-block;
+    border: 1px solid #EDCFD0;
+    float: left;
+    padding: 4px 15px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.expand-section-tabs {
+    background: #fff;
+    font-weight: 200;
+}
+
+.expand-section-tabs li.active {
+    margin-bottom: 0;
+    position: relative;
+}
+.expand-section-tabs li.active:after {
+    content: '';
+    border: solid #ccc;
+    background: #fff;
+    background: linear-gradient(135deg, #fff 0, #fff 60%, transparent 60%, transparent 100%);
+    border-width: 1px 0 0 1px;
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    left: calc(50% - 7px);
+    transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+}
+
+.expand-section-tabs .nav-tabs > li > a {
+    font-size: 14px;
+    padding: 25px 15px 15px;
+}
+
+.expand-section-tabs .nav-tabs li a,
+.expand-section-tabs .nav-tabs li a:hover,
+.expand-section-tabs .nav-tabs li.active a,
+.expand-section-tabs .nav-tabs li.active a:hover {
+    border: none;
+    margin: 0;
+}
+
+.expand-section-tabs .nav-tabs li.active a {
+    color: #929292;
+    font-weight: bolder;
+}
+
+.tab-content-heading {
+    background: #fff;
+    padding: 18px 13px 13px;
+}
+
+.tab-content-title {
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.tab-content-title span {
+    color: #555;
+}
+
+.tab-content-title strong {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.tab-body {
+    font-weight: 200;
+    font-size: 15px;
+    padding-top: 21px;
+}
+
+.tab-body:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.tab-body fieldset {
+    border-bottom: 1px solid #E7E7E7;
+    margin-top: 15px;
+    padding-left: 6px;
+    padding-right: 49px;
+}
+
+.tab-body fieldset:last-of-type {
+    border-bottom: none;
+}
+
+.tab-body legend {
+    border-bottom: none;
+    color: #4e4e4e;
+    font-size: 18px;
+}
+
+.tab-body legend label {
+    display: inline-block;
+    margin-left: 26px;
+}
+
+.tab-body legend small {
+    font-size: .777778em;
+}
+
+.tab-body .control-label {
+    color: #929292;
+    padding-right: 5px;
+    text-align: left;
+}
+
+.dataTable .search_init {
+    width: 100%;
+}
+
+.dataTable .flaticon-remove-button:before {
+    font-size: 16px;
+    position: relative;
+    top: 2px;
+}
+
+.contact-flag {
+    background: #EDCFD0;
+    border-radius: 4px;
+    color: #5068AE;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 5px;
+    padding: 10px 20px;
+}
+
+.family-form .control-label {
+    text-align: left;
+}
+
+.heading-buttons .btn {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    border: none;
+}
+
+.btn-group-slide {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 31px;
+    box-shadow: none;
+}
+
+.btn-group-slide .btn.btn.btn {
+    background: none;
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    padding: 9px 20px;
+    text-shadow: none;
+}
+
+.btn-group-slide .btn.btn:first-child {
+    border-radius: 31px 0 0 31px;
+}
+
+.btn-group-slide .btn.btn:last-child {
+    border-radius: 0 31px 31px 0;
+}
+
+.btn-group-slide .btn.btn.active {
+    background: #D69DA1;
+    border-radius:31px !important;
+    color: #fff;
+    padding-left: 31px;
+    padding-right: 31px;
+}
+
+.comm-remove {
+    position: absolute;
+    top: 2px;
+    right: 15px;
+}
+
+
+@media screen and (min-width: 768px)
+{
+    .family-form-columns > div:first-child {
+        padding-right: 35px;
+    }
+
+    .family-form-columns > div:nth-child(2) {
+        padding-left: 35px;
+    }
+}

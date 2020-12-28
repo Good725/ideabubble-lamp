@@ -1,0 +1,1 @@
+$.getScript('/assets/20/js/general.js');

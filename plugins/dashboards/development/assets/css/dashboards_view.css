@@ -1,0 +1,274 @@
+[class*="col-sm-2.4"] {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#dashboard-wrapper {
+    clear:both;
+    margin-top: -8px;
+}
+
+.dashboard-layout {
+    clear: both;
+    margin: 15px -15px 0 -15px;
+    overflow: hidden;
+}
+
+.dashboard-layout-gadget-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    min-height: 300px;
+    /* Empty space at the bottom of a list makes it easier to drag items to the bottom of the list */
+    padding-bottom: 440px;
+    margin: 0 auto -440px;
+}
+
+.dashboard-layout-gadget-list-item:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.dashboard-layout-top-widget .dashboard-layout-gadget-list {
+    max-width: 392px;
+}
+
+.dashboard-layout-gadget-list-blank {
+    background: #f5f5f5;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    color: #aaa;
+    clear: both;
+    display: none;
+    font-size: 24px;
+    margin: 15px 0;
+    min-height: 200px;
+    order: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.well {
+    position: relative;
+    z-index: 2;
+}
+
+/* "Add gadget" zones only appear in edit mode */
+.edit_mode .dashboard-layout-gadget-list-blank {
+    display: block;
+}
+
+/* Only one widget can be added to the top section - Hide the dropzone if a widget has been added */
+.dashboard-layout-top-widget .dashboard-layout-gadget-list-blank:not(:only-child) {
+    display: none;
+}
+
+.widget-move-placeholder {
+    background: #f5f5f5;
+    border: 2px dashed #CCC;
+    border-radius: 8px;
+    height: 212px;
+    margin-bottom: 15px;
+    position: relative;
+    top: 15px;
+    width: 100%;
+}
+
+.dashboard-add-gadget-link {
+    margin-top: 60px;
+    display: block;
+}
+
+.view-dashboard-title {
+    float: left;
+    margin-top: 10px;
+}
+
+.dashboard-tools {
+    float: right;
+    padding-top: 6px;
+    margin-bottom: 15px;
+}
+
+.dashboard-tools .dropdown {
+    display: inline-block;
+}
+
+.btn-subtle:not(:hover) {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.widget-date-range .dropout {
+    background: #fff;
+}
+
+.dashboard-gadget-modal .modal-dialog {
+    max-width: 980px;
+    width: 100%;
+    width: calc(100% - 10px);
+}
+
+.dashboard-gadget-modal-types + div {
+    border-left: 1px solid #eee;
+}
+.dashboard-gadget-modal-list {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+.gadget-list-item {
+    clear: both;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+.gadget-list-item:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+.gadget-list-item .mini-widget {
+    height: 80px;
+}
+
+.dashboard-gadget-modal-types > ul {
+    list-style: none;
+}
+.dashboard-gadget-modal-type {
+    display: block;
+    padding: .5em .8em;
+}
+.dashboard-gadget-modal-type:hover {
+    background: #e6e6e6;
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.dashboard-layout .widget_container {
+    clear: both;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+.widget-action-remove {
+    display: inline;
+}
+
+@media (min-width: 768px) {
+    [class*="col-sm-2.4"] {
+        width: 20%;
+        float: left;
+    }
+}
+
+.widget-container {
+    float: none;
+}
+
+.widget_container iframe {
+    height: 222px!important;
+}
+
+.reportrange-wrapper {
+    background: #f3f3f3;
+    border-radius: 4px;
+    box-shadow: 2px 3px #ddd;
+    margin-bottom: 50px;
+    padding: 14px 13px;
+}
+
+#reportrange {
+    background: none;
+    color: #838383;
+    font-size: 16px;
+    position: relative;
+}
+
+#reportrange:before,
+#reportrange:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10px;
+    border: solid transparent;
+    border-width: 5px 8.66px;
+}
+
+#reportrange:before {
+    left: -30px;
+    border-right-color: #8A8A8A;
+}
+
+#reportrange:after {
+    right: -30px;
+    border-left-color: #8A8A8A;
+}
+
+#reportrange-prev {
+    background: none;
+    float: left;
+}
+
+#reportrange-next {
+    background: none;
+    float: right;
+}
+
+#reportrange-prev:after,
+#reportrange-next:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    content: '';
+    width: 1.5em;
+    height: 1.5em;
+    border: solid var(--primary);
+    border-width: 0 0 2px 2px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin: 0 .4em .1em .2em;
+}
+
+button#reportrange-prev:after {
+    border-width: 0 0 3px 3px;
+}
+
+button#reportrange-next:after {
+    border-width: 3px 3px 0 0;
+}
+
+#reportrange-prev [class*="icon-"],
+#reportrange-next [class*="icon-"]{
+    display: none;
+}
+
+#reportrange-prev[disabled],
+#reportrange-next[disabled] {
+    display: none;
+}
+
+.dashboard-wrapper:not(.can_edit)  .widget-actions,
+.dashboard-wrapper:not(.can_edit)  .widget-action-remove {
+    display: none !important;
+}
+
+.widget-more-link {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+}
+
+.action-btn .view-dashboard-dropdown::before,
+.action-btn .view-dashboard-dropdown::after {
+    left: 110px;
+}
+
+.view-dashboard-dropdown.dropdown-menu-right {
+    left: auto;
+}

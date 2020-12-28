@@ -1,0 +1,6 @@
+/*
+ts:2016-01-05 00:00:00
+*/
+
+ALTER IGNORE TABLE `plugins` ADD COLUMN `note_title` VARCHAR(100);
+ALTER IGNORE TABLE `plugins` ADD COLUMN `note_body` VARCHAR(255);

@@ -1,0 +1,87 @@
+### List staff ###
+GET http://{{host}}/api/timesheets/staff/?department_id=100178&role=staff
+
+### Schedules ###
+GET http://{{host}}/api/timesheets/schedules/?name=php
+
+### Todos ###
+GET http://{{host}}/api/timesheets/todo
+
+### View log entries ###
+
+GET http://{{host}}/api/timesheets/?department_id=100178&_user_id=100186
+Cookie: XDEBUG_SESSION=1
+### Log work ###
+
+POST http://{{host}}/api/timesheets/submit?_user_id=100066
+Content-Type: application/json
+
+{
+  "request": {
+    "period": ["2018-09-11 11:00", "2018-09-12 18:00", 1],
+    "type": "internal",
+    "department": {"id": "100067", "name": "something"},
+    "business_id": "0",
+    "todo_id": 68,
+    "timesheet_id": 1,
+    "description": "hello world"
+  },
+  "note": "hello world"
+}
+
+### Timesheets ###
+
+GET http://{{host}}/api/timesheets/timesheets
+
+
+### Open timesheets ###
+
+GET http://{{host}}/api/timesheets/timesheets/?status=open&department_id=100178
+
+
+### Timesheets, waiting for approval ###
+
+GET http://{{host}}/api/timesheets/timesheets/?status=pending
+
+### timesheet info ###
+
+GET http://{{host}}/api/timesheets/stats?level=timesheet&level_id=123&_user_id=100186
+
+### timesheet stats ###
+
+GET http://{{host}}/api/timesheets/stats?level=department&level_id=100178&_user_id=100186
+
+### Submit timesheet ###
+
+POST http://{{host}}/api/timesheets/ts_submit
+Content-Type: application/x-www-form-urlencoded
+
+id=123
+
+### Approve timesheets ###
+
+POST http://{{host}}/api/timesheets/ts_approve
+Content-Type: application/x-www-form-urlencoded
+
+id=123,456,789
+
+### Decline timesheets ###
+
+POST http://{{host}}/api/timesheets/ts_decline
+Content-Type: application/x-www-form-urlencoded
+
+id=123,456,789
+
+### List reviewers ###
+GET http://{{host}}/api/timesheets/staff/?department_id=100178&role=manager
+
+### not showing worklogs ###
+
+GET http://{{host}}/api/timesheets/?department_id=100178&limit=10&offset=0&period_end_date=2018-12-31&period_start_date=2018-01-01&period_type=weeks&type=course,internal&_user_id=100186
+
+###
+
+
+
+
+

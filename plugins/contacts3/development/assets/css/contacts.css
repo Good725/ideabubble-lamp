@@ -1,0 +1,499 @@
+.action-buttons {
+    clear: both;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.action-buttons.floatingMenu {
+    background: rgba(222, 222, 222, 0.6);
+    border-top: 1px solid #fa951f;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.add_edit_booking_wrapper {
+    background: #fff;
+}
+
+.add_edit_booking_wrapper:after {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+.add_family_member_btn {
+    float: right;
+    margin: 5px;
+}
+
+.booking_select_contact_fieldset {
+    display: none;
+}
+
+.contact_booking_form_wrapper:not(:empty) {
+    border: 1px double #78C2EC;
+    border-color: var(--primary);
+}
+
+.contact_booking_form_wrapper:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.contact_types_list [class*=icon-letter-]:before {
+    font-weight: bold;
+}
+
+.educate-form fieldset {
+    border: none;
+    padding: 5px;
+}
+
+.educate-form ul {
+    list-style-type: none;
+}
+
+.educate-form legend {
+    border: 0;
+    font-size: 13px;
+    margin: 0 10px;
+    padding: 0 5px;
+    text-align: left;
+    width: auto;
+}
+
+.educate-form .column {
+    display: inline-block;
+    margin: 4px;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+}
+
+.educate-form .dropdown-menu, .heading-buttons .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+.educate-form .input-prepend {
+    margin: 5px 0;
+    width: 100%;
+}
+
+.educate-form .input-prepend input[type=text] {
+    width: 215px;
+}
+
+.input-group .datepicker {
+    margin-top: 0
+}
+
+.educate-form .map:not(:empty) {
+    height: 230px;
+}
+
+.edit_heading {
+    align-items: center;
+    display: flex;
+    padding: 10px 0;
+}
+
+.edit_heading-left {
+    flex: 1;
+}
+
+.edit_heading h2 {
+    color: inherit;
+    float: left;
+    font-weight: 500;
+}
+
+.edit_heading h3 {
+    color: inherit;
+}
+
+.edit_heading h2 strong {
+    font-weight: bolder;
+}
+
+.edit_heading .flags {
+    float: left;
+}
+
+.edit_heading .flags .label {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 8px 13px;
+}
+
+.edit_heading .label {
+    font-size: 13px;
+    padding: .5em;
+}
+
+.edit_heading .label:not([class*="label-"]) {
+    background-color: #fff;
+}
+
+.edit_heading .heading-buttons {
+    float: right;
+}
+
+.hide2, .ui-helper-hidden-accessible {
+    position: absolute !important;
+    top: -999px !important;
+    left: -9999px !important;
+}
+
+/* Rename class later */
+.location-flag {
+    border-radius: 15px;
+    color: #000;
+    font-weight: normal;
+}
+
+.modal {
+    text-align: left;
+}
+
+.modal .note_to {
+    font-weight: bold;
+}
+
+.modal-header .close {
+    font-weight: normal;
+}
+
+.modal-inline-error {
+    color: #F00;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.bulk_attend_update {
+    z-index: 1051; /* needs to appear in front of the "register place" modal */
+}
+
+.bulk_attend_update .modal-dialog {
+    max-width: 520px;
+}
+
+.bulk_attend_update .modal-content {
+    background: #F8F8F8;
+    border-radius: 0;
+}
+
+.bulk_attend_update .modal-header,
+.bulk_attend_update .modal-body,
+.bulk_attend_update .modal-footer {
+    border: none;
+    padding-left: 23px;
+    padding-right: 23px;
+}
+
+.bulk_attend_update .modal-title {
+    font-size: 17px;
+    font-weight: 200;
+}
+
+.bulk_attend_update .control-label {
+    text-align: left;
+    color: #9A9A9A;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.bulk_attend_update .form-control,
+.bulk_attend_update .form-control + div .multiselect {
+    box-shadow: none;
+    border-color: #D3D3D3;
+    border-radius: 0;
+}
+
+.bulk_attend_update .input-group .form-control:last-of-type {
+    border-right: none;
+}
+
+.bulk_attend_update .input-group-addon {
+    color: #75C4EC;
+}
+
+.form-control.multiple_select + div.btn-group,
+.form-control.multiple_select + div.btn-group button.multiselect,
+.form-control.multiple_select + div.btn-group.open .multiselect-container {
+    width: 100%;
+}
+
+.radio_toggle_buttons input[type=radio] {
+    position: absolute;
+    z-index: -99;
+    left: auto;
+}
+
+.form-control.search_init {
+    width: 100%;
+    margin: 0;
+}
+
+.tab-content {
+    background: #fff;
+    color: #222;
+    padding: 10px;
+}
+
+#main {
+    max-width: 960px;
+    width: 100%;
+}
+
+#main > .row > .span12 {
+    padding: 5px;
+    width: 100%;
+    width: -webkit-calc(100% - 40px);
+    width: -moz-calc(100% - 40px);
+    width: -ms-calc(100% - 40px);
+    width: -o-calc(100% - 40px);
+    width: calc(100% - 40px);
+}
+
+#add_edit_contact,
+#add_edit_family {
+    margin: auto;
+    padding: 10px 0;
+    text-align: left;
+}
+
+#add_edit_contact .control-label,
+#add_edit_family .control-label {
+    text-align: left;
+}
+
+#edit_contact_modal {
+    width: 1020px;
+    margin-left: -510px;
+    max-width: 100%;
+}
+
+#edit_contact_modal .modal-body {
+    padding: 5px;
+}
+
+#edit_family {
+    border-style: solid;
+    border-width: 0 10px 10px;
+    margin-top: 10px;
+}
+
+#edit_family + .contact_booking_form_wrapper {
+    border-top: none;
+}
+
+#edit_family .tab-content .tab-content {
+    padding-bottom: 0;
+}
+
+#edit_family .tab-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+.edit_heading-tabs {
+    background: var(--primary);
+    border-bottom: 1px solid var(--primary);
+    color: #fff;
+    font-weight: 200;
+}
+
+.edit_heading-tabs > li > a {
+    border-radius: 0;
+    color: #fff;
+    font-size: 13px;
+    padding:7px;
+}
+
+#family_member_header,
+#edit_family_member_wrapper,
+#list_family_members_wrapper {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.edit_heading-tabs.nav.nav-tabs li a,
+.edit_heading-tabs li a:hover,
+.edit_heading-tabs li.active a,
+.edit_heading-tabs li.active a:hover {
+    border: none;
+    margin: 0;
+}
+
+.edit_heading-tabs li.active a {
+    background: var(--primary-active);
+    color: #fff;
+    font-weight: bolder;
+}
+
+.edit_heading-tabs li a:hover {
+    background: var(--primary-hover);
+    color: #fff;
+}
+
+.edit_heading-tabs li a:active {
+    background: var(--primary-active);
+    color: #fff;
+}
+
+.edit_heading-tabs > li > a {
+    padding: 10px 7px;
+}
+
+.account_balance {
+    background: #FFF;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 1px 3px;
+}
+
+.outstanding {
+    color: #ff0000;
+}
+
+.settled {
+    color: #000000;
+}
+
+.credit {
+    color: #008000;
+}
+
+#list_family_members_table_wrapper {
+    clear: both;
+    padding: 10px;
+}
+
+.educate_ac {
+    z-index: 2000;
+}
+
+.educate_ac li {
+    padding: 0 .5em;
+}
+
+.educate_ac .ui-state-hover,
+.educate_ac .ui-state-focus {
+    background: var(--primary);
+    color: #FFF;
+    text-decoration: none;
+}
+
+.readonly {
+    background: #eee;
+    border-color: #ddd;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+
+.icon-remove.readonly {
+    color: #CCC;
+}
+
+div.dataTables_paginate {
+    margin-bottom: 10px;
+}
+
+.dataTables_wrapper:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+@media screen and (max-width: 1118px) {
+    #edit_contact_modal {
+        left: 0;
+        margin-left: 0;
+    }
+}
+
+#make_payment_modal .form {
+    margin: auto;
+}
+
+#card_payment_info {
+    margin: 9px 0 18px 10px;
+}
+
+#make_payment_modal_form h4 {
+    margin: 0 0 15px 10px;
+}
+
+.modal-header.danger {
+    background: none repeat scroll 0 0 #CA413A;
+}
+
+#list_bookings_table .alert, .transaction-row .alert {
+    min-width: 90px;
+    padding: 5px 10px;
+    display: table-cell;
+}
+
+.field {
+    background-color: #f5f5f5;
+    border: 1px solid #000;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0 10px 10px;
+    padding: 10px;
+    vertical-align: top;
+    width: 350px;
+}
+
+.field legend {
+    margin-bottom: 5px;
+}
+
+.field .text_label {
+    margin: 5px 10px;
+}
+
+#make_transaction_modal .field {
+    width: 96%;
+}
+
+#upload_document_modal .field,
+#generate_documents_modal .field {
+    width: 93%;
+}
+
+.span_client_id {
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.dataTable .search_init {
+    border-radius: 3px;
+    font-weight: normal;
+    height: 2.1em;
+    padding: 0 .5em;
+}
+
+/* todo: move to engine styles */
+.dataTables_filter input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    height: 2.1em;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+.ui-autocomplete {
+    z-index: 2000;
+}
+
+.edit-text {
+    white-space: normal;
+}

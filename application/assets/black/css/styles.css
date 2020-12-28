@@ -1,0 +1,390 @@
+@import url('../../02/css/styles.css');
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic);
+
+:root {
+    --primary: #3dc2a6;   --primary-hover: #5fc7ac;   --primary-active: #37ae95;
+    --secondary: #f5f5f5; --secondary-hover: #d3d3d3; --secondary-active: #e6e6e6;
+    --success: #fe0074;   --success-hover: #f763ad;   --success-active: #e60067;
+    --info: #17a2b8;      --info-hover: #2f96b4;      --info-active: #31b0d5;
+    --warning: #ffc107;   --warning-hover: #f89406;   --warning-active: #ec971f;
+    --danger: #dc3545;    --danger-hover: #bd362f;    --danger-active: #c9302c;
+}
+
+body {
+    font-family: Roboto Light, Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: unset;
+    -moz-osx-font-smoothing: unset;
+}
+
+body,
+.page-wrapper > .page-container {
+    background: #ebebeb;
+}
+
+h2 { font-weight: 700; }
+
+::-webkit-input-placeholder {font-weight: 300; font-family:'Roboto Light', 'Roboto', HelveticaNeue, Helvetica, Arial, sans-serif;}
+:-ms-input-placeholder      {font-weight: 300; font-family:'Roboto Light', 'Roboto', HelveticaNeue, Helvetica, Arial, sans-serif;}
+::-moz-placeholder          {font-weight: 300; font-family:'Roboto Light', 'Roboto', HelveticaNeue, Helvetica, Arial, sans-serif;}
+
+.sidebar-menu-wrapper.sidebar-menu-wrapper,
+.navigation-menu,
+.mobile-menu-level3-section,
+.mobile-breadcrumbs,
+.header-search,
+.dropdown-menu-header,
+.dropout.dropout {
+    background: #000;
+    color: #fff;
+}
+
+.usermenu-item {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.btn.view-website-btn {
+    border-color: #fff;
+}
+
+.header-menu .level_1 > a {
+    color: #909090;
+}
+
+.mobile-menu .level_1 > a,
+.mobile-menu .level_1 > button,
+.mobile-menu-level3-section .mobile-menu-list > a {
+    color: black;
+}
+
+.mobile-menu-top strong {
+    color: #fff;
+}
+
+#mobile-menu, #sidebar-menu-wrapper {
+    background: #000;
+    color: #fff;
+}
+
+.mobile-menu-list li:not(.active) > a {
+    color: #909090;
+}
+
+.mobile-menu .level2 li:not(.active) > a:hover,
+.mobile-menu .level3 li:not(.active) > a:hover {
+    background: none;
+    color: #fff;
+}
+
+.mobile-menu .svg-sprite,
+.mobile-menu .plugin-menu-icon {
+    color: #fff;
+    fill: #fff;
+}
+
+.mobile-menu-list li.active > a .svg-sprite,
+.mobile-menu-list li > a:hover .svg-sprite {
+    fill: #fff;
+}
+
+.svg-color.svg-sprite use,
+.svg-color .svg-sprite use,
+.svg-color-hover.svg-sprite:hover use,
+.svg-color-hover:hover .svg-sprite use {
+    fill: #fff;
+}
+
+.sidebar-menu-active-sublist .icon-color-outline,
+.sidebar-menu-active-sublist .svg-sprite {
+    fill: #000;
+}
+
+.layout-login {
+    background: #f7f7f7 url('../img/background.png') center center no-repeat;
+    background-size: cover;
+}
+
+.login-form-container {
+    font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+}
+
+.login-form-container .modal-header {
+    background: #000;
+    color: #ebebeb;
+}
+
+.login-form-container .alert strong {
+    font-weight: bolder;
+}
+
+.login-form-container .alert a {
+    color: #212121;
+}
+
+.login-form-container .client-logo {
+    width: 165px;
+}
+
+.login-form-container .nav-tabs > .active > a:after {
+    background-color: var(--primary);
+}
+
+#search2 {
+    background: transparent;
+    border-color: #373737;
+}
+
+#search2::-webkit-input-placeholder { color: #fff; }
+#search2:-ms-input-placeholder      { color: #fff; }
+#search2::-moz-placeholder          { color: #fff; }
+
+.searchbar-icon {
+    color: #fff;
+}
+
+.btn.btn-actions {
+    color: var(--primary);;
+}
+
+.table .btn-actions {
+    color: #939393;
+}
+
+.usermenu-wrapper .btn, [id="plugin_tools"] .btn {
+    font-weight: 200;
+}
+
+.panel-feedback_form .btn-primary {
+    min-width: 89px;
+}
+
+#dashboard_report_widgets .mini-widget-wrapper {
+    width: 33.333%;
+}
+
+.mini-widget.mini-widget {
+    border: 1px solid var(--primary);
+    box-shadow: 2px 2px #ccc;
+    background: #56E8C9 !important;
+    padding-top: 33px;
+}
+
+.mini-widget.mini-widget hr + a:hover {
+    background: var(--primary-hover);
+}
+
+.mini-widget.mini-widget hr {
+    border-color: #fff;
+}
+
+.mini-widget.mini-widget hr + a{
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.mini-widget .chart-info-widget-single_value h3,
+.mini-widget .chart-info-widget-total h3 {
+    color: #000;
+    font-weight: 600;
+}
+
+.mini-widget .chart-info-widget-single_value h3 + span,
+.mini-widget .chart-info-widget-total h3 + span {
+    color: #fff;
+}
+
+.chart-info-widget-single_value h3 + span, .chart-info-widget-total h3 + span {
+    font-size: 2.3em;
+}
+
+.sparkline-dashboard-link {
+    color: #fff;
+}
+
+.next-event-widget {
+    background: #fff;
+    font-size: 17px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.next-event-widget .day-count {
+    color: var(--primary);
+    font-size: 54px;
+    font-weight: bold;
+    margin-top: 22px;
+}
+
+.table td .next-event-widget a {
+    color: inherit;
+    display: inline;
+}
+
+.next-event-widget a:hover {
+    text-decoration: underline;
+}
+
+.widget_type-calendar .widget-body {
+    color: #929292;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.widget_type-calendar .widget-body > div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.widget_type-calendar .list-group-item {
+    border-width: 1px 0 0;
+}
+
+.widget_type-calendar .list-group-item:first-child {
+    border-width: 0;
+}
+
+.dashboard_icons_active .dashboard_plugin svg {
+    fill: #fff;
+}
+
+.dashboard_icons_active .dashboard_plugin a {
+    background: #4c4c4c;
+    color: #fff;
+}
+
+.calendar-event-name {
+    color: var(--primary);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.calendar-link {
+    color: inherit;
+}
+
+.calendar-link:hover {
+    text-decoration: underline;
+}
+
+.live-msg h2 {
+    color: var(--success);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 26px;
+    line-height: normal;
+}
+
+.live-msg #facebook-share-event.form-control.btn {
+  background: transparent url("../../shared/img/fb-share.png") no-repeat scroll 0 0;
+  border: 0 none;
+  box-shadow: 0 0 0 #000;
+  font-size: 0;
+  height:65px;
+  padding: 0;
+  width: 244px;
+}
+.live-msg #tweet-published-event.form-control.btn {
+  background: transparent url("../../shared/img/tw-share.png") no-repeat scroll 0 0;
+  border: 0 none;
+  box-shadow: 0 0 0 #000;
+  font-size: 0;
+  height:65px;
+  padding: 0;
+  width: 244px;
+}
+.addthis_toolbox.addthis_default_style.addthis_32x32_style {
+  height: auto !important;
+  margin: 0 auto;
+  max-width: 200px;
+  text-align: center;
+  width: auto !important;
+}
+.g-recaptcha{
+    display: inline-block;
+}
+
+
+
+/* Shared footer */
+/* Footer */
+.footer {
+    box-shadow: 0 -1px 5px #ccc;
+}
+
+.footer-social h2 {
+    color: #fff;
+}
+
+.footer-stats-list {
+    color: black;
+}
+
+.footer-slogan {
+    color: black;
+}
+
+.footer-stats {
+    background: #fff url('/shared_media/uticket/media/photos/content/footer_background.svg') top center;
+    min-height: 0;
+}
+
+.footer-logo img {
+    height: 7rem;
+}
+
+.footer-stat h2:after {
+    border-color: var(--success);
+}
+
+.footer-social,
+.footer-columns,
+.footer-copyright {
+    background-color: #252525;
+    border-top: 1px solid #fff;
+    color: #fff;
+}
+
+.footer-copyright {
+    background-color: #000;
+}
+.footer-apps {
+    border-top: 1px solid #c8c8c8;
+}
+
+.footer-column-title {
+    color: #fff;
+}
+
+.footer-column h4 {
+    font-weight: bold;
+}
+
+.footer-column dt {
+    color: var(--primary);
+}
+
+.footer .form-input::-webkit-input-placeholder { color: #000; font-weight: 300; }
+.footer .form-input::-moz-placeholder          { color: #000; font-weight: 300; }
+.footer .form-input:-ms-input-placeholder      { color: #000; font-weight: 300; }
+
+.newsletter-signup-form .button {
+    background-color: var(--success);
+    border: none;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-stat.footer-stat {
+        width: 100%;
+        margin: 1em 0;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .footer .container {
+        width: 1060px;
+    }
+}

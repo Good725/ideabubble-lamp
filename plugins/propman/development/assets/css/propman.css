@@ -1,0 +1,274 @@
+/*------------------------------------*\
+    Calendar - start
+\*------------------------------------*/
+.ib-calendar-key {
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 0 .25em 0 .5em;
+    width: 1em;
+    height: 1em;
+}
+.ib-calendar-key:first-of-type {
+    margin-left: 0;
+}
+/* Colour scheme for available dates */
+.ib-calendar-key-available {
+    background: #fff;
+}
+/* Colour scheme for unavailable dates */
+.ib-calendar-key-unavailable,
+.ib-calendar-day.date-selected,
+.ib-calendar-day.date-selected-end:before {
+    background: #f60;
+}
+/* Colour scheme for web booked dates */
+.ib-calendar-key-web_booking,
+.ib-calendar-day.date-booked,
+.ib-calendar-day.date-booked:before{
+    background: #fc9;
+}
+/* Hover colour scheme */
+.ib-calendar-day:hover:after {
+    background-color: #00f;
+}
+
+.ib-calendar-month {
+    border-collapse: collapse;
+    display: table;
+    float: left;
+    margin: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+@media screen and (min-width: 760px)
+{
+    .ib-calendar-month {
+        width: 30%;
+        width: -webkit-calc(33% - 2em);
+        width: calc(33% - 2em);
+    }
+}
+
+.ib-calendar-month-header {
+    display: table-caption;
+    font-weight: bold;
+    caption-side: top;
+    text-align: center;
+}
+
+.ib-calendar-day-headers,
+.ib-calendar-week {
+    display: table-row;
+}
+.ib-calendar-day-headers {
+    background: #eee;
+}
+
+.ib-calendar-day-header,
+.ib-calendar-day {
+    border: 1px solid #eee;
+    display: table-cell;
+    font-size: .8em;
+    height: 2.75em;
+    width: 14.2857%;
+}
+
+.ib-calendar-day-header {
+    line-height: 2.5em;
+}
+
+.ib-calendar-day {
+    position: relative;
+    text-align: right;
+    vertical-align: bottom;
+    padding: .45em;
+}
+
+.ib-calendar-day[tabindex] {
+    cursor: pointer;
+}
+.ib-calendar-day[tabindex]:not(.date-selected):not(.date-booked) {
+    z-index: 0;
+}
+.ib-calendar-day:not([tabindex]) {
+    background: #fcfcfc;
+}
+
+.ib-calendar-day:hover {
+    color: #fff;
+}
+.ib-calendar-day:hover:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    z-index: -1;
+}
+
+.ib-calendar-day.date-selected,
+.ib-calendar-day.date-booked {
+    color: #fff;
+    border-left: 0;
+    border-right: 0;
+}
+
+.ib-calendar-day.date-selected-start,
+.ib-calendar-day.date-booked-start {
+    -webkit-clip-path: polygon(102% 0, 0% 100%, 102% 100%);
+    clip-path: polygon(102% 0, 0% 100%, 102% 100%);
+}
+
+.ib-calendar-day.date-selected-end,
+.ib-calendar-day.date-booked-end {
+    background: #fff;
+    color: #000;
+}
+.ib-calendar-day.date-selected-end:before,
+.ib-calendar-day.date-booked-end:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+    clip-path: polygon(0 0, 0% 100%, 100% 0);
+}
+
+/* Use images for browsers that don't support clip-path */
+@supports not ((-webkit-clip-path: polygon(102% 0, 0% 100%, 102% 100%)) or (-webkit-clip-path: polygon(102% 0, 0% 100%, 102% 100%)))
+{
+    .ib-calendar-day.date-selected-start,
+    .ib-calendar-day.date-booked-start,
+    .ib-calendar-day:hover:after {
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-size: 101% 101%;
+        background-size: calc(100% + 1px) calc(100% + 1px);
+    }
+
+    .ib-calendar-day.date-selected-end,
+    .ib-calendar-day.date-booked-end {
+        background-repeat: no-repeat;
+        background-size: 105% 105%;
+        background-size: calc(100% + 1px) calc(100% + 1px);
+    }
+
+    .ib-calendar-day.date-selected-end:before,
+    .ib-calendar-day.date-booked-end:before {
+        display: none;
+    }
+
+    .ib-calendar-day.date-selected-start {
+        background-image: url('../images/orange-triangle-before.png');
+    }
+    .ib-calendar-day.date-selected-end {
+        background-image: url('../images/orange-triangle-after.png');
+    }
+    .ib-calendar-day.date-booked-start {
+        background-image: url('../images/lightorange-triangle-before.png');
+    }
+    .ib-calendar-day.date-booked-end {
+        background-image: url('../images/lightorange-triangle-after.png');
+    }
+    .ib-calendar-day:hover:after {
+        background-image: url('../images/blue-triangle-before.png');
+    }
+}
+
+/*------------------------------------*\
+    calendar - end
+\*------------------------------------*/
+
+/* Adjust toggle button style */
+.toggle.btn.btn {
+    margin-top: 5px;
+    max-height:30px;
+    min-height: 30px;
+}
+
+/* Style multiselects to match Boostrap 3 form-controls */
+.form-control.multipleselect + .btn-group {
+    width: 100%;
+}
+.form-control.multipleselect + .btn-group button {
+    background: #fff;
+    border-color: #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    height: 32px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+.form-control.multipleselect + .btn-group .caret {
+    float: right;
+    margin-top: 8px;
+    position: absolute;
+    right: 9px;
+}
+.form-control.multipleselect + .btn-group .dropdown-menu {
+    width: 100%;
+}
+.form-control.multipleselect + .btn-group.open>.dropdown-toggle:focus {
+    background: #fff;
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.ib-title-input {
+    font-size: 1.53846em;
+    height: 2em;
+}
+
+#edit-property-details-tab-facilities li .surcharge {
+    display:none;
+}
+
+#edit-property-details-tab-facilities li:hover .surcharge,
+#edit-property-details-tab-facilities li .surcharge.yes {
+    display:inline;
+}
+
+.tab-content:after {
+    content: '';
+    display: table;
+    padding-top: 1em;
+    clear: both;
+}
+
+/* Inline-edit fields */
+.inline-edit-field {
+    background: none;
+    border: none;
+    height: 2em;
+    padding: .3em .3em .3em 2.5em;
+    width: 100%;
+}
+.inline-edit-icon {
+    display: block;
+    position: absolute;
+    padding: .3em;
+    text-align: center;
+    width: 2.5em;
+}
+.inline-edit {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+}
+.inline-edit-template {
+    display: none !important; /* Should never be visible while it has this class */
+}

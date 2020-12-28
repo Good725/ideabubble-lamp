@@ -1,0 +1,29 @@
+.main-container {
+    clear: both;
+    margin-bottom: 100px;
+}
+
+.table-container {
+    padding-top: 20px;
+    clear: both
+}
+
+.well {
+    padding: 10px 10px 0 10px;
+}
+
+.edit-format, .edit-zone, .edit-rate, .publish, .delete {
+    display: block;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+label.error {
+    display: inline;
+    float: none;
+    color: #cd5c5c;
+    padding-left: .5em;
+    vertical-align: middle;
+}

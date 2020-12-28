@@ -1,0 +1,98 @@
+@import url('../../02/css/styles.css');
+
+:root {
+    --primary: #5f1026;   --primary-hover: #7e1331;   --primary-active: #410b19;
+    --secondary: #f5f5f5; --secondary-hover: #d3d3d3; --secondary-active: #e6e6e6;
+    --success: #bfb8bf;   --success-hover: #a69fa6;   --success-active: #847d84;
+    --info: #17a2b8;      --info-hover: #2f96b4;      --info-active: #31b0d5;
+    --warning: #ffc107;   --warning-hover: #f89406;   --warning-active: #ec971f;
+    --danger: #dc3545;    --danger-hover: #bd362f;    --danger-active: #c9302c;
+}
+
+/* Buttons */
+.btn.btn-header-action {
+    background-color: #fff;
+    color: var(--primary);
+}
+
+.btn.btn-header-action:hover,
+.btn.btn-header-action:active {
+    background: #fff;
+    color: var(--primary-hover);
+}
+
+/* Header */
+.usermenu-item,
+.user-tools > li {
+    border: solid var(--primary);
+    border-width: 0 1px 0 0;
+}
+
+.user-tools-wrapper .usermenu-item {
+    border-width: 0 0 0 1px;
+}
+
+.user-tools > li:last-child {
+    border-right: none;
+}
+
+.user-tools .user-tools-icon {
+    background: var(--success);
+    border-radius: 50%;
+}
+
+/* Features */
+.dashboard_icons_active .dashboard_plugin a {
+    background: var(--success);
+}
+
+.dashboard_icons_active .dashboard_plugin a:hover {
+    background: var(--primary);
+}
+
+.dashboard_icons_active .dashboard_plugin a:active {
+    background: var(--primary-active);;
+}
+
+.dashboard_icons_inactive .dashboard_plugin a:hover {
+    color: var(--primary);;
+}
+
+.dashboard_icons_inactive .dashboard_plugin a:hover svg {
+    fill: var(--primary);;
+}
+
+/* Dashboards */
+.mini-widget.mini-widget {
+    border: 1px solid var(--primary);
+}
+
+.mini-widget.mini-widget hr {
+    border-color: var(--primary);
+}
+
+.mini-widget.mini-widget hr + a {
+    color: var(--primary) !important;
+}
+
+.mini-widget .chart-info-widget-single_value h3,
+.mini-widget .chart-info-widget-total h3,
+.mini-widget.mini-widget h3 + span,
+.mini-widget.mini-widget  h3 + span {
+    color: var(--primary);
+}
+
+.mini-widget.mini-widget hr + a:hover {
+    background: var(--primary);
+    color: #fff !important;
+}
+
+.widget-comparison_totals {
+    border: 1px solid var(--primary);
+}
+
+.widget-comparison_totals.widget-comparison_totals .widget-total,
+.widget-comparison_totals .widget-comparison_totals-comparisons .arrow-icon,
+.widget-comparison_totals .widget-comparison-amount {
+    color: var(--primary);
+}

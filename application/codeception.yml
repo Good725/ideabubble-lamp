@@ -1,0 +1,46 @@
+include:
+# ENGINE
+  - ../plugins/panels/development
+  - ../plugins/pages/development
+  - ../plugins/courses/development
+  - ../plugins/news/development
+  - ../plugins/products/development
+  - ../plugins/locations/development
+  - ../plugins/media/development
+  - ../plugins/bookings/development
+  - ../plugins/menus/development
+  - ../plugins/notifications/development
+#  - ../plugins/contacts2/development
+  - ../plugins/reports/development
+  - ../plugins/files/development
+  - ../plugins/testimonials/development
+
+# PROJECTS
+# NOTE : make sure to remove "active" folder below and update path to "../../projects/project/" if running locally
+  - ../../../projects/donalryan/active/
+  - ../../../projects/teethingsos/active/
+### Shop1 project script include
+  - ../../../projects/shop1/active/
+## Content1 project script include
+  - ../../../projects/content1/active/
+
+
+paths:
+    tests: tests
+    log: tests/_log
+    data: tests/_data
+    helpers: tests/_helpers
+
+settings:
+    bootstrap: _bootstrap.php
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: true
+    memory_limit: 1024M
+    log: true
+modules:
+    config:
+        Db:
+            dsn: ''
+            user: ''
+            password: ''
+            dump: tests/_data/dump.sql

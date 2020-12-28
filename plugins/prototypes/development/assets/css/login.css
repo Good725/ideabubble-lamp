@@ -1,0 +1,38 @@
+body {
+    /*background: #f6f6f6 url('../img/.png') no-repeat center center fixed;*/
+    background-color: #f6f6f6;
+    background-size: cover;
+}
+
+.login-wrapper {
+    width: 350px;
+    margin: 10% auto 0;
+    padding: 2em;
+    background: #fff;
+    border-radius: .5em;
+}
+.login-header {
+    text-align: center;
+}
+.login-header h3 {
+    margin: 0;
+}
+.login-wrapper label {
+    font-weight: normal;
+}
+.login-wrapper .input-group-addon {
+    cursor: pointer;
+}
+
+.login-wrapper .input-group {
+    margin: .2em 0;
+    width: 100%;
+}
+.login-footer p {
+    margin: 0;
+}
+
+.btn-login {
+    width: 100%;
+
+}

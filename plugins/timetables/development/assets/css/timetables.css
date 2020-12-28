@@ -1,0 +1,217 @@
+.timetable-planner-period-selector {
+    height: auto;
+}
+
+.timetable-planner-key {
+    display: inline-block;
+    font-size: .875em;
+    margin-right: 1em;
+}
+
+.timetable-planner-key:before {
+    content: '';
+    background-color: #c9c9c9;
+    display: inline-block;
+    width: .8em;
+    height: .8em;
+}
+
+.fc-head-container {
+    background-color: #f2f2f2;
+}
+
+.fc-event[data-status="Done"],
+.fc-day-grid-event[data-status="Done"],
+.timetable-planner-key[data-status="Done"]:before,
+.progressbar-item[data-status="Done"],
+.timetable-planner-requests td[data-status="Done"],
+.timetable-planner-status-dropdown [data-status="Done"] {
+    background-color: #365eaa;
+    color: #fff;
+}
+
+.progressbar-item-label[data-status="Done"],
+.timetable-status-text[data-status="Done"] {
+    color: #365eaa;
+}
+
+.fc-event[data-status="Booked"],
+.fc-day-grid-event[data-status="Booked"],
+.timetable-planner-key[data-status="Booked"]:before,
+.progressbar-item[data-status="Booked"],
+.timetable-planner-requests td[data-status="Booked"],
+.timetable-planner-status-dropdown [data-status="Booked"] {
+    background-color: #3b9e48;
+    color: #fff;
+}
+
+.progressbar-item-label[data-status="Booked"],
+.timetable-status-text[data-status="Booked"] {
+    color: #3b9e48;
+}
+
+.fc-event[data-status="Pending"],
+.fc-day-grid-event[data-status="Pending"],
+.timetable-planner-key[data-status="Pending"]:before,
+.progressbar-item[data-status="Pending"],
+.timetable-planner-requests td[data-status="Pending"],
+.timetable-planner-status-dropdown [data-status="Pending"] {
+    background-color: #ff9505;
+    color: #fff;
+}
+
+.progressbar-item-label[data-status="Pending"],
+.timetable-status-text[data-status="Pending"] {
+    color: #ff9505;
+}
+
+.fc-event[data-status="Conflict"],
+.fc-day-grid-event[data-status="Conflict"],
+.timetable-planner-key[data-status="Conflict"]:before,
+.progressbar-item[data-status="Conflict"],
+.timetable-planner-requests td[data-status="Conflict"],
+.timetable-planner-status-dropdown [data-status="Conflict"] {
+    background-color: #ff493e;
+    color: #fff;
+}
+
+.progressbar-item-label[data-status="Conflict"],
+.timetable-status-text[data-status="Conflict"] {
+    color: #ff493e;
+}
+
+.fc-event[data-status="Draft"],
+.fc-day-grid-event[data-status="Draft"],
+.timetable-planner-key[data-status="Draft"]:before,
+.progressbar-item[data-status="Draft"],
+.timetable-planner-requests td[data-status="Draft"],
+.timetable-planner-status-dropdown [data-status="Draft"] {
+    background-color: #8aa4dc;
+    color: #fff;
+}
+
+.progressbar-item-label[data-status="Draft"],
+.timetable-status-text[data-status="Draft"] {
+    color: #8aa4dc;
+}
+
+.fc-event[data-status="Avilable"],
+.fc-day-grid-event[data-status="Available"],
+.timetable-planner-key[data-status="Available"]:before,
+.progressbar-item[data-status="Available"],
+.timetable-planner-requests td[data-status="Available"],
+.timetable-planner-status-dropdown [data-status="Available"] {
+    background-color: #fff;
+    border: 1px solid #c9c9c9;
+}
+
+.fc-day-grid-event .fc-content:before {
+    display: none;
+}
+
+.timetables-fullcalendar .fc-toolbar .fc-button-group {
+    display: unset;
+}
+
+.timetable-attendance-amount {
+    display: inline-block;
+    min-width: 1em;
+}
+
+.timetable-attendance {
+    position: relative;
+}
+
+.fc-agendaDay-view .fc-event {
+    padding: .5em;
+}
+
+/* When hovering the cursor needs to go through these elements, so that the necessary cell gets hovered  */
+.fc-month-view .fc-slats,
+.fc-content-skeleton,
+.fc-bgevent-skeleton {
+    pointer-events: none
+}
+
+/* Children of the above elements, which should be interact with the mouse */
+.fc-bgevent,
+.fc-event-container,
+.fc-more-cell {
+    pointer-events: auto;
+}
+
+/* Hover styles - month view */
+.fc-month-view .fc-day:hover {
+    background:#c9d9fd;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+}
+
+.fc-month-view .fc-day:hover:after {
+    content: "\e050";
+    color: #365eaa;
+    font-family: 'ElegantIcons';
+    font-size: 2em;
+    line-height: 1;
+    position: absolute;
+    top: calc(50% - .5em); /* Half the cell height , minus half the icon height */
+    right: 0;
+    left: 0;
+}
+
+/* Hover styles - week and day views */
+.fc-agendaWeek-view .fc-slats tr td:hover,
+.fc-agendaDay-view  .fc-slats tr:hover td  {
+    position: relative;
+}
+
+.fc-agendaWeek-view .fc-slats td + td:hover:after,
+.fc-agendaDay-view  .fc-slats tr:hover td + td:after {
+    content: '\e050';
+    background:#c9d9fd;
+    color: #365eaa;
+    cursor: pointer;
+    font-family: 'ElegantIcons';
+    font-size: 2em;
+    position: absolute;
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+
+.fc-agendaWeek-view .fc-slats tr:nth-child(odd) td + td:hover:after,
+.fc-agendaDay-view  .fc-slats tr:nth-child(odd):hover td + td:after {
+    top: 0;
+    bottom: -100%;
+    margin-bottom: -1px;
+}
+
+.fc-agendaWeek-view .fc-slats tr:nth-child(even) td + td:hover:after,
+.fc-agendaDay-view  .fc-slats tr:nth-child(even):hover td + td:after {
+    top: -100%;
+    bottom: 0;
+    margin-top: -1px;
+}
+
+.timetable-planner-status-dropdown .dropdown-menu {
+    left: auto;
+    left: unset;
+    right: 0;
+}
+
+.timetable-planner-status-dropdown [data-status] {
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    top: .2em;
+    width: 1em;
+    height: 1em;
+}
+
+.timetable-planner-status-dropdown li .radio [type="radio"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+

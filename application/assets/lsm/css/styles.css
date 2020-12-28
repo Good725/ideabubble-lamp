@@ -1,0 +1,68 @@
+@import url('../../02/css/styles.css');
+
+:root {
+    --primary: #002269;   --primary-hover: #002c8b;   --primary-active: #001c56;
+    --secondary: #f5f5f5; --secondary-hover: #e6e6e6; --default-active: #e6e6e6;
+    --success: #7bb509;   --success-hover: #94C812;   --success-active: #6a9c07;
+    --info: #17a2b8;      --info-hover: #2f96b4;      --info-active: #31b0d5;
+    --warning: #ffc107;   --warning-hover: #f89406;   --warning-active: #ec971f;
+    --danger: #dc3545;    --danger-hover: #bd362f;    --danger-active: #c9302c;
+}
+
+hr {
+    border-color: var(--primary);
+}
+
+legend {
+    border: none;
+    color: var(--primary);
+}
+
+/* Header */
+.btn.btn-header-action {
+    background: #fff;
+    border: none;
+    color: var(--primary);
+}
+
+.btn.btn-header-action:hover {
+    background: #fff;
+    color: var(--primary-hover);
+}
+
+.btn.btn-header-action:active {
+    background: #fff;
+    color: var(--primary-active);
+}
+
+.user-tools > li {
+    border-left: 1px solid #334d86;
+}
+
+/* Login form */
+.layout-login{ 
+    background-image: url('../img/bg-img.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.login-form-container .nav-tabs > .active > a:after {
+    background-color: #3660b5;
+}
+
+.login-form-container a,
+.layout-login .login-links a {
+    color: var(--primary);
+}
+
+.login-buttons .btn {background: var(--primary); border-color: var(--primary); color: #fff;}
+.login-buttons .btn:hover {background: var(--primary-hover);}
+.login-buttons .btn:active {background: var(--primary-active);}
+
+
+/* Survey highchart */
+.survey_question_group-bar_chart .highcharts-series rect {fill: #d1e1fb}
+.survey_question_group-bar_chart .highcharts-series rect:nth-child(4)  { fill: #131d69; }
+.survey_question_group-bar_chart .highcharts-series rect:nth-child(8)  { fill: #455cb5; }
+.survey_question_group-bar_chart .highcharts-series rect:nth-child(12) { fill: #bddcdd; }
+.survey_question_group-bar_chart .highcharts-series rect:nth-child(16) { fill: #d1e1fb; }

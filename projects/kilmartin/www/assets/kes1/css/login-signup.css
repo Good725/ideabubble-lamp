@@ -1,0 +1,98 @@
+@import '/engine/shared/css/login-signup.css';
+
+.login-form-container .modal-header {
+    background: #00c6ee;
+    color: #fff;
+}
+
+.login-form-container .modal-header * {
+    color: inherit;
+}
+
+.layout-login #backstretch {
+    display: none;
+}
+
+.login-column--offers {
+    background: #a4c626 url('../images/people.png') no-repeat left -1em bottom -1em;
+    border-right: 1px solid #adadad;
+    color: #fff;
+}
+
+.login-form-container .nav-tabs > li > a,
+.login-form-container .nav-tabs > li.active > a  {
+    color: #fff;
+}
+
+.login-form-container .nav-tabs > .active > a:after {
+    background: #b8d12f;
+}
+
+.nav-tabs a {
+    color: #12387f;
+}
+
+h1, h2, a, .comm-remove {
+    color: #b8d12f;
+}
+
+.login-form-container a {
+    color: #12387f;
+}
+
+.layout-login .login-links a {
+    color: #212121;
+}
+
+.guest-user .btn-primary {
+    font-size: 1.1em;
+    font-weight: 300;
+    background: #44c5ec none repeat scroll 0 0;
+    border: medium none #44c5ec;
+    font-family: inherit;
+    border-radius: 4px;
+    color:#fff;
+    cursor: pointer;
+    width: 100%;
+}
+
+.guest-user .btn-primary:hover{
+    background:#1b266b;
+}
+
+.guest-user .login-links {
+    font-size: 14px;
+    font-weight: 300;
+    padding: 1.5em;
+    margin: 0;
+}
+
+.list-inline > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.login-links li + li::before {
+    content: " | ";
+    display: inline-block;
+    margin: 0 1em;
+}
+
+.list-inline > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.login-links a {
+    color: #212121;
+}
+
+.guest-user .poweredby a {
+    color: #95c813;
+}
+
+:checked + .checkbox-switch-helper:before {
+    background: #12387f;
+}

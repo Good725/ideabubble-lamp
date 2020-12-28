@@ -1,0 +1,1 @@
+<?php // Necessary template view ?>

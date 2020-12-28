@@ -1,0 +1,1 @@
+<?= Model_News::get_plugin_items_front_end_feed('News'); ?>

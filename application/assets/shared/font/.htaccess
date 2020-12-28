@@ -1,0 +1,4 @@
+#fix problem with firefox awesomefont loading
+<FilesMatch "\.(ttf|otf|eot|woff)$">
+	Header set Access-Control-Allow-Origin "*"
+</FilesMatch>

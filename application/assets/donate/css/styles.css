@@ -1,0 +1,88 @@
+@import url('../../02/css/styles.css');
+
+:root {
+    --primary: #5a7a97;   --primary-hover: #779cbd;   --primary-active: #455f74;
+    --secondary: #f3f3f3; --secondary-hover: #fff;    --secondary-active: #e6e6e6;
+    --success: #232b3f;   --success-hover: #3a4568;   --success-active: #1a1e31;
+    --info: #17a2b8;      --info-hover: #2f96b4;      --info-active: #31b0d5;
+    --warning: #ffc107;   --warning-hover: #f89406;   --warning-active: #ec971f;
+    --danger: #e8686d;    --danger-hover: #f66;       --danger-active: #f60000;
+}
+
+.sidebar-footer-toggle,
+.footer_copyright {
+    color: var(--primary);
+}
+
+hr {
+    border-color: var(--primary);
+}
+
+
+@media screen and (min-width: 768px) {
+    .navigation-menu {
+        background: #fff;
+        border-bottom: 1px solid var(--primary);
+        color: var(--primary);
+    }
+
+    .mobile-menu-toggle {
+        color: var(--primary);
+    }
+}
+
+.btn.btn-header-action {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: #fff;
+}
+
+.btn.btn-header-action:hover {
+    background: var(--primary-hover);
+    border: 1px solid var(--primary-hover);
+}
+
+.btn.btn-header-action:active {
+    background: var(--primary-active);
+    border: 1px solid var(--primary-active);
+}
+
+.usermenu-wrapper .dashboards-dropdown-btn {
+    color: var(--primary);
+}
+
+.user-tools > li {
+    border: none;
+}
+
+.user-tools-icon {
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+.user-tools-link:hover .user-tools-icon {
+    background: var(--primary-hover);
+}
+
+.user-tools-link[aria-expanded="true"] .user-tools-icon,
+.user-tools-link:focus .user-tools-icon {
+    background: var(--primary-active);
+}
+
+.user-tools .dropdown-toggle:after {
+    border-top-color: var(--primary);
+}
+
+.sidebar-toggle {
+    color: var(--primary);
+}
+
+.sidebar-logo img,
+.header-logo img {
+    max-height: 57px;
+}
+
+.layout-login {
+    background-image: url('../images/login_bg.png');
+    background-position: center top;
+}

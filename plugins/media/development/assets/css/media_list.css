@@ -1,0 +1,13 @@
+.ui-tabs {
+    font-size: 1em;
+}
+.media-list-photos tbody td:nth-of-type(2) {
+    word-break: break-all;
+}
+.media-list-photos tbody td:last-child {
+    white-space: nowrap;
+}
+
+.media-list-photos img {
+    max-width: 75px;
+}

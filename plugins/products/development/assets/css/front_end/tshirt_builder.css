@@ -1,0 +1,173 @@
+.canvas_section {
+    float: left;
+    width: 390px;
+}
+
+.canvas_wrapper {
+    border: 1px solid #e0e0e0;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.color_swatches {
+    clear: both;
+    list-style: none;
+    margin-top: 3px;
+    width: 335px;
+}
+
+.color_swatches input {
+    position: absolute;
+    z-index: -100;
+}
+
+.color_swatches input:focus + span {
+    outline: 2px dotted #CCC;
+}
+
+.color_swatches label {
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 0 0 0 2px;
+    position: relative;
+}
+
+.color_swatches label.active:after, .color_swatches label:hover:after{
+    content: '';
+    background: #ccc;
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    z-index: 1;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+}
+
+.color_swatches li {
+    display: inline-block;
+    float: left;
+}
+
+.color_swatches li label > span {
+    cursor: pointer;
+    display: inline-table;
+    padding: 5px;
+    position: relative;
+    width: 30px;
+    z-index: 2;
+}
+
+.color_swatches li:before {
+    display: none;
+}
+
+.color_swatch {
+    display: table-cell;
+    width: 1px;
+}
+
+.color_swatch {
+    background-position: 0 -3px;
+    background-size: 20px;
+    border: solid #999;
+    border-width: 1px 0;
+    height: 20px;
+}
+
+.color_swatch:first-child {
+    border-left-width: 1px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.color_swatch:last-child {
+    border-right-width: 1px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.addthis_toolbox {
+    clear: both;
+    padding-top: 10px;
+}
+
+.controls_sections {
+    float: right;
+    margin: 0 5px;
+    max-width: 289px;
+}
+
+.controls_sections dd, .controls_sections dt {
+    padding-bottom: 1em;
+}
+
+.controls_sections dd {
+    margin-left: 130px;
+}
+
+.controls_sections dl {
+    clear: both;
+}
+
+.controls_sections dl:after {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+.controls_sections dt {
+    clear: left;
+    float: left;
+    font-weight: bold;
+    width: 120px;
+}
+
+.controls_sections dt:after {
+    content: ':';
+}
+
+.controls_sections .tshirt_builder_quantity {
+    width: 80px;
+}
+
+.controls_sections select, .controls_sections input[type="text"] {
+    max-width: 150px;
+    width: 100%;
+}
+
+.controls_sections h3 {
+    font-size: 18px;
+    margin-top: .5em;
+}
+
+.product_purchase button {
+    border: none;
+}
+
+.product_purchase .successful {
+    clear: both;
+}
+
+.products {
+    margin: 0 25px;
+}
+
+.tshirt_builder_wrapper .additional_images {
+    clear: both;
+    padding-top: 20px;
+}
+
+.tshirt_builder_wrapper p {
+    margin: 1em 0;
+}
+
+.tshirt_builder_wrapper:after {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+.products #ProductDetailsForm #product_details #product_price {
+    width: 100%;
+}

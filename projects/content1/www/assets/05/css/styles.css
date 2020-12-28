@@ -1,0 +1,245 @@
+/* @override
+	http://ironoverload.websitecms.dev/assets/01/css/styles.css
+	dark
+	orange
+	=
+	#fa951f
+	light
+	orange
+	=
+	#ffbd46
+	black
+	=
+	#000000
+	dark
+	grey
+	=
+	#666666
+	red
+	=
+	#e42222
+*/
+
+body {
+    background: url('../images/bg.jpg') center fixed;
+}
+
+ul.left h3 {
+    background: #ffbd46;
+    color: #FFF;
+}
+.nav.nav-tabs>li>a, .nav.nav-tabs>li>a:hover {
+    background: #ffbd46;
+    color: #FFF;
+}
+.nav.nav-tabs>li.active a {
+    background: #FFF;
+    color: #000;
+}
+#clear_footer a {
+    text-decoration: none;
+    color: #000000;
+}
+#content {
+    background-color: #FFF;
+}
+#email {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+#email a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#enqury_form {
+    background-color: #ffbd46;
+}
+#enqury_form_form {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#enqury_form a {
+    text-decoration: none;
+}
+.submit, #ContactForm input#submit1.button {
+    background-color: #e42222;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+#footer {
+    border-top: 1px solid #fa951f;
+    background-color: #ffbd46;
+}
+
+#footer_menu a {
+    text-decoration: none
+}
+#footer_menu h3 {
+    color: #FFF;
+}
+#footer_menu ul ul li a {
+    color: #FFF;
+}
+#get_a_quote .submit {
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#ib_footer, #ib_footer a {
+    color: #FFF;
+}
+#ib_footer a {
+    text-decoration: none;
+}
+#latest_news_header {
+    background: #fa951f;
+}
+
+#latest_news_wrapper {
+    background-color: black;
+    color: white;
+}
+
+#latest_news_content {
+    color: black;
+    background-color: white;
+}
+
+#latest_news_content a {
+    color: black;
+    text-decoration: none;
+    font: bold 12px Helvetica;
+}
+#latest_news_content h1 {
+    color: white;
+    font-weight: bold;
+}
+#latest-testimonials h1 {
+    border: thin solid #ffbd46;
+}
+
+#testimonials {
+    background-color: #ffbd46;
+}
+#testimonials p {
+    font-style: italic;
+    font-weight: 200;
+}
+#nav {
+    background-color: #ffbd46;
+}
+#nav ul li {
+    background-image: url('../images/manu_separator.png');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+#nav ul li:hover {
+    color: white;
+    background-color: #e42222;
+}
+#nav ul li a {
+    color: white;
+}
+#nav ul li a:hover {
+    color: white;
+    background-color: #e42222;
+}
+#nav ul li h3 {
+    font-weight: bold;
+    color: #f9fdfd;
+    margin-top: 11px;
+    text-transform: uppercase;
+}
+#nav ul.level2 li {
+    color: white;
+    background-color: #e42222;
+}
+#nav ul.level2 li a {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+#nav ul.level2 li a:hover {
+    color: black;
+}
+#newsletter_header {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+#newsletter_wrapper .submit {
+    background-color: #e42222;
+    color: white;
+    border: none;
+}
+#news_section {
+    color: #1d1b49;
+}
+#news_section a {
+    color: black;
+    text-decoration: none;
+}
+
+#news_section .summary_item_title, #news_section  .item_title {
+    font-weight: bold;
+}
+#news_section .item_summary, #news_section .item_summary {
+    font-style: oblique;
+}
+#nav ul.level2 li a:hover {
+    color: black;
+}
+#newsletter_wrapper .submit {
+    background: #e42222;
+    color: white;
+}
+#news_section {
+    color: #1d1b49;
+}
+#news_section a {
+    color: black;
+    text-decoration: none;
+}
+#req_callback .submit {
+    border: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+#telephone {
+    color: #FFF;
+}
+h1 {
+    color: #fa951f;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+#user_content h1 {
+    border-bottom: 1px solid #1d1b49;
+}
+h3 {
+    color: #e19f6d;
+}
+a, a:active, a:hover {
+    text-decoration: underline;
+    color: black;
+}
+#user_content p a, a.return_link.strong {
+    color: #ffbd46;
+}
+#user_content p a:hover, a.return_link.strong:hover {
+    color: black;
+    background-color: #ffbd46;
+}
+legend {
+    border: 1px solid #ffbd46;
+}
+#course-menu-left li {
+    background-image: url(../images/side-nav-bg.jpg);
+    text-transform: uppercase;
+}
+
+

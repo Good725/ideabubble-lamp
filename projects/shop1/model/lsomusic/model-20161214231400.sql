@@ -1,0 +1,6 @@
+/*
+ts:2016-12-14 23:14:00
+*/
+
+UPDATE `plugin_reports_reports` SET `sql`='(SELECT \r\n			`course`.`title` AS `Title`, `event`.`datetime_start` AS `iso_date`, DATE_FORMAT(`event`.`datetime_start`, \'%d %b\') AS `Date`,     \'\' AS `Link`,\'course\' AS `Category` \r\n		FROM `plugin_courses_schedules_events` `event` \r\n			JOIN `plugin_courses_schedules` `schedule` ON `event`.`schedule_id` = `schedule`.`id` \r\n			JOIN `plugin_courses_courses` `course` ON `schedule`.`course_id` = `course`.`id` \r\n			JOIN plugin_courses_categories category ON course.category_id = category.id\r\n		WHERE `event`.`delete` = 0 AND `schedule`.`delete` = 0 AND `course`.`deleted` = 0 AND `event`.`datetime_start` > CURRENT_TIMESTAMP AND `category`.category <> \'Theory of Music\')\r\nUNION  \r\n(SELECT   \r\n			`news`.`title` AS `Title`, `news`.`event_date` AS `iso_date`, DATE_FORMAT(`news`.`event_date`, \'%d %b\') AS `Date`, CONCAT(\'/admin/news/add_edit_item/\', `news`.`id`) AS `Link`, \'news\' AS `Category` \r\n		FROM `plugin_news` `news` \r\n			LEFT JOIN `plugin_news_categories` `category` ON `news`.`category_id` = `category`.`id` \r\n		WHERE `news`.`deleted` = 0 AND (\'{!role!}\' != \'Student\' OR `category`.`category` != \'Teachers\') AND `news`.`event_date` > CURRENT_TIMESTAMP)\r\nORDER BY `iso_date` ASC' WHERE (`name`='Calendar');
+

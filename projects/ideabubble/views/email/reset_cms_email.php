@@ -1,0 +1,1 @@
+<a href="<?=URL::site().'admin/login/reset_password_form?' . $form['validation'];?>">Reset Link</a>

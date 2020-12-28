@@ -1,0 +1,1 @@
+<iframe src="/admin/login/register?usetheme=" class="border-0" width="100%" height="800"></iframe>

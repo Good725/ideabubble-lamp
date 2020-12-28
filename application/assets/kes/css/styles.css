@@ -1,0 +1,135 @@
+@import url('../../02/css/styles.css');
+@import url('header-footer.css');
+
+:root {
+    --primary: #00c6ee;   --primary-hover: #4ed1ec;   --primary-active: #01b3d7;
+    --secondary: #f5f5f5; --secondary-hover: #d3d3d3; --secondary-active: #e6e6e6;
+    --success: #0e2a6b;   --success-hover: #1f4894;   --success-active: #0e2a6b;
+    --info: #17a2b8;      --info-hover: #2f96b4;      --info-active: #31b0d5;
+    --warning: #ffc107;   --warning-hover: #f89406;   --warning-active: #ec971f;
+    --danger: #f00;       --danger-hover: #f62727;    --danger-active: #f10303;
+
+    /* Non-standard */
+    --theme-green: #95C813; --theme-green-hover: #b8d12f; --theme-green-active: #91A351;
+}
+
+h1, h2 {
+    color: var(--theme-green);
+}
+
+.dropout.dropout {
+    background: var(--theme-green);
+}
+
+
+.btn.btn-header-action {
+    background-color: #fff;
+    color: var(--success);
+}
+
+.btn.btn-header-action:hover {
+    background: var(--success);
+    color: #fff;
+}
+
+.btn.btn-header-action:active {
+    background: var(--success-active);
+    color: #fff;
+}
+
+.profile-section-selector .btn.dropdown-toggle {
+    background-color: var(--theme-green);
+    color: #fff;
+}
+
+.profile-section-selector .btn.dropdown-toggle:hover {
+    background-color: var(--theme-green-hover);
+}
+
+.profile-section-selector .btn.dropdown-toggle:active,
+.profile-section-selector .btn.dropdown-toggle:focus {
+    background-color: var(--theme-green-active);
+}
+
+/* Header */
+.usermenu-item,
+.user-tools > li {
+    border: solid #07bbdc;
+    border-width: 0 1px 0 0;
+}
+
+.user-tools-wrapper .usermenu-item {
+    border-width: 0 0 0 1px;
+}
+
+.user-tools > li:last-child {
+    border-right: none;
+}
+
+/* Sidebar */
+.sidebar-logo img {
+    max-height: none;
+}
+
+.sidebar-toggle:active {
+    color: var(--theme-green-active);
+}
+
+.header-menu .level_1 > a,
+.mobile-menu .level_1 > a,
+.mobile-menu .level_1 > button,
+.mobile-menu-level3-section .mobile-menu-list > a {
+    color: var(--theme-green);
+}
+
+.mobile-menu-top strong,
+.mobile-menu-top-avatar,
+.mobile-menu-button-group-icon,
+.mobile-menu-action_buttons .button {
+    color: var(--success);
+}
+
+
+.dashboard_icons_active .dashboard_plugin a {
+    background: var(--theme-green);
+}
+
+.dashboard_icons_active .dashboard_plugin a:hover {
+    background: var(--theme-green-hover);
+}
+
+.dashboard_icons_active .dashboard_plugin a:active {
+    background: var(--success);
+}
+
+.layout-login {
+    background-image: url('../img/bg-img.jpg');
+}
+
+.modal-content .modal-header{
+    border: none;
+    background: var(--theme-green);
+    color:#fff;
+}
+
+.login-form-container .modal-header {
+    background: var(--primary);
+    color: #fff;
+}
+
+body .eventCalendar-currentTitle .eventCalendar-monthTitle,
+body .eventsCalendar-currentTitle {
+    background: var(--theme-green);
+}
+
+.fc.booking-fullcalendar .fc-event[data-booked="true"],
+.booking-fullcalendar .booking-fullcalendar-flag,
+.fc-list-item[data-booked="true"] .fc-event-dot {
+    background: var(--theme-green);
+    color: #fff;
+}
+
+.widget-comparison_totals .widget-total.widget-total,
+.widget-comparison-amount.widget-comparison-amount {
+    color: var(--theme-green);
+}

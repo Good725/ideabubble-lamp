@@ -1,0 +1,12 @@
+User-Agent: *
+Disallow: /checkout.html
+Disallow: /styles.html
+Disallow: /shop/culinary-vacations/culinary-vacations
+Disallow: /products.html/royal-golfing-challenge-experience
+Disallow: /shop/castle-adventures/castle-adventure-holidays
+Disallow: /castle-adventures/castle-adventure-holidays
+Disallow: /products.html/Array
+Disallow: /shop/culinary-vacations/culinary-vacations/culinary-package-holidays
+Disallow: /shop/special-events/th-annual-father-son-tournament
+Disallow: /our-story.html
+Disallow: /news.html/news/1050

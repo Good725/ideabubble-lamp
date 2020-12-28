@@ -1,0 +1,77 @@
+.widget {
+	margin-bottom: 30px;
+	.widget-header {
+		position: relative;
+		background-color: #f4f4f4;
+		padding: 3px 2px 3px 2px;
+		h4 {
+			text-align: center;
+			color: @gray;
+		}
+		.widget-icons {
+			position: absolute;
+			right: 1px;
+			top: 2px;
+			a {
+				color: @grayLight;
+				&:hover {
+					text-decoration: none;
+					color:  @gray;
+				}
+			}
+			.widget-icon {
+				float:right;
+				margin-right:6px;
+			}
+			// reset the dropdown colours
+			.dropdown-menu {
+				left: auto;
+				right: 0;
+				a {
+					color:  @dropdownLinkColor;
+					&:hover {
+						color:  @dropdownLinkColorHover;
+					}
+				}
+			}
+		}
+	}
+	.widget-body {
+		padding: 3px 5px 5px 5px;
+	}
+}
+.widget-drag {
+	border: 3px dashed @grayLighter;
+	.border-radius(5px);
+	min-height: 100px;
+}
+
+.widget_line{
+    border-bottom: 1px solid @grayLighter;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.widget_line:last-child {
+    border-bottom: none;
+}
+
+.dashboard_plugin{
+  float:left;
+  position:relative;
+  margin-right: 20px!important;
+}
+
+.dashboard_plugin a{
+  text-decoration: underline;
+  color: inherit;
+  font-size: 15px;
+}
+
+.dashboard_plugin a:hover{
+  text-decoration: none;
+}
+
+.dashboard_plugin_name{
+  text-align: center;
+}

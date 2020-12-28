@@ -1,0 +1,26 @@
+#image_preview {
+    max-height: 192px;
+    max-width: 260px;
+    padding: 4px;
+}
+
+#image_preview_container {
+    margin-top: 18px;
+    height: 200px;
+    width: 268px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 192px;
+}
+
+label.error {
+    display: inline;
+    float: none;
+    color: #cd5c5c;
+    padding-left: .5em;
+    vertical-align: middle;
+}

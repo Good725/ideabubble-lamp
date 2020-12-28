@@ -1,0 +1,39 @@
+@import url('../../02/css/styles.css');
+
+:root {
+    --primary: #314b91;   --primary-hover: #3e5eb6;   --primary-active: #35487b;
+    --secondary: #f5f5f5; --secondary-hover: #d3d3d3; --secondary-active: #e6e6e6;
+    --success: #ced435;   --success-hover: #d9dd5f;   --success-active: #c1c62a;
+    --info: #17a2b8;      --info-hover: #2f96b4;      --info-active: #31b0d5;
+    --warning: #ffc107;   --warning-hover: #f89406;   --warning-active: #ec971f;
+    --danger: #f00;       --danger-hover: #f62727;    --danger-active: #f10303;
+}
+
+/* Header */
+.usermenu-item,
+.user-tools > li {
+    border: solid var(--primary-hover);
+    border-width: 0 1px 0 0;
+}
+
+.user-tools-wrapper .usermenu-item {
+    border-width: 0 0 0 1px;
+}
+
+.user-tools > li:last-child {
+    border-right: none;
+}
+
+.header-search {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar-logo img {
+    max-height: none;
+}
+
+.sidebar-logo-link img {
+    height: 50px;
+}

@@ -1,0 +1,5 @@
+/*
+ts:2017-01-03 16:24:00
+*/
+
+UPDATE `plugin_reports_reports` SET `sql`='select Discount, Starts, Ends, Details from \r\n(\r\n	select \r\n		d.title as `Discount`, \r\n		date_format(`d`.`valid_from`, \'%d/%m/%Y\') as `Starts`, \r\n		date_format(`d`.`valid_to`, \'%d/%m/%Y\') as `Ends`, d.id as `Id`, \r\n		concat(\'<a href=\"/admin/bookings/add_edit_discount/\', d.id, \'\" class=\"popinit icon-eye\" target=\"_blank\" data-placement=\"left\" rel=\"popover\" data-content=\"\', \r\n						CONCAT_WS(\r\n							\', \', \r\n							IF(d.`code` is not null and d.`code` <> \'\', CONCAT(\'Coupon Code:\', d.`code`), NULL), \r\n							IF(d.amount_type = \'Fixed\', CONCAT(\'€\', d.amount, \' Off\'), NULL), \r\n							IF(d.amount_type = \'Percent\', CONCAT(ROUND(d.amount), \'% Off\'), NULL), \r\n							IF(d.amount_type = \'Quantity\', CONCAT(ROUND(d.amount), \' of \', IFNULL(d.item_quantity_max, IFNULL(d.item_quantity_min, \'All\')), \' items \', \' Free\'), NULL)), \'\"></a>\') as `Details` \r\n	from plugin_bookings_discounts d where d.`delete` = 0 order by d.title\r\n) s' WHERE (`name`='Study Offers');

@@ -1,0 +1,5 @@
+/*
+ts:2019-01-30 11:33:00
+*/
+
+UPDATE `plugin_reports_reports` SET `sql`='SELECT \r\n		t.booking_id as `Booking ID`,\r\n		pp.transaction_id AS `Transaction Id`,\r\n		p.amount + p.adjustment AS `Amount`,\r\n		p.interest AS `Interest`,\r\n		IF(0/*p.due_date < CURDATE()*/, ROUND((p.interest / 30) * DATEDIFF(CURDATE(), p.due_date), 2), 0) AS `Penalty`,\r\n		p.total + IF(0/*p.due_date < CURDATE()*/, ROUND((p.interest / 30) * DATEDIFF(CURDATE(), p.due_date), 2), 0) AS `Total`,\r\n		p.due_date AS `Due Date`,\r\n		CONCAT_WS(\' \', c.title, c.first_name, c.last_name) AS `Payer`,\r\n    c.id AS `Payer ID`\r\n	FROM plugin_bookings_transactions_payment_plans pp\r\n		INNER JOIN plugin_bookings_transactions_payment_plans_has_payment p ON pp.id = p.payment_plan_id\r\n		INNER JOIN plugin_bookings_transactions t ON pp.transaction_id = t.id\r\n		INNER JOIN plugin_contacts3_contacts c ON t.contact_id = c.id\r\n	WHERE pp.deleted = 0 AND p.deleted = 0 AND t.deleted = 0 AND p.due_date < \'{!to!}\' AND p.payment_id IS NULL' WHERE (`name`='Payment Plan Due');

@@ -1,0 +1,8 @@
+/* Login background */
+#backstretch {
+    display: none;
+}
+.layout-login {
+    background: url('../img/background.jpg') no-repeat;
+    background-size: cover;
+}

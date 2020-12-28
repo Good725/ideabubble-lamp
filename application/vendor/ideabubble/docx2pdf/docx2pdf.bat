@@ -1,0 +1,1 @@
+powershell.exe -command "& .\docx2pdf.ps1 \"%1\""

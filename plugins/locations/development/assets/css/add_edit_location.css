@@ -1,0 +1,7 @@
+label.error {
+    display: inline;
+    float: none;
+    color: #cd5c5c;
+    padding-left: .5em;
+    vertical-align: middle;
+}

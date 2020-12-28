@@ -1,0 +1,22 @@
+.highlight {
+    border: 2px solid red !important;
+}
+tr.question_group{
+    outline: thin solid;
+}
+#preview_tab .question_display{
+    margin-top: 20px;
+    margin-left: 40px;
+}
+#preview_tab .answer_display{
+    margin-left: 80px;
+}
+#preview_tab fieldset .question_display:first-child{
+    margin-top: -20px;
+}
+#action_buttons {
+    margin-top: 50px;
+}
+.remove-button {
+    white-space: nowrap;
+}

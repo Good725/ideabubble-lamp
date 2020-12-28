@@ -1,0 +1,125 @@
+.navigation-menu .btn {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    height: 2.076923em;
+    line-height: 2.076923em;
+}
+
+/* Do not show only one tab in submenu */
+.navbar-sub > ul > li:only-child{
+    display: none;
+}
+
+/* Twitter height fix */
+.container #ibTwitterFeed{
+    max-height: 552px;
+}
+
+/*Mobile right menu*/
+
+.header-links-wrapper {
+    float: left;
+    position: relative;
+}
+
+.header-links-wrapper > button{
+    display: none;
+}
+
+.header-links-collapse {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    position: relative;
+    padding: 0.4em 0.6em;
+    font-size: 1.2em;
+    -moz-appearance: none;
+    background: transparent none repeat scroll 0 0;
+}
+
+.header-links-collapse:focus {
+    border-color: #4474b5;
+    outline: medium none;
+}
+
+.header-links {
+    background: #000 none repeat scroll 0 0;
+    border: 1px solid #b5b4b4;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px rgba(51, 51, 51, 0.5);
+    display: none;
+    font-size: 23px;
+    letter-spacing: -0.03em;
+    min-width: 9.21739em;
+    padding: 10px 0;
+    position: absolute;
+    right: 0px;
+    top: 52px;
+    text-align: left;
+    z-index: 200;
+}
+.header-links.header-links--visible {
+    display: inline-block;
+}
+
+.header-links a {
+    color: #fff;
+    padding: 0.347826em 0.434783em 0.347826em 1em;
+    white-space: nowrap;
+}
+
+.flaticon-bars{
+    color: white;
+}
+
+@media all and (max-width: 300px) {
+    #ibTwitterFeed {
+        display: none;
+    }
+}
+
+/*Styling mobile view*/
+@media all and (max-width: 767px) {
+
+    .container, .row{
+        padding: 0px;
+    }
+
+    .header-links-wrapper > button{
+        display: block;
+    }
+
+    #dashboards-usermenu-btn, .view-website-btn{
+        display: none;
+    }
+
+    .navigation-menu .searchbar-wrapper{
+        display: none;
+    }
+
+    .sidebar-header .sidebar-toggle{
+        display: none;
+    }
+
+    .user-tools .user-tools-messages, .user-tools .user-tools-help{
+        display: none;
+    }
+
+    #list-events-table_filter, #list-tickets-table_filter, #list-orders-table_filter{
+        display: none;
+    }
+
+    #list-tickets-table tr td:nth-child(5), #list-tickets-table thead th:nth-child(5),
+    #list-tickets-table tr td:nth-child(7), #list-tickets-table thead th:nth-child(7),
+    #list-tickets-table tr td:nth-child(8), #list-tickets-table thead th:nth-child(8) {
+        display: none;
+    }
+
+   th.visible-phone {
+       display: table-cell!important;
+   }
+
+}
+
+.custom-icon-tickets:before{
+    content: url("../images/commerce.png");
+}

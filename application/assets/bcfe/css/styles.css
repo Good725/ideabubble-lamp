@@ -1,0 +1,77 @@
+@import url('../../02/css/styles.css');
+
+:root {
+    --primary: #0095c7;   --primary-hover: #00ace6;   --primary-active: #007aa3;
+    --secondary: #f5f5f5; --secondary-hover: #d3d3d3; --secondary-active: #e6e6e6;
+    --success: #c73d62;   --success-hover: #cf5978;   --success-active: #cf5978;
+    --info: #00aca9;      --info-hover: #2f96b4;      --info-active: #31b0d5;
+    --warning: #e8a917;   --warning-hover: #e7b236;   --warning-active: #c89214;
+    --danger: #dc3545;    --danger-hover: #bd362f;    --danger-active: #c9302c;
+}
+
+/* Header */
+.btn.view-website-btn {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: #fff;
+}
+
+.btn.view-website-btn:hover {
+    background-color: #fff;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn.view-website-btn:active {
+    background-color: #fff;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.usermenu-item,
+.user-tools > li {
+    border: solid #e2e2e2;
+    border-width: 0 1px 0 0;
+}
+
+.user-tools-wrapper .usermenu-item {
+    border-width: 0 0 0 1px;
+}
+
+.user-tools > li:last-child {
+    border-right: none;
+}
+
+@media screen and (min-width: 767px) {
+    .navigation-menu{
+        background: #fff;
+        border-bottom: 1px solid #e2e2e2;
+        color: var(--primary);
+    }
+
+    .sidebar-toggle {
+        color: var(--success);
+    }
+}
+
+
+.usermenu-wrapper .dashboards-dropdown-btn {
+    color: #000;
+}
+
+.user-tools .user-tools-icon {
+    color: var(--primary);
+}
+
+.user-tools .dropdown-toggle:after {
+    border-top-color: var(--primary);
+}
+
+.sidebar-logo img {
+    max-height: none;
+    max-width: 220px;
+}
+
+.login-form-container .client-logo {
+    filter: brightness(0) invert(1);
+}

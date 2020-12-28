@@ -1,0 +1,221 @@
+@import url('../../02/css/styles.css');
+
+:root {
+    --primary: #33A2B0;   --primary-hover: #4dbdcb;   --primary-active: #2e919e;
+    --secondary: #f5f5f5; --secondary-hover: #e6e6e6; --default-active: #e6e6e6;
+    --success: #33A2B0;   --success-hover: #4dbdcb;   --success-active: #2e919e;
+    --info: #5bc0de;      --info-hover: #31b0d5;      --info-active: #269abc;
+    --warning: #ffc107;   --warning-hover: #f89406;   --warning-active: #ec971f;
+    --danger: #dc3545;    --danger-hover: #bd362f;    --danger-active: #c9302c;
+}
+
+.ui-autocomplete-category {
+    background: var(--primary);
+    color: #FFF;
+}
+
+hr {
+    border-color: var(--primary);
+}
+
+
+/*------------------------------------*\
+  #Utility
+\*------------------------------------*/
+/* Modals */
+.ibis-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    z-index: 200;
+}
+
+.ibis-modal.ibis-modal {
+    display: none;
+}
+
+.ibis-modal-content {
+    position: absolute;
+    background-color: #fff;
+    left: 4em;
+    right: 4em;
+    top: 84px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: calc(100vw - 8em);
+    max-height: calc(100vh - 80px);
+    text-align: left;
+}
+
+.ibis-modal .page-header {
+    background: var(--primary);
+    color: #FFF;
+    margin-bottom: 2.5em;
+    padding: .5em 50px;
+}
+
+/* Forms */
+legend {
+    border: none;
+    color: var(--primary);
+}
+
+
+
+
+/*------------------------------------*\
+  #Header
+\*------------------------------------*/
+@media screen and (min-width: 768px) {
+    .navigation-menu {
+        background: #fff;
+        border-bottom: 1px solid var(--primary);
+        color: var(--primary);
+    }
+
+    .mobile-menu-toggle {
+        color: var(--primary);
+    }
+}
+
+
+.usermenu-wrapper .dashboards-dropdown-btn {
+    color: var(--primary);
+}
+
+.btn.btn-header-action {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: #fff;
+}
+
+.btn.btn-header-action:hover {
+    background: var(--primary-hover);
+    color: #fff;
+}
+
+.btn.btn-header-action:active {
+    background: var(--primary-active);
+    color: #fff;
+}
+
+.user-tools > li {
+    border: none;
+}
+
+.user-tools > li > a:hover,
+.user-tools > li > .dropdown > a:hover {
+    color: #fff;
+}
+
+.user-tools-link[aria-expanded="true"],
+.user-tools-link:hover,
+.user-tools-link:focus {
+    background: none;
+}
+
+.user-tools-icon {
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+.user-tools .dropdown-toggle:after {
+    border-top-color: var(--primary);
+}
+
+
+
+/*------------------------------------*\
+  #Sidebar
+\*------------------------------------*/
+.sidebar-logo img {
+    max-height: none;
+}
+
+.sidebar-menu-wrapper {
+    border-color: var(--primary);
+    background: #FFF;
+}
+
+
+
+
+/*------------------------------------*\
+  #Login form
+\*------------------------------------*/
+.layout-login {
+    background-image: url('../images/login_bg.png');
+    background-position: center top;
+}
+
+.login-return {
+    margin: 2em;
+}
+
+.login-form-container .modal-footer {
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
+.login-form-container .modal-footer .poweredby:first-child {
+    margin-top: 20px;
+}
+
+.login .poweredby {
+    padding-top: 15px;
+}
+
+/*dropdown */
+.report-dropdown {
+    position: relative;
+}
+
+.report-dropdown .dropdown{
+    display: none;
+    background: #f5f5f5;
+    border: 1px solid #cacddc;
+    border-radius: 3px;
+    width: 245px;
+    position: absolute;
+    padding: 5px;
+    left: 50%;
+    margin-left: -122px;
+    font-size: 16px;
+    color: #222;
+    font-weight: 200;
+    top:100%;
+    z-index: 5;
+    text-align: center;
+    margin-top: -1px;
+    white-space: normal;
+}
+.report-dropdown .dropdown:after{
+    background: #f5f5f5;
+    border-right: 1px solid #cacddc;
+    border-top: 1px solid #cacddc;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    content: "";
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    left: 0px;
+    right: 0px;
+    top:-8px;
+    margin: auto;
+}
+
+.report-dropdown:hover .dropdown{
+    display: block;
+}
+
+.report-dropdown iframe{
+    width: 100%;
+    height: 176px;
+}
+

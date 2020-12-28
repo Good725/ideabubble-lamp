@@ -1,0 +1,117 @@
+@import url('../../20/css/validation.css');
+@import url('../../20/css/styles.css');
+@import url('//fonts.googleapis.com/css?family=Coming+Soon');
+
+
+.main-nav,
+.sidebar-menu h3,
+.search-autocomplete .ac-category {
+    font-family: 'Coming Soon', cursive;
+}
+
+.header-cart-amount,
+.header-cart-total,
+.product-searchbutton,
+.sidebar,
+.main_menu,
+.main_menu > li > a,
+.newsletter-form-submit,
+.search-autocomplete,
+.main_menu ul,
+.formErrorContent,
+.formErrorArrow div,
+.add-to-cart-button,
+.feed-product-addtocart,
+.sharing-icon {
+    background: #5E9A99;
+}
+
+.sharing-link {
+    border-color: #5E9A99;
+}
+
+.newsletter-form-submit {
+    color: #fff;
+}
+
+.header-cart-link,
+.alert-info {
+    background: #80B1B0;
+}
+
+a.language-option,
+.sidebar-menu h3,
+.search-autocomplete .ac-category,
+.main-content a:link,
+.main-content a:visited,
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6
+.footer_copyright,
+.product-title,
+.product-author,
+.footer-contact-socialmedia a,
+#breadcrumb-nav {
+    color: #2E8988;
+}
+
+.header-cart {
+    border-color: transparent;
+}
+
+.header-cart-amount,
+.header-cart-total,
+.header-cart-link {
+    border-color: #C2DAD9;
+}
+
+.sidebar-menu h3,
+.search-autocomplete .ac-category {
+    background: #8BBEB1 -webkit-gradient(linear, left top, right top, color-stop(0%,#CBDED5), color-stop(100%,#8BBEB1));
+    background: #8BBEB1 -webkit-linear-gradient(top left, #CBDED5, #8BBEB1);
+    background: #8BBEB1 linear-gradient(to right, #CBDED5, #8BBEB1);
+}
+
+.header,
+.footer-links {
+    background: #5E9A99;
+    background: #5E9A99 -webkit-gradient(linear, left top, right top, color-stop(0%,#5E9A99), color-stop(211px,#5E9A99), color-stop(100%,#A9CBCB));
+    background: #5E9A99 -webkit-linear-gradient(top left, #5E9A99 0, #5E9A99 211px, #A9CBCB);
+    background: #5E9A99 linear-gradient(to right, #5E9A99 0, #5E9A99 211px, #A9CBCB);
+}
+
+.header {
+    background: #5E9A99 url('../images/children-header.png') no-repeat;
+}
+
+.header-logo {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    opacity: 0;
+}
+.header-logo > a {
+    display: block;
+}
+
+.header-title {
+    visibility: hidden;
+}
+
+.sidebar-panels .panel_body .overlay {
+    background-image: url('../images/panel-overlay-children.png');
+}
+
+.footer {
+    border-top-color: #DAE5C8;
+}
+
+/* Adjust the line height for the 'Coming Soon' font. */
+.main_menu > li > a,
+.sidebar-menu h3 {
+    line-height: 2rem;
+}
+.ac-category .ac-item {
+    line-height: 2em;
+}

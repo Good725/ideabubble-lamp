@@ -1,0 +1,1109 @@
+.add_booking_modal {
+    width: 800px;
+    margin-left: -400px;
+}
+
+.booking_timetable thead th {
+    padding: 0 4px;
+}
+
+.btn-group {
+    clear: both;
+}
+
+.button_registration {
+    border: 1px solid #aaa;
+    border-width: 1px 1px 0 0;
+    font-size: 10px;
+    margin: -3px 0 0;
+    outline: none;
+    padding: 0;
+    width: 100%;
+}
+
+.eventsCalendar-currentTitle {
+    background-color: #55b364;
+    outline-color: #55b364;
+}
+
+.eventsCalendar-day.booking a {
+    background-color: #5bb75b;
+    box-shadow: inset 5px 5px 10px #51a351;
+    color: #FFF;
+    text-shadow: 2px 2px 2px #51a351;
+}
+
+.eventsCalendar-day.cancelled a, .eventsCalendar-day.enquiry a {
+    background-color: #faa732;
+    box-shadow: inset 5px 5px 10px #f89406;
+    color: #FFF;
+    text-shadow: 2px 2px 2px #f89406;
+}
+
+.eventsCalendar-day.enquiry_and_booking a {
+    background-color: #838383;
+}
+
+.eventsCalendar-list-wrap {
+    display: none;
+}
+
+.kes_booking_edit_form fieldset {
+    border: 1px solid #aaa;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.kes_booking_edit_form legend, .register_modal legend {
+    width: auto;
+    border: none;
+    margin: 0;
+    padding: 0 4px;
+}
+
+.minimize_button {
+    border: 1px;
+    background: #FFF;
+    color: #000;
+    border-radius: 2px;
+    float: right;
+    margin: -27px 5px 0 0;
+}
+
+.period_details, .schedule_title {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.period_details {
+    font-size: 10px;
+    height: 54px;
+    text-align: center;
+}
+
+.register_modal_notes {
+    width: 580px;
+}
+
+.schedule_container {
+    background: #FFF;
+    border: 1px solid #999;
+    margin: 4px;
+}
+
+.schedule_title {
+    font-size: 12px;
+    height: 2em;
+    overflow: hidden;
+    padding: .3em;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.schedule_title:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.side_data {
+    float: right;
+}
+
+.side_data > div {
+    width: 40px;
+}
+
+.side_data > div:first-child {
+    background: #ccc;
+    cursor: default;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.side_data > div:nth-child(2) {
+    background: #fc6;
+}
+
+.side_data > div:nth-child(3) {
+    background: #9d9;
+}
+
+.side_data + div {
+    float: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 69px;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    border: 1px solid #aaa;
+    background-color: #e6e6e6;
+    background: linear-gradient(#eee, #ccc);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+    opacity: 1;
+}
+
+.time_results_wrapper section .table td {
+    background: #fff
+}
+
+.time_results_wrapper td, .time_results_wrapper th {
+    padding-left: 0;
+}
+
+.timetable_item {
+    border: 1px solid #aaa;
+    margin: 5px 0;
+    padding: 5px;
+    font-size: 10px;
+}
+
+.timetable_item a:hover {
+    text-decoration: underline;
+}
+
+#timetable_navigation {
+    font-size: 18px;
+    margin: 10px;
+    text-align: center;
+}
+
+#booking_status {
+    width: 180px;
+}
+
+#main > .row > .span12 {
+    padding: 5px;
+    width: 100%;
+}
+
+#total_column {
+    width: 250px;
+}
+
+#total_column label {
+    float: left;
+    width: 135px;
+}
+
+#total_column li {
+    float: left;
+    list-style: none;
+    width: 100%;
+}
+
+#calendar_dates {
+    margin: 0;
+    padding: 0;
+}
+
+#calendar_dates li {
+    list-style: none;
+}
+
+#calendar_dates li label {
+    width: 80px;
+    display: inline-block;
+}
+
+#week_view_selector {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#week_view_selector li {
+    display: inline-block;
+    list-style: none;
+    margin: 15px 0;
+}
+
+.label-over_pay {
+    background-color: #e0d8fd;
+    border-color: #bbb8d8;
+    color: #3c3d76;
+}
+
+.label-danger {
+    background-color: #b94a48;
+}
+
+.unexplained_absence_modal {
+    margin-top: 0;
+}
+
+/*********************************\
+|     Booking screen              |
+\*********************************/
+
+/* Filters */
+#select_course_name {
+    width: 90%;
+    max-width: 500px;
+}
+
+.search_course_bar li {
+    vertical-align: top;
+}
+
+.search_course_bar .select_course_dropdown {
+    width: 175px;
+}
+
+.search_course_bar .select_course_dropdown {
+    display: block;
+    margin-bottom: 1em;
+}
+
+.search_course_bar .select_course_dropdown:last-child {
+    margin-bottom: 0;
+}
+
+/* Todo: Update view to use Form::ib_select() with class="ib-combobox" and remove this custom styling */
+.search_course_bar > li .custom-combobox-input {
+    padding: 9px 10px;
+    font-size: 13px;
+}
+
+.search_course_bar > li .custom-combobox-toggle {
+    border-left: none;
+    background: none;
+}
+/* End todo */
+
+/* Weekly schedule view */
+.weekly_schedule_header {
+    background: #55b364;
+    clear: both;
+    color: #fff;
+}
+
+.time_results_wrapper {
+    clear: both;
+}
+
+.weekly_schedule_header h3 {
+    float: left;
+}
+
+.weekly_schedule_header:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+#schedule_view_times {
+    font-size: 18px;
+    margin: 0 auto 5px;
+    padding-top: 5px;
+    text-align: center;
+    width: 240px;
+}
+
+/* Previous and next arrows */
+.timetable_selection_arrow {
+    border: 1px solid #aaa;
+    background: #fff;
+    color: #333;
+    border-radius: .3em;
+    cursor: pointer;
+    display: inline-block;
+    padding: .1em .2em 0;
+}
+
+.timetable_selection_arrow:hover {
+    background: #e9e9e9;
+    color: #999;
+}
+
+.timetable_selection_prev {
+    margin-right: 5px;
+}
+
+.timetable_selection_next {
+    margin-left: 5px;
+}
+
+.timetable_selection_range_button {
+    cursor: pointer;
+}
+
+/* Period table */
+.period_table {
+    border: solid #eee;
+    border-width: 2px 0;
+    width: 100%;
+}
+
+.period_table_week_header,
+.period_table_cell,
+.period_table_week_cell {
+    background: #fcfcfc;
+    border: solid #eee;
+    border-width: 0 2px 2px;
+}
+
+.period_table_cell {
+    box-sizing: border-box;
+    cursor: auto !important;
+    padding: 0;
+    width: 122px;
+    vertical-align: top;
+}
+
+.period_table_week_cell {
+    background: #55b364;
+    color: #fff;
+    font-size: .85em;
+    width: 5em;
+}
+
+.period_table_week {
+    display: block;
+    height: 5em;
+    line-height: 5em;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.period_table_date_heading {
+    background: #55b364;
+    border-bottom: 2px solid #eee;
+    color: #fff;
+    font-weight: normal;
+    text-align: center;
+}
+
+.period_table_week_header {
+    width: 100%;
+    height: auto;
+}
+
+/* */
+.time_results_wrapper section > div {
+    padding: 5px;
+}
+
+/* Time slots section */
+.time_slots_section_content {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.confirmed_periods_table a:hover {
+    text-decoration: underline;
+}
+
+/* Payment details section */
+.schedules_section_content {
+    border-spacing: 10px 0;
+    display: table;
+    margin-left: -5px;
+    width: 100%;
+}
+
+.payment_details_column {
+    border-radius: 10px;
+    display: table-cell;
+    margin-bottom: .5em;
+    padding: .3em .8em;
+}
+
+.payment_details_column table {
+    width: 100%;
+}
+
+.payment_details_column th,
+.payment_details_column td {
+    border-bottom: 1px solid #eee;
+}
+
+.payment_details_column th {
+    text-align: left;
+}
+
+.remove_cell {
+    text-align: center;
+}
+
+.ignored_discount td {
+    position: relative;
+    color: #ccc;
+}
+
+.ignored_discount td:after {
+    content: '';
+    position: absolute;
+    border-top: 1px solid #000;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+.ignored_discount .remove_cell {
+    color: inherit;
+}
+
+.ignored_discount .remove_cell:after {
+    display: none;
+}
+
+.discount_input_cell {
+    white-space: nowrap;
+}
+
+.discount_input_cell input {
+    width: 60px;
+}
+
+@media screen and (max-width: 720px) {
+    .schedules_section_content,
+    .payment_details_column {
+        display: block;
+        width: auto;
+    }
+
+    .schedules_section_content {
+        margin-left: 0;
+    }
+
+    .payment_details_column thead th:last-child {
+        width: 5em;
+    }
+
+    .payment_details_column thead th:nth-last-child(2) {
+        width: 10em;
+    }
+
+}
+
+/* List discounts */
+.toggle_publish {
+    cursor: pointer;
+    font-size: 0.1px;
+    opacity: 0;
+    width: 0 !important;
+}
+
+.toggle_publish + i {
+    display: inline-block;
+    font-style: normal;
+    line-height: 22px;
+}
+
+.toggle_publish + i:before {
+    content: '\f00d';
+    font-family: FontAwesome;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.toggle_publish:checked + i:before {
+    content: '\f00c';
+    cursor: pointer;
+}
+
+.toggle_publish:focus + i {
+    cursor: pointer;
+    outline: 1px dotted #aaa;
+}
+
+.multiselect-group {
+    margin: 0;
+    padding: 10px 20px 3px 5px;
+    height: 100%;
+    font-weight: bold
+}
+
+/*autocomplete list to show properly if used on modals*/
+.ui-autocomplete {
+    z-index: 2000;
+}
+
+/* Registration modal */
+.register_modal {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.register_modal > .modal-dialog {
+    width: 780px;
+}
+
+.register_modal-header,
+.booking-discount-modal-header {
+    background: #1B266B;
+    color: #fff;
+}
+
+.register_modal-header .close,
+.booking-discount-modal-header .close {
+    color: inherit;
+    opacity: 1;
+}
+
+.booking-discount-modal .row {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.register_modal-title {
+    font-weight: 200;
+}
+
+.register_modal fieldset {
+    margin-bottom: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1em;
+}
+
+.modal-footer.register_modal-footer {
+    border-top: none;
+    text-align: center;
+}
+
+.register_modal legend {
+    font-weight: 200;
+    padding: 0;
+}
+
+.register_modal .row {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0;
+}
+
+.register_modal .form-control {
+    text-align: left;
+}
+
+.period_booking_table_wrapper .btn-group {
+    margin-bottom: .5em;
+    margin-left: .5em;
+}
+
+.period_booking_table_wrapper .btn {
+    padding: 7px 20px;
+}
+
+.booking-discount-modal .discounts-table .btn {
+    background: #A5C625;
+    color: #fff;
+    text-shadow: none;
+}
+
+/* Fullcalendar customisation */
+.fc td {
+    cursor: auto;
+}
+
+.fc-toolbar {
+    background: #F3F3F3;
+    padding: 9px;
+    border-radius: 3px;
+    box-shadow: 4px 4px 4px #ccc;
+}
+
+.fc-toolbar .fc-button {
+    padding: 10px;
+    height: auto;
+}
+
+.fc-toolbar h2 {
+    display: inline-block;
+    color: #212121;
+}
+
+.fc-prev-button,
+.fc-next-button {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.fc-prev-button .fc-icon,
+.fc-next-button .fc-icon {
+    display: none;
+}
+
+.fc-prev-button:after,
+.fc-next-button:after {
+    content: '';
+    display: inline-block;
+    width: 1.15em;
+    height: 1.15em;
+    border: solid #222;
+    transform: rotate(45deg);
+}
+
+.fc-prev-button:after {
+    border-width: 0 0 2px 2px;
+}
+
+.fc-next-button:after {
+    border-width: 2px 2px 0 0;
+}
+
+.fc-toolbar .fc-state-active,
+.fc-toolbar .fc-state-hover {
+    z-index: 1; /* reduced, to prevent overlapping with the popovers */
+}
+
+.fc-head .fc-widget-header,
+.fc-head .fc-widget-header {
+    border: none;
+}
+
+.fc-agendaWeek-view .fc-head .fc-week-number {
+    padding-bottom: .5em;
+}
+
+.fc-day-header {
+    font-weight: normal;
+}
+
+.fc-month-view .fc-day-header {
+    text-align: right;
+}
+
+.fc-month-view .fc-week-number.fc-widget-header {
+    visibility: hidden;
+}
+
+.fc .fc-week-number {
+    border: none;
+}
+
+.fc-unthemed .fc-today {
+    border-color: #79C2EE;
+}
+
+.fc-event {
+    padding: 5px;
+}
+
+.fc-content {
+    text-overflow: ellipsis;
+}
+
+.fc-month-view .fc-event .fc-time {
+    display: none;
+}
+
+.fc .popover {
+    box-sizing: border-box;
+    width: auto;
+    min-width: 225px;
+}
+
+.fc .popover * {
+    box-sizing: inherit;
+}
+
+.fc .popover-title {
+    background: none;
+    border: none;
+    color: #2D4D80;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 13px;
+}
+
+.fc .popover-title a {
+    color: inherit;
+}
+
+.fc .popover-content {
+    font-size: 13px;
+}
+
+.fc .popover button {
+    height: auto;
+}
+
+.calendar-popover-category {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.calendar-popover  .form-action-group {
+    padding-top: 5px;
+    padding-bottom: 28px;
+}
+
+
+.btn-register {
+    background: #95C813;
+    box-shadow: 0 3px 4px #ddd;
+    color: #fff;
+}
+
+.calendar-popover .btn-register {
+    min-width: 185px;
+}
+
+.btn-register:hover {
+    color: #fff;
+}
+
+.fc .popover .badge {
+    width: 100%;
+    padding: 7px 10px;
+    display: block;
+    margin: 2px 0;
+    font-weight: normal;
+    text-align: left;
+}
+
+.fc .popover .badge span:nth-child(2) {
+    color: #000;
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.calendar-popover-is_attending {
+    color: #5A9A00;
+}
+
+.calendar-popover-is_attending.no {
+    color: #9A5A00;
+}
+
+.is_attending_icon {
+    border: 1px solid #5A9A00;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    width: 21px;
+}
+
+.badge-location {
+    background: #F3F3F3;
+    color: #94938E;
+}
+
+.badge-seats {
+    background: #FAF89F;
+    color: #94938E;
+}
+
+.badge-registered {
+    background: #DFFBBA;
+    color: #94938E;
+}
+
+#booking-schedules-list {
+    box-shadow: none;
+}
+
+#booking-schedules-list tfoot td {
+    border: none;
+}
+
+.booking-select_contact {
+    border-radius: 5px;
+    padding: 1em;
+    color: #fff;
+    margin: .125em;
+}
+
+.booking-contact-details-column + .booking-contact-details-column {
+    border-left: 1px solid #fff;
+}
+
+.booking-select_contact > .form-group.form-group {
+    margin-bottom: 0;
+}
+
+.booking-frequency_table-wrapper,
+.booking-timeslots_table-wrapper {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.booking-frequency_table-wrapper {
+    padding-left: 2em;
+}
+
+.booking-frequency_table-wrapper .freq_a td {
+    position: relative;
+}
+
+.booking-frequency_table-wrapper .freq_a .expand {
+    color: #00c6ee;
+    font-size: 1.5em;
+    position: absolute;
+    left: -1.5em;
+}
+
+.booking-frequency_table-wrapper .bulk_update {
+    color: #95c511;
+    text-decoration: underline;
+}
+
+.mode--single   .hidden--single   { display: none !important; }
+.mode--multiple .hidden--multiple { display: none !important; }
+
+#booking_schedules_list_table_filter {
+    display: flex;
+}
+
+#booking_schedules_list_table_filter > label {
+    order: 1
+}
+
+@media screen and (max-width: 768px) {
+    #booking_schedules_list_table_filter {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .booking-select_contact > .form-group,
+    .booking-contact-details {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
+
+.booking-fullcalendar .fc-event {
+    border: none;
+}
+
+.booking-fullcalendar-flag {
+    border-radius: 1em;
+    padding: 0 .5em;
+    background: #3b87ac;
+    color: #fff;
+}
+@media screen and (max-width: 767px) {
+    .fc.fc {
+        font-size: 13px;
+    }
+
+    .fc-basic-view .fc-body .fc-row {
+        min-height: 2.8em;
+        height: 2.8em !important;
+    }
+
+    /* Remove grid lines */
+    .fc-month-view td,
+    .fc-month-view th {
+        border: none;
+    }
+
+    /* Centre everything */
+    .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+        float: none;
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+
+    .fc-month-view .fc-day-header {
+        color: #bbb;
+        text-align: center;
+    }
+
+    /* Change labels */
+    .fc-month-view .fc-day-header span {
+        display: none;
+    }
+
+    .fc-month-view .fc-day-header.fc-mon:before {content: 'M';}
+    .fc-month-view .fc-day-header.fc-tue:before {content: 'T';}
+    .fc-month-view .fc-day-header.fc-wed:before {content: 'W';}
+    .fc-month-view .fc-day-header.fc-thu:before {content: 'T';}
+    .fc-month-view .fc-day-header.fc-fri:before {content: 'F';}
+    .fc-month-view .fc-day-header.fc-sat:before {content: 'S';}
+    .fc-month-view .fc-day-header.fc-sun:before {content: 'S';}
+
+    .fc-week-number span:before {
+        content: 'w';
+    }
+
+    .fc-week-number span {
+        color: #bbb;
+    }
+
+    /* Hide events. Display a dot on days with events. */
+    .fc-event-container {
+        display: none;
+    }
+
+    .fc-day-with-events {
+        cursor: pointer;
+        position: relative;
+    }
+
+    .fc-day-with-events:after {
+        content: '';
+        background: #00c6ee;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: 1.5em;
+        left: 50%;
+        width: 4px;
+        height: 4px;
+    }
+
+    /* Highlight today */
+    .fc-month-view .fc-today {
+        background: none;
+        color: #fff;
+        border-color: transparent;
+        text-align: center;
+    }
+
+    .fc-month-view .fc-bg .fc-today:before {
+        content: '';
+        background: #b7bed0;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        top: -.3em;
+        left: 2px;
+        width: 2.8em;
+        height: 2.8em;
+    }
+
+    /* Events for the selected day */
+    .booking-fullcalendar-events-mobile {
+        font-size: .875rem;
+    }
+
+    .booking-fullcalendar-events-mobile h3 {
+        color: #787878;
+        font-size: 1.4375rem;
+    }
+
+    .booking-fullcalendar-events-mobile h4 {
+        font-size: 1.125rem;
+        font-weight: 500;
+    }
+
+    .booking-fullcalendar-events-mobile table {
+        margin: 0 -.5em;
+    }
+
+    .booking-fullcalendar-events-mobile td {
+        padding: .5em;
+        position: relative;
+    }
+
+    .booking-fullcalendar-events-mobile td:first-child:after {
+        content: '';
+        border-right: 2px solid #00c6ee;
+        position: absolute;
+        top: .85em;
+        right: 0;
+        bottom: .4em;
+    }
+
+    /* Line up the view and filter buttons */
+    .fc-toolbar .fc-right {
+        float: left;
+        width: 75%;
+    }
+
+    .fc-button-group {
+        display: flex;
+        width: 100%;
+    }
+
+    .fc-button-group > button {
+        flex: 1;
+    }
+
+    .filter-wrap {
+        padding-left: 75%;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+    }
+
+    .time-print-icon {
+        display: none;
+    }
+
+    .booking-fullcalendar .fc-right .fc-button,
+    .timetable-status-filters .btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+    }
+
+    .booking-fullcalendar .fc-right .fc-button {
+        flex: 1;
+        border-right: 1px solid #b8d12f;
+        border-radius: 3px 0 0 3px;
+        box-shadow: none;
+        font-weight: 200;
+        text-shadow: none;
+    }
+
+    .booking-fullcalendar .fc-right .fc-button.fc-state-active {
+        background: #b8d12f;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .timetable-status-filters .btn {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px)
+{
+    .fc-toolbar h2 {
+        font-weight: 200;
+        font-size: 16px;
+    }
+
+    .fc-month-view .fc-week-number span:before {
+        content: 'week ';
+    }
+
+    .fc-month-view .fc-week-number span {
+        border: 1px solid;
+        border-radius: 10px;
+        font-weight: 200;
+        margin-top: 70%;
+        padding: .15em .3em;
+    }
+
+    .booking-fullcalendar .fc-event {
+        background: none;
+        border: none;
+        color: #000;
+    }
+
+    .booking-fullcalendar .fc-event-container {
+        font-size: .875em;
+    }
+
+    .booking-fullcalendar .fc-event[data-booked="true"] {
+        background: #3b87ac;
+        color: #fff;
+    }
+
+}

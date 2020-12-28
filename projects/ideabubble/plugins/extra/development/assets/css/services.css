@@ -1,0 +1,6 @@
+#contact_details dd { margin: 0; }
+#expiry_date_suggestion_wrapper{display:none;}
+#service_new_host { margin-top: 10px; }
+fieldset fieldset { border: 1px solid threedface; padding: 0.35em 0.75em 0.625em; }
+fieldset fieldset legend { border: 0; margin: 0; width: auto; }
+fieldset .checkbox { display: inline-block; margin: 0 1em 0 2em;}

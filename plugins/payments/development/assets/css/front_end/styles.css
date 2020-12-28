@@ -1,0 +1,57 @@
+/* Style radio buttons */
+.formrt li {
+    position: relative;
+}
+.payment_select {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+input.payment_select:focus + label {
+    outline: 2px solid skyblue;
+}
+
+input.payment_select + label {
+    background-repeat: no-repeat;
+    background-size: 120px;
+    color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    float: none;
+    font-size: 0.001px;
+    height: 24px;
+    width: 120px;
+}
+
+.payment_select_cc + label {
+    background-image: url('../../images/checkout-credit_card_grey.png');
+}
+
+.payment_select_cc:checked + label,
+.payment_select_cc + label:hover {
+    background-image: url('../../images/checkout-credit_card.png');
+}
+
+.payment_select_paypal + label {
+    background-image: url('../../images/checkout-paypal_grey.png');
+    background-size: 124px;
+    width: 124px;
+}
+
+.payment_select_paypal:checked + label,
+.payment_select_paypal + label:hover {
+    background-image: url('../../images/checkout-paypal.png');
+}
+
+input.payment_select_stripe + label {
+    background: #9c9c9c url('../../images/stripe_logo.png') no-repeat center top;
+    background-size: 52px;
+    border: 1px solid #888;
+    border-radius: 2px;
+    width: 124px;
+}
+
+input.payment_select_stripe:checked + label {
+    background-color: #f8c740;
+    border-color: #f8b320;
+}

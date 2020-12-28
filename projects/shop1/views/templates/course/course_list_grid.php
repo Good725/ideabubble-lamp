@@ -1,0 +1,1 @@
+<?php include 'course_list.php'; // The only differences between these two layouts are dictated by $page_data['layout'] value

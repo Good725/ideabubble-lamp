@@ -1,0 +1,1 @@
+<?php include Kohana::find_file('views', 'frontend/checkout_with_overlay'); ?>

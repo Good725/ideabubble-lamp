@@ -1,0 +1,1 @@
+<?= Model_Panels::get_panels_feed('content_left'); ?>

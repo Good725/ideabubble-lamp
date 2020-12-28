@@ -1,0 +1,5 @@
+/*
+ts:2016-02-22 18:00:00
+*/
+
+ALTER IGNORE TABLE `plugin_survey` ADD COLUMN `view_all` TINYINT(1) UNSIGNED NULL DEFAULT '1';

@@ -1,0 +1,153 @@
+.greyed {
+    background-color: #ddd;
+}
+.edit-event-tag {
+    margin-top: .5em;
+    margin-right: .5em;
+}
+
+.event-edit .form-control {
+    height: 36px;
+    font-size: 16px;
+}
+
+.event-edit .form-control::-webkit-input-placeholder {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.event-edit .form-group {
+    margin-bottom: 13px;
+}
+
+.event-edit .input-group input:not(:last-child) {
+    border-right: none;
+    box-shadow: none;
+}
+
+.event-edit input + .input-group-addon {
+    background: #fff;
+    border-left: none;
+    color: #000;
+}
+
+.event-edit .input-group-addon [class*="icon"] {
+    font-size: 20px;
+}
+
+.quantity-field {
+    position: relative;
+}
+
+.quantity-field-mask {
+    border: 1px solid transparent;
+    font-size: 16px;
+    padding: 6px 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.event-button-group {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.event-button-group .btn.btn {
+    margin-right: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.event-button-group .btn.btn:last-child {
+    margin-right: 0;
+}
+
+.edit-event-ticket-buttons .btn {
+    margin: 0 11px;
+    min-width: 203px;
+    position: relative;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.edit-event-ticket-buttons .plus-icon {
+    position: absolute;
+    top: -webkit-calc(50% - 10px);
+    top: calc(50% - 10px);
+    left: 23px;
+}
+
+#drag_and_drop_area {
+    background: center top no-repeat;
+    background-size: contain;
+}
+
+.btn-link.hide-ticket-settings {
+    color: #3DC2A4;
+}
+
+.event-edit .control-label {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
+}
+
+.event-edit .drag_and_drop_area {
+    border: 1px dashed #848484;
+    border-radius: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.image-upload-wrapper {
+    position: relative;
+}
+
+.image-upload-wrapper > div {
+    position: relative;
+    z-index:2;
+}
+
+.control-label-fixed.control-label-fixed {
+    padding-right: 5px;
+    width: 120px;
+}
+
+.discount-table caption {
+    color: #000;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.btn.btn-actions {
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 9px 19px;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.location-event-header {
+    font-size: 20px;
+    font-family:'Roboto Black', 'Roboto', HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+
+#get-address-from-map {
+    width: 100%;
+    font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: 200;
+    margin-top: 24px;
+}
+
+@media screen and (min-width: 768px)
+{
+    .edit-event-map-wrapper {
+        padding-left: 64px;
+    }
+}

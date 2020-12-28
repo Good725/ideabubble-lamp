@@ -1,0 +1,14 @@
+DELETE FROM `plugin_contacts3_contact_has_course_type_preferences`;
+ ALTER TABLE `plugin_contacts3_contact_has_course_type_preferences` AUTO_INCREMENT = 1;
+DELETE FROM `plugin_contacts3_contact_has_notifications`;
+ ALTER TABLE `plugin_contacts3_contact_has_notifications` AUTO_INCREMENT = 1;
+DELETE FROM `plugin_contacts3_contact_has_preferences`;
+ ALTER TABLE `plugin_contacts3_contact_has_preferences` AUTO_INCREMENT = 1;
+DELETE FROM `plugin_contacts3_contact_has_subject_preferences`;
+ ALTER TABLE `plugin_contacts3_contact_has_subject_preferences` AUTO_INCREMENT = 1;
+DELETE FROM `plugin_contacts3_contacts`;
+ ALTER TABLE `plugin_contacts3_contacts` AUTO_INCREMENT = 1;
+DELETE FROM `plugin_contacts3_family`;
+ ALTER TABLE `plugin_contacts3_family` AUTO_INCREMENT = 1;
+DELETE FROM `plugin_contacts3_residences`;
+ ALTER TABLE `plugin_contacts3_residences` AUTO_INCREMENT = 1;

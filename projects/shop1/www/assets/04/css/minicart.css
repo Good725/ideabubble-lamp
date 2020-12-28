@@ -1,0 +1,63 @@
+#checkout_cart {color: #FFFFFF;float: right;margin-top: -70px;position: relative; font-family: 'Helvetica Neue', 'Helvetica'; font-size: 12px;margin-right: 20px;font-weight: bold;z-index: 100;}
+#checkout_cart a{color: #FFFFFF;}
+#checkout_cart .mycart_details{color:#FA991E;font-size: 14px;padding: 10px;box-shadow:0px 16px 30px rgba(0, 0, 0, 0.8);-moz-border-radius-bottomright: 5px;-webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;-moz-border-radius-bottomleft: 5px;-webkit-border-bottom-left-radius: 5px;border-bottom-left-radius: 5px;background-color: #000000; width:255px ;}
+#checkout_cart .mycart_details .details_separator{position: relative;height: 1px; border-bottom: 1px solid #FA991E; clear: both;}
+.amount{ position: absolute; background: url(../images/cart_amount_bg.png) no-repeat center center; font-size: 11px;color: #FFFFFF;text-align: center;
+    width: 20px; height: 20px;line-height: 20px;right: -8px;top:-5px;z-index: 10;}
+
+/** Left button **/
+#checkout_cart .mycart_summary { float: left; line-height: 28px;position: relative;}
+#checkout_cart .mycart_summary:hover .mycart_summary_details{display: block; z-index: 2;}
+#checkout_cart .mycart_summary:hover .mycart_summary_txt{ background-image: url(../images/shopping_cart_selected_btn_bg.png);  }
+#checkout_cart .mycart_summary .mycart_summary_details{margin-left: 3px;margin-top: 29px;position: absolute;display: none;}
+#checkout_cart .mycart_summary .mycart_summary_details .mycart_summary_details_line{clear: both;font-size: 11px;margin-bottom: 10px;margin-top: 10px;min-height: 30px;}
+#checkout_cart .mycart_summary .mycart_summary_details .mycart_summary_img{ width: 23px;height: 23px; border:1px solid; float:left; background-color: #FFFFFF }
+#checkout_cart .mycart_summary .mycart_summary_details .mycart_summary_itename{ float: left; width: 183px; margin-left: 5px;}
+#checkout_cart .mycart_summary .mycart_summary_details .mycart_summary_itename_amount{ color: #FFFFFF }
+#checkout_cart .mycart_summary .mycart_summary_details .mycart_summary_price{ float: right; font-size: 12px; color: #FFFFFF; margin-right: 3px; }
+#checkout_cart .mycart_summary .mycart_summary_details .mycart_summary_totalitems{ float: left; margin-left: 30px; width: 149px; }
+#checkout_cart .mycart_summary .mycart_summary_details .mycart_summary_totalprice{ float: left; font-size: 12px; color: #FFFFFF }
+#checkout_cart .mycart_summary .mycart_summary_txt{ background-image: url(../images/shopping_cart_btn_bg.png); height:29px;width: 83px;float: left; padding-left: 10px; padding-right: 15px}
+#checkout_cart .mycart_summary #pl_member_registration_button{background: url("../images/submit_btn.png") no-repeat scroll 0 0 transparent;float: right;font-family: 'Helvetica Neue';font-size: 12px;
+    height: 29px;margin-left: -4px;text-align: center;width: 80px;}
+#checkout_cart .mini_cart_thumbnail{ width: 23px}
+
+
+/** Center Button **/
+#checkout_cart .mycart_register{  float: left; line-height: 28px;position: relative;}
+#checkout_cart .mycart_register .mycart_register_txt{ background-image: url(../images/cart_btn_bg.png); height:29px;width: 48px;padding-left: 10px; padding-right: 10px; text-align: center;}
+#checkout_cart .mycart_register:hover .mycart_register_txt{ background-image: url(../images/cart_btn_selected_bg.png); }
+#checkout_cart .mycart_register:hover .mycart_register_details{display: block;}
+#checkout_cart .mycart_register .mycart_register_details{background-color: #000000;display: none;margin-left: -106px;position: absolute;font-size: 12px;}
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_card_txt{float: left; }
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_points_txt,
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_value_txt{float: left; }
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_card_id{float: right; color: #FFFFFF;font-weight: normal; margin-right: 3px;}
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_points_amount,
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_value_amount{float: right; color: #FFFFFF;font-weight: bold;margin-right: 3px;}
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_points_desc,
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_value_desc{color: #FFFFFF;font-weight: normal;clear: both;line-height: 13px;margin-left: 8px;}
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_value_desc{margin-bottom: 10px;}
+#checkout_cart .mycart_register .mycart_register_details .mycart_register_value{margin-top: 5px;}
+#checkout_cart .mycart_register #pl_member_redeem_button{background: url("../images/submit_btn.png") no-repeat scroll 0 0 transparent;float: right;font-family: 'Helvetica Neue';font-size: 12px;
+    height: 29px;margin-left: -4px;text-align: center;width: 80px;}
+
+/** Right Button **/
+#checkout_cart .mycart_login{ float: left; line-height: 28px;}
+#checkout_cart .mycart_login .mycart_login_txt{background-image: url("../images/login_cart_btn_bg.png");background-position: right center;float: left;height: 29px;
+                                               padding-left: 10px;padding-right: 10px;width: 84px;text-align: center;}
+#checkout_cart .mycart_login:hover .mycart_login_txt{background-image: url("../images/login_cart_selected_btn_bg.png");}
+#checkout_cart .mycart_login .mycart_login_details{background-color: #000000;margin-top: 29px;position: absolute;right: 4px;display: none;}
+#checkout_cart .mycart_login:hover .mycart_login_details{display: block;}
+#checkout_cart .mycart_login .mycart_login_details .mycart_login_username{ position: relative; display: inline; }
+#checkout_cart .mycart_login .mycart_login_details .mycart_login_cardnumber{float: right; color:#FFFFFF; font-weight: normal; font-size: 12px;}
+#checkout_cart .mycart_login .mycart_login_details .mycart_login_line{font-size: 12px;}
+#checkout_cart .mycart_login .mycart_login_details .mycart_login_line a{color:#FA991E }
+#checkout_cart .mycart_login .mycart_login_details #pl_member_logout_button{background: url("../images/submit_btn.png") no-repeat scroll 0 0 transparent;float: right;font-family: 'Helvetica Neue';font-size: 12px;
+    height: 29px;margin-left: -4px;text-align: center;width: 80px;}
+#checkout_cart .separator{ height:29px;width: 1px;background-image: url(../images/cart_btn_separator.png); float: left}
+
+.minicart-hidden-when-empty[data-product_count="0"] {
+    display: none !important;
+}

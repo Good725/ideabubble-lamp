@@ -1,0 +1,7 @@
+/*
+ts:2017-02-15 19:56:00
+*/
+
+UPDATE `plugin_reports_reports`
+  SET `sql` = 'SELECT \r\n		sq.title AS `Question`, GROUP_CONCAT(CONCAT(ao.label, \' => \', IFNULL(cstats.cnt, 0)) SEPARATOR \'\\r\\n\') AS `Answers`, SUM(IFNULL(cstats.cnt, 0)) AS `Total`, si.*\r\n	FROM plugin_survey_questions sq\r\n		INNER JOIN plugin_survey_has_questions hq ON hq.question_id = sq.id\r\n		INNER JOIN plugin_survey s ON hq.survey_id = s.id\r\n		INNER JOIN plugin_survey_answers sa ON sq.answer_id = sa.id AND sa.deleted = 0\r\n		INNER JOIN plugin_survey_answer_options ao ON sa.id = ao.answer_id AND ao.deleted = 0\r\n		LEFT JOIN \r\n			(\r\n				SELECT sq.id as qid, sa.id as sid, ao.id as aid, count(*) as `cnt`\r\n					FROM plugin_survey_questions sq\r\n						INNER JOIN plugin_survey_answers sa ON sq.answer_id = sa.id AND sa.deleted = 0\r\n						INNER JOIN plugin_survey_answer_options ao ON sa.id = ao.answer_id AND ao.deleted = 0\r\n						INNER JOIN plugin_survey_answer_result ar ON ar.question_id = sq.id AND ar.answer_id = ao.id\r\n					GROUP BY sq.id, sa.id, ao.id\r\n					ORDER BY ao.order_id\r\n			) cstats ON sq.id = cstats.qid AND sa.id = cstats.sid AND ao.id = cstats.aid\r\n		INNER JOIN (select id, min(id), question_id, deleted from plugin_survey_sequence_items group by question_id) si on si.question_id = sq.id\r\n	  WHERE s.title =  \"{!survey_title!}\" AND si.deleted = 0 AND sq.deleted = 0\r\n	GROUP BY sq.id, si.id\r\n	ORDER BY si.id'
+  WHERE (`name` = 'Completed Surveys');

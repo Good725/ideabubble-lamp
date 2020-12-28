@@ -1,0 +1,161 @@
+/*
+ts:2015-01-01 00:01:10
+*/
+
+-- convert engine types to innodb
+   ALTER TABLE plugin_bookings_transactions ENGINE=InnoDB;
+   ALTER TABLE plugin_bookings_transactions_payments ENGINE=InnoDB;
+   ALTER TABLE plugin_bookings_transactions_has_schedule ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_contacts ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_notes ENGINE=InnoDB;
+   ALTER TABLE plugin_bookings_transactions_history ENGINE=InnoDB;
+   ALTER TABLE plugin_bookings_transactions_payments_cheque ENGINE=InnoDB;
+   ALTER TABLE plugin_bookings_transactions_payments_history ENGINE=InnoDB;
+   ALTER TABLE plugin_bookings_transactions_payments_journal ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_contact_has_course_type_preferences ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_contact_has_notifications ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_contact_has_preferences ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_contact_has_subject_preferences ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_contact_type ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_family ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_notes_tables ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_notification_groups ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_notifications ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_preferences ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_residences ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_roles ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_school ENGINE=InnoDB;
+   ALTER TABLE plugin_contacts3_todos_relation ENGINE=InnoDB;
+   ALTER TABLE plugin_courses_courses_images ENGINE=InnoDB;
+   ALTER TABLE plugin_courses_subjects ENGINE=InnoDB;
+   ALTER TABLE plugin_courses_courses_images ENGINE=InnoDB;
+   ALTER TABLE plugin_ib_educate_booking_has_schedules ENGINE=InnoDB;
+   ALTER TABLE plugin_ib_educate_bookings_discounts ENGINE=InnoDB;
+   ALTER TABLE plugin_ib_educate_bookings_ignored_discounts ENGINE=InnoDB;
+   ALTER TABLE plugin_products_cart_items_options ENGINE=InnoDB;
+   ALTER TABLE plugin_products_option_details ENGINE=InnoDB;
+   ALTER TABLE plugin_products_store_location ENGINE=InnoDB;
+   ALTER TABLE plugin_products_youtube_videos ENGINE=InnoDB;
+   -- add indexes for faster joins
+   ALTER TABLE plugin_products_carts ADD PRIMARY KEY (id);
+   ALTER TABLE plugin_payments_log ADD INDEX (cart_id);
+   ALTER TABLE plugin_products_cart_items ADD INDEX (cart_id);
+   ALTER TABLE plugin_products_cart_items_options ADD INDEX (cart_id);
+   ALTER TABLE plugin_bookings_transactions_payments ADD INDEX (transaction_id);
+   ALTER TABLE plugin_bookings_transactions_has_schedule ADD INDEX (transaction_id);
+   ALTER TABLE plugin_bookings_transactions_has_schedule ADD INDEX (schedule_id);
+   ALTER TABLE plugin_contacts3_notes ADD INDEX (link_id);
+   ALTER TABLE plugin_ib_educate_booking_items ADD INDEX (booking_id);
+   ALTER TABLE plugin_ib_educate_booking_items ADD INDEX (period_id);
+
+INSERT INTO `plugin_reports_reports`
+(`name`,`summary`,`sql`,`category`,`sub_category`,`dashboard`,`created_by`,`modified_by`,`date_created`,`date_modified`,`publish`,`delete`,`widget_id`,`chart_id`,`link_url`,`link_column`,`report_type`,`autoload`,`checkbox_column`,`action_button_label`,`action_button`,`action_event`,`checkbox_column_label`,`autosum`,`column_value`,`autocheck`,`custom_report_rules`,`bulk_message_sms_number_column`,`bulk_message_email_column`,`bulk_message_subject_column`,`bulk_message_subject`,`bulk_message_body_column`,`bulk_message_body`,`bulk_message_interval`,`rolledback_to_version`)
+values
+('Quick Stats Bookings/Rooms', '', 'SELECT COUNT(*)AS \'cnt\', \'Free Rooms\' AS \'tbl\' FROM plugin_courses_locations `l` WHERE l.`delete` = 0 AND NOT ISNULL(l.parent_id)\nAND l.capacity > COALESCE((SELECT COUNT(b.attending) FROM plugin_ib_educate_booking_items `b` INNER JOIN plugin_courses_schedules_events `s` ON b.period_id = s.id\nINNER JOIN plugin_courses_schedules `s1` ON s.schedule_id = s1.id WHERE b.attending = 1 AND s.datetime_start = NOW() AND s1.location_id = l.id ), 0)\nUNION\nSELECT COUNT(*)AS \'cnt\', \'Full Rooms\' AS \'tbl\' FROM plugin_courses_locations `l` WHERE l.`delete` = 0 AND NOT ISNULL(l.parent_id)\nAND l.capacity <= COALESCE((SELECT COUNT(b.attending) FROM plugin_ib_educate_booking_items `b` INNER JOIN plugin_courses_schedules_events `s` ON b.period_id = s.id\nINNER JOIN plugin_courses_schedules `s1` ON s.schedule_id = s1.id WHERE b.attending = 1 AND s.datetime_start = NOW() AND s1.location_id = l.id ), 0)\nUNION\nSELECT COUNT(*) AS \'cnt\', \'Confirmed Bookings\' AS \'tbl\' FROM plugin_ib_educate_bookings `b`INNER JOIN plugin_ib_educate_booking_items `b1` ON b.booking_id = b1.booking_id\nINNER JOIN plugin_courses_schedules_events `s` ON b1.period_id = s.id WHERE b.booking_status < 3 AND s.datetime_start = CURDATE() AND b1.attending = 1\nUNION\nSELECT COUNT(*) AS \'cnt\', \'Cancelled Bookings\' AS \'tbl\' FROM plugin_ib_educate_bookings `b`INNER JOIN plugin_ib_educate_booking_items `b1` ON b.booking_id = b1.booking_id\nINNER JOIN plugin_courses_schedules_events `s` ON b1.period_id = s.id WHERE b.booking_status = 3 AND s.datetime_start = CURDATE()', '0', '0', '0', null, null, '2015-08-13 13:56:38', '2015-08-13 13:56:38', '1', '0', '21', '16', '', '', 'sql', '1', '0', '', '0', '																																																																													', '', '0', '', '0', '', '', '', '', '', '', '', '', null),
+('Current Free Rooms', '', 'SELECT CONCAT(l1.`name`, \' - \', l.`name`)AS \'Free Rooms\', l.capacity - COALESCE( (SELECT COUNT(b.attending) FROM plugin_ib_educate_booking_items `b`\nINNER JOIN plugin_courses_schedules_events `s` ON b.period_id = s.id INNER JOIN plugin_courses_schedules `s1` ON s.schedule_id = s1.id\nWHERE b.attending = 1 AND s.datetime_start = NOW() AND s1.location_id = l.id),0)AS \'Spaces Available\'\nFROM plugin_courses_locations `l` JOIN plugin_courses_locations `l1` ON l.parent_id = l1.id WHERE l.`delete` = 0 AND NOT ISNULL(l.parent_id)\nAND l.capacity > COALESCE((SELECT COUNT(b.attending) FROM plugin_ib_educate_booking_items `b` INNER JOIN plugin_courses_schedules_events `s` ON b.period_id = s.id\nINNER JOIN plugin_courses_schedules `s1` ON s.schedule_id = s1.id WHERE b.attending = 1 AND s.datetime_start = NOW() AND s1.location_id = l.id ), 0) ORDER BY l.parent_id LIMIT 10', '0', '0', '0', null, null, '2015-08-13 14:13:48', '2015-08-13 14:13:48', '1', '0', '22', '17', '', '', 'sql', '1', '0', '', '0', '											', '', '0', '', '0', '', '', '', '', '', '', '', '', null),
+('Full Rooms', '', 'SELECT CONCAT(l1.`name`, \' - \', l.`name`)AS \'Full Rooms\', l.capacity - COALESCE( (SELECT COUNT(b.attending) FROM plugin_ib_educate_booking_items `b`\nINNER JOIN plugin_courses_schedules_events `s` ON b.period_id = s.id INNER JOIN plugin_courses_schedules `s1` ON s.schedule_id = s1.id\nWHERE b.attending = 1 AND s.datetime_start = NOW() AND s1.location_id = l.id),0)AS \'Spaces Available\'\nFROM plugin_courses_locations `l` JOIN plugin_courses_locations `l1` ON l.parent_id = l1.id WHERE l.`delete` = 0 AND NOT ISNULL(l.parent_id)\nAND l.capacity <= COALESCE((SELECT COUNT(b.attending) FROM plugin_ib_educate_booking_items `b` INNER JOIN plugin_courses_schedules_events `s` ON b.period_id = s.id\nINNER JOIN plugin_courses_schedules `s1` ON s.schedule_id = s1.id WHERE b.attending = 1 AND s.datetime_start = CURDATE() AND s1.location_id = l.id ), 0) ORDER BY l.parent_id', '0', '0', '0', null, null, '2015-08-13 14:17:31', '2015-08-13 14:17:31', '1', '0', '23', '18', '', '', 'sql', '1', '0', '', '0', '											', '', '0', '', '0', '', '', '', '', '', '', '', '', null),
+('Teachers Due Today', '', 'SELECT CONCAT(TIME_FORMAT(`event`.`datetime_start`,\'%H:%i\'),\'-\',TIME_FORMAT(`event`.`datetime_end`, \'%H:%i\'))AS `Time`,`schedule`.`name` AS `Class`,`location`.`name`AS `Room`, CONCAT(`trainer`.`first_name`,\' \',`trainer`.`last_name`)AS `Trainer` FROM `plugin_courses_schedules_events` `event` JOIN `plugin_courses_schedules` `schedule` ON `event`.`schedule_id` = `schedule`.`id` JOIN `plugin_courses_courses` `course` ON `schedule`.`course_id` = `course`.`id` LEFT JOIN(SELECT * FROM `plugin_courses_locations`WHERE `delete` = 0 )`location` ON `schedule`.`location_id` = `location`.`id` LEFT JOIN(SELECT * FROM `plugin_contacts3_contacts` WHERE `delete` = 0)`trainer` ON `schedule`.`trainer_id` = `trainer`.`id` WHERE `event`.`delete` = 0 AND `schedule`.`delete` = 0 AND `course`.`deleted` = 0 AND `event`.`datetime_start` = CURDATE() ORDER BY `datetime_start` ASC', '0', '0', '0', null, null, '2015-08-13 14:35:49', '2015-08-13 14:35:49', '1', '0', '24', '19', '', '', 'sql', '1', '0', '', '0', '																						', '', '0', '', '0', '', '', '', '', '', '', '', '', null);
+
+INSERT INTO `plugin_reports_reports`
+(`name`,`summary`,`sql`,`category`,`sub_category`,`dashboard`,`created_by`,`modified_by`,`date_created`,`date_modified`,`publish`,`delete`,`widget_id`,`chart_id`,`link_url`,`link_column`,`report_type`,`autoload`,`checkbox_column`,`action_button_label`,`action_button`,`action_event`,`checkbox_column_label`,`autosum`,`column_value`,`autocheck`,`custom_report_rules`,`bulk_message_sms_number_column`,`bulk_message_email_column`,`bulk_message_subject_column`,`bulk_message_subject`,`bulk_message_body_column`,`bulk_message_body`,`bulk_message_interval`,`rolledback_to_version`)
+values
+('Students Booked One Course type and Not another', '', 'SELECT CONCAT(c.first_name,\' \',c.last_name)AS \'Student\' FROM plugin_contacts3_contacts `c`\nWHERE c.id IN (SELECT DISTINCT cs.id FROM plugin_ib_educate_bookings `b` INNER JOIN plugin_ib_educate_booking_has_schedules `b1` ON b.booking_id = b1.booking_id INNER JOIN plugin_contacts3_contacts `cs` ON b.contact_id = cs.id INNER JOIN plugin_courses_schedules `c` ON b1.schedule_id = c.id INNER JOIN plugin_courses_courses `c1` ON c.course_id = c1.id \nINNER JOIN plugin_courses_categories `c2` ON c1.category_id = c2.id WHERE c2.category = \"{!FirstCategory!}\")\nAND c.id NOT IN (SELECT DISTINCT cs.id FROM plugin_ib_educate_bookings `b` INNER JOIN plugin_ib_educate_booking_has_schedules `b1` ON b.booking_id = b1.booking_id INNER JOIN plugin_contacts3_contacts `cs` ON b.contact_id = cs.id\nINNER JOIN plugin_courses_years `cy` ON cy.`year` = cs.year_id INNER JOIN plugin_courses_schedules `c` ON b1.schedule_id = c.id INNER JOIN plugin_courses_courses `c1` ON c.course_id = c1.id \nINNER JOIN plugin_courses_categories `c2` ON c1.category_id = c2.id WHERE c2.category = \"{!SecondCategory!}\")', '0', '0', '0', null, null, '2015-08-27 18:33:40', '2015-08-27 18:33:40', '1', '0', '28', '23', '', '', 'sql', '1', '0', '', '0', '																																																																																																																																				', '', '0', '', '0', '', '', '', '', '', '', '', '', null);
+select last_insert_id() into @refid_plugin_reports_reports;
+	insert into `plugin_reports_parameters` set `report_id` = @refid_plugin_reports_reports, `type` = 'custom', `name` = 'FirstCategory', `value` = '(SELECT `category`\nFROM `plugin_courses_categories`\nWHERE `publish`=1)', `delete` = '0';
+	insert into `plugin_reports_parameters` set `report_id` = @refid_plugin_reports_reports, `type` = 'custom', `name` = 'SecondCategory', `value` = '(SELECT `category`\nFROM `plugin_courses_categories`\nWHERE `publish`=1)', `delete` = '0';
+
+UPDATE plugin_courses_schedules SET payment_type = 2 WHERE course_id IN (
+SELECT plugin_courses_courses.id FROM  plugin_courses_courses
+INNER JOIN plugin_courses_categories ON plugin_courses_courses.category_id = plugin_courses_categories.id
+WHERE plugin_courses_categories.grinds_tutorial = 1);
+
+INSERT INTO `engine_calendar_rules` (title, plugin_name, description, publish, deleted, created_on, created_by, updated_on, updated_by)
+VALUES ('Blackout', 'courses', 0x4e6f2074696d65736c6f74, '0', '1', '2015-09-09 10:09:08', '2', '2015-09-09 10:09:20', '2');
+
+UPDATE IGNORE project_role SET role = 'Manager' WHERE id = 3;
+UPDATE IGNORE project_role SET role = 'Receptionist' WHERE id = 4;
+UPDATE IGNORE project_role SET role = 'Teacher' WHERE id = 5;
+
+INSERT IGNORE `users` (email,`password`, `name`, surname, role_id) VALUES
+('joan.kenny@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Joan','Kenny','4'),
+('claire.odonnell@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Claire','O Donnell','4'),
+('mark.toomey@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Mark','Toomey','4'),
+('aiveen.oshea@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Aiveen','O Shea','4'),
+('dearbhla.guerin@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Dearbhla','Guerin','3'),
+('elaine.tynan@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Elaine','Tynan','3'),
+('julie.kilmartin@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Julie','Kilmartin','2'),
+('croiadh.monaghan@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Croiadh','Monaghan','4'),
+('tara.spratt@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Tara','Spratt','4'),
+('mary.kearney@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Mary','Kearney','4'),
+('josephine.ohalloran@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Josephine','O Halloran','4'),
+('yvonne.fitzgerald@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Yvonne','Fitzgerald','4'),
+('jennifer.dundas@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Jennifer','Dundas','4'),
+('manager@ideabubble.ie','2b236870842d127c64265a595a88c23994bd7792f7989f004900c635653b2f0c','Manager','Ideabubble','3'),
+('receptionist@ideabubble.ie','2b236870842d127c64265a595a88c23994bd7792f7989f004900c635653b2f0c','Receptionist','Ideabubble','4'),
+('teacher@ideabubble.ie','2b236870842d127c64265a595a88c23994bd7792f7989f004900c635653b2f0c','Teacher','Ideabubble','5'),
+('yann@ideabubble.ie','2b236870842d127c64265a595a88c23994bd7792f7989f004900c635653b2f0c','Yann','Ideabubble','1'),
+('tempy@ideabubble.ie','2b236870842d127c64265a595a88c23994bd7792f7989f004900c635653b2f0c','Tempy','Ideabubble','1'),
+('michael@ideabubble.ie','2b236870842d127c64265a595a88c23994bd7792f7989f004900c635653b2f0c','Michael','Ideabubble','1'),
+('stephen@ideabubble.ie','2b236870842d127c64265a595a88c23994bd7792f7989f004900c635653b2f0c','Stephen','Ideabubble','1');
+
+UPDATE IGNORE project_role SET access_type = NULL WHERE id = 5;
+
+DELETE FROM project_role where id >5;
+INSERT IGNORE `project_role` (`role`, description, publish, deleted, access_type, master_group) VALUES ('External User', 'This user has no access to Settings.', '1', '0', null, '0'),('Basic', 'This is standard registered user', '1', '0', 'Front end', '0');
+
+DROP TABLE IF EXISTS  `tmp_import_teachers_details`;
+CREATE TABLE `tmp_import_teachers_details` (`full_name` VARCHAR(255), `first_name` VARCHAR(255), `address1` VARCHAR(255), `address2` VARCHAR(255), `address3` VARCHAR(255), `address4` VARCHAR(255), `address5` VARCHAR(255), `phone_number` VARCHAR(127), `email`VARCHAR(127), `pps_number` VARCHAR(10) );
+
+DELETE FROM `plugins_per_role`;
+BEGIN;
+INSERT INTO `plugins_per_role` VALUES ('1', '1', '0'), ('2', '1', '1'), ('3', '1', '1'), ('4', '1', '1'), ('5', '1', '1'), ('6', '1', '1'), ('7', '1', '0'), ('8', '1', '1'), ('9', '1', '1'), ('10', '1', '1'), ('11', '1', '1'), ('12', '1', '1'), ('13', '1', '1'), ('15', '1', '1'), ('16', '1', '1'), ('17', '1', '1'), ('18', '1', '1'), ('20', '1', '1'), ('21', '1', '1'), ('22', '1', '1'), ('23', '1', '1'), ('24', '1', '1'), ('25', '1', '0'), ('26', '1', '0'), ('27', '1', '1'), ('28', '1', '1'), ('29', '1', '1'), ('30', '1', '0'), ('33', '1', '1'), ('34', '1', '1'), ('1', '2', '0'), ('2', '2', '1'), ('3', '2', '1'), ('4', '2', '0'), ('5', '2', '1'), ('6', '2', '1'), ('7', '2', '0'), ('8', '2', '1'), ('9', '2', '1'), ('10', '2', '1'), ('11', '2', '1'), ('12', '2', '0'), ('13', '2', '1'), ('15', '2', '0'), ('16', '2', '1'), ('17', '2', '1'), ('18', '2', '1'), ('20', '2', '1'), ('21', '2', '1'), ('22', '2', '0'), ('23', '2', '1'), ('24', '2', '1'), ('25', '2', '0'), ('26', '2', '0'), ('27', '2', '1'), ('28', '2', '1'), ('29', '2', '0'), ('30', '2', '0'), ('33', '2', '1'), ('34', '2', '1'), ('1', '3', '0'), ('2', '3', '1'), ('3', '3', '0'), ('4', '3', '1'), ('5', '3', '0'), ('6', '3', '1'), ('7', '3', '0'), ('8', '3', '1'), ('9', '3', '1'), ('10', '3', '1'), ('11', '3', '1'), ('12', '3', '0'), ('13', '3', '1'), ('15', '3', '0'), ('16', '3', '0'), ('17', '3', '1'), ('18', '3', '1'), ('20', '3', '1'), ('21', '3', '1'), ('22', '3', '0'), ('23', '3', '1'), ('24', '3', '1'), ('25', '3', '0'), ('26', '3', '0'), ('27', '3', '1'), ('28', '3', '1'), ('29', '3', '0'), ('30', '3', '0'), ('33', '3', '1'), ('34', '3', '1'), ('1', '4', '0'), ('2', '4', '1'), ('3', '4', '0'), ('4', '4', '1'), ('5', '4', '0'), ('6', '4', '1'), ('7', '4', '0'), ('8', '4', '1'), ('9', '4', '1'), ('10', '4', '1'), ('11', '4', '1'), ('12', '4', '0'), ('13', '4', '1'), ('15', '4', '0'), ('16', '4', '0'), ('17', '4', '1'), ('18', '4', '1'), ('20', '4', '0'), ('21', '4', '1'), ('22', '4', '0'), ('23', '4', '1'), ('24', '4', '1'), ('25', '4', '0'), ('26', '4', '0'), ('27', '4', '1'), ('28', '4', '1'), ('29', '4', '0'), ('30', '4', '0'), ('33', '4', '1'), ('34', '4', '1'), ('1', '5', '0'), ('2', '5', '1'), ('3', '5', '0'), ('4', '5', '1'), ('5', '5', '0'), ('6', '5', '1'), ('7', '5', '0'), ('8', '5', '1'), ('9', '5', '1'), ('10', '5', '1'), ('11', '5', '1'), ('12', '5', '0'), ('13', '5', '1'), ('15', '5', '0'), ('16', '5', '0'), ('17', '5', '1'), ('18', '5', '1'), ('20', '5', '0'), ('21', '5', '1'), ('22', '5', '0'), ('23', '5', '1'), ('24', '5', '1'), ('25', '5', '0'), ('26', '5', '0'), ('27', '5', '1'), ('28', '5', '1'), ('29', '5', '0'), ('30', '5', '0'), ('33', '5', '1'), ('34', '5', '1'), ('1', '6', '0'), ('2', '6', '1'), ('3', '6', '0'), ('4', '6', '1'), ('5', '6', '1'), ('6', '6', '1'), ('7', '6', '0'), ('8', '6', '1'), ('9', '6', '1'), ('10', '6', '1'), ('11', '6', '1'), ('12', '6', '0'), ('13', '6', '1'), ('15', '6', '0'), ('16', '6', '1'), ('17', '6', '1'), ('18', '6', '1'), ('20', '6', '0'), ('21', '6', '1'), ('22', '6', '0'), ('23', '6', '1'), ('24', '6', '1'), ('25', '6', '0'), ('26', '6', '0'), ('27', '6', '1'), ('28', '6', '1'), ('29', '6', '0'), ('30', '6', '0'), ('33', '6', '1'), ('34', '6', '1'), ('1', '7', '0'), ('2', '7', '0'), ('3', '7', '0'), ('4', '7', '0'), ('5', '7', '0'), ('6', '7', '0'), ('7', '7', '0'), ('8', '7', '0'), ('9', '7', '0'), ('10', '7', '0'), ('11', '7', '0'), ('12', '7', '0'), ('13', '7', '0'), ('15', '7', '0'), ('16', '7', '0'), ('17', '7', '0'), ('18', '7', '0'), ('20', '7', '0'), ('21', '7', '0'), ('22', '7', '0'), ('23', '7', '0'), ('24', '7', '0'), ('25', '7', '0'), ('26', '7', '0'), ('27', '7', '0'), ('28', '7', '0'), ('29', '7', '0'), ('30', '7', '0'), ('33', '7', '0'), ('34', '7', '0');
+COMMIT;
+
+UPDATE plugin_contacts3_family SET plugin_contacts3_family.primary_contact_id = ( SELECT MIN(plugin_contacts3_contacts.id) FROM plugin_contacts3_contacts
+WHERE plugin_contacts3_contacts.is_primary = 1 AND plugin_contacts3_contacts.family_id = plugin_contacts3_family.family_id),
+plugin_contacts3_family.notifications_group_id = ( SELECT MIN(plugin_contacts3_contacts.notifications_group_id) FROM plugin_contacts3_contacts
+WHERE plugin_contacts3_contacts.is_primary = 1 AND plugin_contacts3_contacts.family_id = plugin_contacts3_family.family_id),
+plugin_contacts3_family.residence = (SELECT MIN(plugin_contacts3_contacts.residence) FROM plugin_contacts3_contacts
+WHERE plugin_contacts3_contacts.is_primary = 1 AND plugin_contacts3_contacts.family_id = plugin_contacts3_family.family_id);
+
+UPDATE IGNORE `plugin_formbuilder_forms`
+SET `fields` = '<input name="subject" value="Competition Entry" type="hidden" id=""><input name="redirect" value="thank-you.html" type="hidden"><input name="event" value="contact-form" type="hidden" id=""><input name="trigger" value="custom_form" type="hidden" id="trigger"><input name="form_type" value="Competition Form" id="form_type" type="hidden"><input type="hidden" name="email_template" id="" value="competition_form_mail"><input type="hidden" name="confirmation_email_template" id="" value="competition_form_mail_entree"><input type="hidden" name="confirmation_email_field" id="" value="guardian_email"><li><label for="competition_form_student_name">Student Name</label><input type="text" name="student_name" id="competition_form_student_name" class="validate[required]" placeholder="Student Name"></li><li><label for="competition_form_year_in_school">Year in School</label><input type="text" name="year_in_school" id="competition_form_year_in_school" class="validate[required]" placeholder="Year in School"></li><li><label for="competition_form_guardian_name">Guardian Name</label><input type="text" name="guardian_name" id="competition_form_guardian_name" class="validate[required]" placeholder="Parent/Guardian Name"></li><li><label for="competiton_form_guardian_mobile">Guardian Mobile</label><input type="text" name="guardian_mobile" id="competiton_form_guardian_mobile" class="validate[required]" placeholder="Parent/Guardian Mobile Number"></li><li><label for="competition_form_guardian_email">Guardian Email</label><input type="text" name="guardian_email" id="competition_form_guardian_email" class="validate[required]" placeholder="Parent/Guardian Email"></li><li><label for="competition_form_answer">Your Answer</label><textarea name="answer" id="competition_form_answer" class="validate[required]" placeholder="Your Answer"></textarea></li> <li><label for="competition_form_terms" style="float: none;">I accept the <a href="/terms-and-conditions.html">terms and conditions</a></label><input type="checkbox" id="competition_form_terms" name="terms" style="margin: .2em .5em; float: left;" class="validate[required]"></li>                                <li><label for="submit1"></label><button type="submit" class="enter_competition_button">Enter Competition</button></li>'
+WHERE `form_name` = 'CompetitionForm';
+
+INSERT IGNORE INTO `ppages_layouts` (`layout`) VALUES ('Content-Panels-News');
+
+-- KES-1038
+insert into `plugin_reports_reports` set `name` = 'Tomorrow Events', `summary` = '', `sql` = 'SELECT\nCONCAT_WS(\' \',plugin_contacts3_contacts.title, plugin_contacts3_contacts.first_name, plugin_contacts3_contacts.last_name) AS `Student`,\nCONCAT_WS(\' \',plugin_courses_schedules.`name`,plugin_courses_courses.title) AS `Schedule`,\nplugin_contacts3_contact_has_notifications.`value` AS `Email`,\nplugin_courses_schedules_events.`datetime_start` AS `Time`,\nplugin_ib_educate_bookings.booking_id AS `Booking Id`,\nCONCAT_WS(\' \', \'You have a class\', plugin_courses_schedules.`name`, plugin_courses_courses.title, \'at\', plugin_courses_schedules_events.`datetime_start`) AS `Message`\nFROM\nplugin_ib_educate_booking_items\nINNER JOIN plugin_ib_educate_bookings ON plugin_ib_educate_booking_items.booking_id = plugin_ib_educate_bookings.booking_id AND plugin_ib_educate_bookings.`delete` = 0 AND plugin_ib_educate_booking_items.`delete` = 0\nINNER JOIN plugin_courses_schedules_events ON plugin_ib_educate_booking_items.period_id = plugin_courses_schedules_events.id AND plugin_courses_schedules_events.`delete` = 0\nINNER JOIN plugin_contacts3_contacts ON plugin_ib_educate_bookings.contact_id = plugin_contacts3_contacts.id\nINNER JOIN plugin_courses_schedules ON plugin_courses_schedules_events.schedule_id = plugin_courses_schedules.id\nINNER JOIN plugin_courses_courses ON plugin_courses_schedules.course_id = plugin_courses_courses.id\nINNER JOIN plugin_contacts3_contact_has_notifications ON plugin_contacts3_contacts.notifications_group_id = plugin_contacts3_contact_has_notifications.group_id AND plugin_contacts3_contact_has_notifications.notification_id = 1\nWHERE\nplugin_courses_schedules_events.datetime_start >= DATE_ADD(CURDATE(), interval 1 day) AND\nplugin_courses_schedules_events.datetime_start < DATE_ADD(CURDATE(), interval 2 day)', `widget_sql` = '', `category` = '0', `sub_category` = '0', `dashboard` = '0', `created_by` = null, `modified_by` = null, `date_created` = NOW(), `date_modified` = NOW(), `publish` = '1', `delete` = '0', `widget_id` = '32', `chart_id` = '27', `link_url` = '', `link_column` = '', `report_type` = 'sql', `autoload` = '0', `checkbox_column` = '0', `action_button_label` = '', `action_button` = '0', `action_event` = '																																	', `checkbox_column_label` = '', `autosum` = '0', `column_value` = '', `autocheck` = '0', `custom_report_rules` = '', `bulk_message_sms_number_column` = '', `bulk_message_email_column` = 'Email', `bulk_message_subject_column` = 'Student', `bulk_message_subject` = '', `bulk_message_body_column` = 'Message', `bulk_message_body` = '', `bulk_message_interval` = '0 1 * * *', `rolledback_to_version` = null, `php_modifier` = '';
+
+
+INSERT IGNORE `users` (email,`password`, `name`, surname, role_id) VALUES
+('alan.mcauliffe@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Alan','McAuliffe','4'),
+('shona.francis@kes.ie','3b24ef9530a3034ad50c96b89d82189c8e2e77b7d0b9a15a1cd7549ff95cfb75','Shona','Francis','4');
+
+UPDATE IGNORE `plugin_courses_schedules` SET payment_type = 2 WHERE course_id = (SELECT plugin_courses_courses.id
+FROM plugin_courses_courses INNER JOIN plugin_courses_categories ON plugin_courses_courses.category_id = plugin_courses_categories.id
+WHERE plugin_courses_categories.category = 'Grinds/Tutorials' AND plugin_courses_courses.id = plugin_courses_schedules.course_id);
+
+
+INSERT IGNORE INTO `plugin_notifications_event` (`name`, `description`, `from`, `subject`) VALUES ('competition-form', 'Competition Form', 'info@kes.ie', 'Competition Entry');
+
+UPDATE IGNORE `plugin_formbuilder_forms`
+ SET `fields` = '<input name=\"subject\" value=\"Competition Entry\" type=\"hidden\" id=\"\"><input name=\"redirect\" value=\"thank-you.html\" type=\"hidden\"><input name=\"event\" value=\"competition-form\" type=\"hidden\" id=\"\"><input name=\"trigger\" value=\"custom_form\" type=\"hidden\" id=\"trigger\"><input name=\"form_type\" value=\"Competition Form\" id=\"form_type\" type=\"hidden\"><input type=\"hidden\" name=\"email_template\" id=\"\" value=\"competition_form_mail\"><input type=\"hidden\" name=\"confirmation_email_template\" id=\"\" value=\"competition_form_mail_entree\"><li><label for=\"competition_form_student_name\">Student Name</label><input type=\"text\" name=\"student_name\" id=\"competition_form_student_name\" class=\"validate[required]\" placeholder=\"Student Name\"></li><li><label for=\"competition_form_year_in_school\">Year in School</label><input type=\"text\" name=\"year_in_school\" id=\"competition_form_year_in_school\" class=\"validate[required]\" placeholder=\"Year in School\"></li><li><label for=\"competition_form_guardian_name\">Guardian Name</label><input type=\"text\" name=\"guardian_name\" id=\"competition_form_guardian_name\" class=\"validate[required]\" placeholder=\"Parent/Guardian Name\"></li><li><label for=\"competiton_form_guardian_mobile\">Guardian Mobile</label><input type=\"text\" name=\"guardian_mobile\" id=\"competiton_form_guardian_mobile\" class=\"validate[required]\" placeholder=\"Parent/Guardian Mobile Number\"></li><li><label for=\"competition_form_guardian_email\">Guardian Email</label><input type=\"text\" name=\"guardian_email\" id=\"competition_form_guardian_email\" class=\"validate[required]\" placeholder=\"Parent/Guardian Email\"></li><li><label for=\"competition_form_answer\">Your Answer</label><textarea name=\"answer\" id=\"competition_form_answer\" class=\"validate[required]\" placeholder=\"Your Answer\"></textarea></li> <li><label for=\"competition_form_terms\" style=\"float: none;\">I accept the <a href=\"/terms-and-conditions.html\">terms and conditions</a></label><input type=\"checkbox\" id=\"competition_form_terms\" name=\"terms\" style=\"margin: .2em .5em; float: left;\" class=\"validate[required]\"></li>                                <li><label for=\"submit1\"></label><button type=\"submit\" class=\"enter_competition_button\">Enter Competition</button></li>'
+ WHERE `form_name` = 'CompetitionForm';
+
+INSERT IGNORE INTO `plugin_messaging_notification_templates`
+(       `name`,             `driver`, `type_id`, `subject`,           `sender`,                `message`, `page_id`, `header`, `footer`, `date_created`,    `date_updated`,    `publish`, `deleted`)
+ SELECT 'competition-form', 'EMAIL',  `id`,      'Competition Entry', 'testing@websitecms.ie', '',        '0',       '',       '',       CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1',       '0'
+FROM `plugin_messaging_notification_types` WHERE `title` = 'email';
+
+INSERT IGNORE INTO `plugin_messaging_notification_templates`
+(       `name`,                     `driver`, `type_id`, `subject`,                    `sender`,                `message`, `page_id`, `header`, `footer`, `date_created`,    `date_updated`,    `publish`, `deleted`)
+ SELECT 'competition-form-entrant', 'EMAIL',  `id`,      'Competition Entry Received', 'testing@websitecms.ie', '',        '0',       '',       '',       CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1',       '0'
+FROM `plugin_messaging_notification_types` WHERE `title` = 'email';
+
+UPDATE IGNORE `plugin_formbuilder_forms`
+ SET `fields` = '<input name=\"subject\" value=\"Competition Entry\" type=\"hidden\"><input name=\"redirect\" value=\"thank-you.html\" type=\"hidden\"><input name=\"event\" value=\"competition-form\" type=\"hidden\" /><input name=\"confirmation_event\" value=\"competition-form-entrant\" type=\"hidden\" /><input name=\"trigger\" value=\"custom_form\" type=\"hidden\" id=\"trigger\"><input name=\"form_type\" value=\"Competition Form\" id=\"form_type\" type=\"hidden\"><input type=\"hidden\" name=\"email_template\" id=\"\" value=\"competition_form_mail\"><input type=\"hidden\" name=\"confirmation_email_template\" id=\"\" value=\"competition_form_mail_entree\"><input type="hidden" name="confirmation_email_field" value="guardian_email"><li><label for=\"competition_form_student_name\">Student Name</label><input type=\"text\" name=\"student_name\" id=\"competition_form_student_name\" class=\"validate[required]\" placeholder=\"Student Name\"></li><li><label for=\"competition_form_year_in_school\">Year in School</label><input type=\"text\" name=\"year_in_school\" id=\"competition_form_year_in_school\" class=\"validate[required]\" placeholder=\"Year in School\"></li><li><label for=\"competition_form_guardian_name\">Guardian Name</label><input type=\"text\" name=\"guardian_name\" id=\"competition_form_guardian_name\" class=\"validate[required]\" placeholder=\"Parent/Guardian Name\"></li><li><label for=\"competiton_form_guardian_mobile\">Guardian Mobile</label><input type=\"text\" name=\"guardian_mobile\" id=\"competiton_form_guardian_mobile\" class=\"validate[required]\" placeholder=\"Parent/Guardian Mobile Number\"></li><li><label for=\"competition_form_guardian_email\">Guardian Email</label><input type=\"text\" name=\"guardian_email\" id=\"competition_form_guardian_email\" class=\"validate[required]\" placeholder=\"Parent/Guardian Email\"></li><li><label for=\"competition_form_answer\">Your Answer</label><textarea name=\"answer\" id=\"competition_form_answer\" class=\"validate[required]\" placeholder=\"Your Answer\"></textarea></li> <li><label for=\"competition_form_terms\" style=\"float: none;\">I accept the <a href=\"/terms-and-conditions.html\">terms and conditions</a></label><input type=\"checkbox\" id=\"competition_form_terms\" name=\"terms\" style=\"margin: .2em .5em; float: left;\" class=\"validate[required]\"></li>                                <li><label for=\"submit1\"></label><button type=\"submit\" class=\"enter_competition_button\">Enter Competition</button></li>'
+ WHERE `form_name` = 'CompetitionForm';
+
+UPDATE IGNORE `engine_cron_tasks` SET `publish` = 1 WHERE `title` = 'Messaging';
+

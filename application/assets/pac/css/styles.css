@@ -1,0 +1,69 @@
+@import url('../../02/css/styles.css');
+
+:root {
+    --primary: #425ba9;   --primary-hover: #526cb7;   --primary-active: #384e8f;
+    --secondary: #f5f5f5; --secondary-hover: #d3d3d3; --secondary-active: #e6e6e6;
+    --success: #f8951b;   --success-hover: #f6a23c;   --success-active: #e5830b;
+    --info: #5bc0de;      --info-hover: #31b0d5;      --info-active: #269abc;
+    --warning: #e8a917;   --warning-hover: #e7b236;   --warning-active: #c89214;
+    --danger: #df1e39;    --danger-hover: #bd362f;    --danger-active: #c9302c;
+}
+
+/* Header */
+.btn.btn-header-action {
+    background-color: #fff;
+    color: var(--primary);
+}
+
+.btn.btn-header-action:hover {
+    background: #fff;
+    color: var(--primary-hover);
+}
+
+.btn.btn-header-action:active {
+    background: #fff;
+    color: var(--primary-active);
+}
+
+.btn.view-website-btn {
+    background: #fff;
+    border: 1px solid #fff;
+    color: var(--success);
+}
+
+.btn.view-website-btn:hover {
+    background-color: var(--success);
+    border-color: var(--success);
+    color: #fff;
+}
+
+.btn.view-website-btn:active {
+    background-color: var(--success-active);
+    border-color: var(--success-active);
+    color: #fff;
+}
+
+.usermenu-item,
+.user-tools > li {
+    border: solid var(--primary-hover)
+    border-width: 0 1px 0 0;
+}
+
+.user-tools-wrapper .usermenu-item {
+    border-width: 0 0 0 1px;
+}
+
+.user-tools > li:last-child {
+    border-right: none;
+}
+
+.header-search {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar-logo img {
+    max-height: none;
+    max-width: 220px;
+}

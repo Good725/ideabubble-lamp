@@ -1,0 +1,9 @@
+{
+  "require": {
+        "codeception/codeception": "1.8.*@dev",
+        "jonnyw/php-phantomjs": "3.*",
+        "components/jquery": "2.1.4",
+        "twitter/bootstrap": "3.3.5",
+    "geoip2/geoip2": "~2.0"
+    }
+}

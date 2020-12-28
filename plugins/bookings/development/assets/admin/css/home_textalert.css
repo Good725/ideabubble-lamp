@@ -1,0 +1,110 @@
+.textalert-area {
+    background: #E7E8EC;
+    color: #666;
+    position: relative;
+    right: 0px;
+    display: block;
+    z-index: 1;
+
+    width: auto;
+    height: 66px;
+    overflow: visible;
+    float: right;
+    clear: both;;
+}
+
+.textalert-area.expanded {
+    height: calc(100% + 18px); /* 100% + footer margin-top */
+}
+
+.textalert-area-expanded {
+    width: 360px;
+}
+
+.textalert-header {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-bottom: 1px solid #A1A2A4;
+}
+
+.textalert-header-icon {
+    color: #44C6ED;
+    font-size: 21px;
+    padding-left: 27px;
+}
+
+.textalert-user {
+    -webkit-box-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    padding: 0 25px;
+    text-align: right;
+}
+
+.textalert-user-avatar {
+    border-radius: 50px;
+    margin-left: 1em;
+}
+
+.textalert-toggle {
+    background: none;
+    border: none;
+    padding: 25px;
+}
+
+.textalert-area-expanded .textalert-toggle {
+    border-left: 1px solid #A1A2A4;
+}
+
+.textalert-body {
+    padding: 10px 24px;
+}
+
+.textalert-area .form-control {
+    font-size: 15px;
+    height: 2.5em;
+}
+
+.textalert-area .form-control[rows] {
+    height: auto;
+}
+
+.textalert-area h3 {
+    font-weight: normal;
+}
+
+.alertarea-info_icon {
+    background: none;
+    border: 1px solid #44C5EC;
+    border-radius: 50%;
+    width: 1.75em;
+    height: 1.75em;
+    color: #44C5EC;
+    float: right;
+    font-size: .8em;
+    position: absolute;
+    right: 15px;
+}
+
+.alertarea-info_icon ~ textarea {
+    width: -webkit-calc(100% - 2em);
+    width: calc(100% - 2em);
+}
+
+.textalert-footer {
+    padding: 10px 20px 20px;
+    text-align: center;
+}
+
+.textalert-footer .btn {
+    box-shadow: 1px 1px 3px #999;
+}
+/*
+.page-container {
+    padding-right: 70px;  width of the collapsed text alert section 
+}
+*/

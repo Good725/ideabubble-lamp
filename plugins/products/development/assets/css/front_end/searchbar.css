@@ -1,0 +1,17 @@
+.product_searchbar{height:22px;margin:5px 0;padding:2px;width:150px;}
+.product_searchbar_wrapper{float:right;position:relative;}
+.product_searchbar_wrapper > label{position:absolute;top:-9999px;left:-9999px;}
+.search-autocomplete{background:#FFF;border:1px solid #CCC ;list-style:none;position:absolute;right:0;top:27px;text-align:right;width:200px;z-index:53;}
+.search-autocomplete .ac-category{font-weight:bold;}
+.search-autocomplete .ac-item{display:block;overflow:hidden;padding:2px 5px;text-overflow:ellipsis;white-space:nowrap;}
+.search-autocomplete li{border-bottom:1px dashed #EEE;}
+
+/*  31-mar-2016  */
+.search-autocomplete li { float: left; padding: 10px 5px; width: 100%; text-align: left;}
+.search-autocomplete li + li span{float:left;}
+
+
+@media screen and (max-width: 640px) {
+    .product_searchbar{height:30px;width:100%;}
+    .product_searchbar_wrapper{margin-top:0;max-width:640px;width:100%;}
+}

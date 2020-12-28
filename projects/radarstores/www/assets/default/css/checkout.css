@@ -1,0 +1,51 @@
+/** General **/
+table {border-collapse: collapse;border-spacing: 0;}
+#creditCardForm{ width: 768px; float: left; margin-left: -16px; margin-top: -16px}
+
+/** Checkout tables **/
+#checkoutTable table.checkoutTable { width: 768px; }
+#checkoutTable table.checkoutTable tbody tr th { background: url("../images/products-header-bg.png") repeat-x scroll center bottom #FFFFFF;font-weight: 700;
+                                                 height: 30px;padding-left: 8px;padding-top: 27px;text-transform: uppercase;}
+#checkoutTable table.checkoutTable tbody tr th:first-child { text-align: left; padding-left: 10px}
+#checkoutTable table.checkoutTable tbody tr a { color:darkgray; text-decoration: none; color: #95989c}
+#checkoutTable table.checkoutTable tbody tr.product_line .cartIcon{ cursor: pointer;}
+#checkoutTable table.checkoutTable tbody tr td{ border-bottom: 1px dashed #E0E0E0; color: #95989c; padding: 5px;}
+#checkoutTable table.checkoutTable tbody tr td.center{ text-align: center;}
+#checkoutTable table.checkoutTable tbody tr #postalZone{ margin-left: 50px;}
+#checkoutTable table.checkoutTable tbody tr td.product_line_first_td{ padding-left: 10px;}
+#checkoutTable table.checkoutTable tbody tr.tr_destination td,
+#checkoutTable table.checkoutTable tbody tr.tr_totalprice td{ border-bottom: medium none}
+#checkoutTable table.checkoutTable tbody tr.tr_totalprice td.highlight_total{ color: #D9671E; border-bottom: 1px dotted; border-top: 1px dotted;}
+
+.checkout_option{clear: both;float: left;position: relative;width: 488px;}
+.checkout_option .txt_lable{float: left; width: 181px; margin-left: 5px}
+.checkout_option .input_lable{float: left; width: 230px}
+.checkout_option .checkout_option_description{margin-left:186px}
+
+
+/** Credit card payment **/
+#CartDetailsBox { background-color: #F1F1F1; clear: both; margin: 0 auto; padding-left: 20px; padding-top: 12px; width: 717px;}
+#CartDetailsBox table.CartDetails tbody tr td {border-style: none; text-transform:uppercase; font-size:12px; color:#1c232a; }
+#CartDetailsBox #CustomerAddress {float: left;margin-right: 60px;min-height: 350px;overflow: auto;width: 380px;}
+#CartDetailsBox #CardDetails {float: left;width: 277px;}
+#CartDetailsBox #CardDetails .credit_cars img{padding-right: 15px;vertical-align: top}
+#CartDetailsBox #FinalDetails {float: left;margin-top: 20px;width: 277px;}
+#CartDetailsBox #FinalDetails table.FinalDetails tbody tr td input.button {background: url("../images/checkout_submit_btn.png") no-repeat scroll 0 0 transparent;border-style: none;
+                                                                            color: #FFFFFF;font-size: 14px;font-family: 'Open Sans Condensed', sans-serif;font-weight:700; text-transform:uppercase;letter-spacing:0.10em;margin-left:-8px;height: 37px;margin-top: 15px;width: 153px;padding-right:6px;}
+div#checkoutForm h2, form#ReturnsForm h2 {color: #D9671E !important;font-size: 15px !important;padding-left: 0 !important;}
+
+
+.option_extra_price{ font-weight: bold; color: gray}
+
+/** Messages **/
+.checkout_message{ clear: both; margin-top: 10px; padding: 5px 10px; border-radius: 5px; color: white; background-color: yellowgreen; position: relative}
+.checkout_message_error{ clear: both; margin-top: 10px; padding: 5px 10px; border-radius: 5px; color: white; background-color: #F2DEDE; border-color: #EED3D7; color: #B94A48; position: relative}
+.checkout_message a, .checkout_message_error a { text-decoration: none !important}
+.txt_lable {margin-left: 14px;}
+.CardDetails {font-size:12px; text-transform:uppercase; color:#1c232a;}
+.realexmessage{text-transform:none; font-size:10px;font-weight:600;}
+#FinalDetails {font-size:12px; text-transform:none;}
+
+/** Alert box **/
+.ui-dialog.ui-widget{font-size: 12px}
+.ui-dialog #dialog-confirm{overflow: hidden;}

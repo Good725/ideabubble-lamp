@@ -1,0 +1,181 @@
+@import url('../../02/css/styles.css');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i');
+
+:root {
+    --primary: #19A29E;   --primary-hover: #39C8C4;   --primary-active: #0D7A93;
+    --secondary: #f5f5f5; --secondary-hover: #d3d3d3; --secondary-active: #e6e6e6;
+    --success: #1E3B49;   --success-hover: #2c576d;   --success-active: #0f1d24;
+    --info: #5bc0de;      --info-hover: #31b0d5;      --info-active: #269abc;
+    --warning: #e8a917;   --warning-hover: #e7b236;   --warning-active: #c89214;
+    --danger: #df1e39;    --danger-hover: #bd362f;    --danger-active: #c9302c;
+
+    --visited-link-color: #077c94;
+}
+
+body {
+    font-family: Raleway, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .dashboards-dropdown-btn {
+    font-family: 'Noto Serif', Times, 'Times New Roman', serif;
+}
+
+.navigation-menu {
+    background: #fff;
+    border-bottom: none;
+    color: var(--success);
+}
+
+.mobile-menu-toggle        { color: var(--primary); }
+.mobile-menu-toggle:hover  { color: var(--primary-hover); }
+.mobile-menu-toggle:active { color: var(--primary-active); }
+
+.header-cart [fill]   { fill:   var(--primary); }
+.header-cart [stroke] { stroke: var(--primary); }
+
+.mobile-breadcrumbs {
+    background: none;
+    box-shadow: 0 2px 2px 0 #ddd;
+    color: var(--primary);
+}
+
+.mobile-breadcrumbs * {
+    color: var(--primary);
+}
+
+
+@media screen and (min-width: 768px) {
+    .navigation-menu {
+        box-shadow: 0 2px 2px 0 #ddd;
+    }
+
+    .usermenu-wrapper .dashboards-dropdown-btn        { color: var(--success); }
+    .usermenu-wrapper .dashboards-dropdown-btn:hover  { color: var(--success-hover); }
+    .usermenu-wrapper .dashboards-dropdown-btn:active { color: var(--success-active); }
+
+    .user-tools > li {
+        border: none;
+    }
+
+    .user-tools-icon {
+        background: var(--success);
+        border-radius: 50%;
+    }
+
+    .user-tools-link:hover .user-tools-icon {
+        background: var(--success-hover);
+    }
+
+    .user-tools-link[aria-expanded="true"] .user-tools-icon,
+    .user-tools-link:focus .user-tools-icon {
+        background: var(--success-active);
+    }
+
+    .user-tools .dropdown-toggle:after {
+        border-top-color: var(--success);
+    }
+}
+
+.navigation-menu .dropdown-menu {
+    background: var(--success);
+    color: #fff;
+}
+
+.navigation-menu .dropdown-menu li button,
+.navigation-menu .dropdown-menu li a {
+    color: #fff;
+}
+
+.navigation-menu .dropdown-menu svg {
+    fill: #fff;
+}
+
+.mobile-menu-back:hover,
+.mobile-menu-list li a:hover,
+.sidebar-menu-active-sublist li > a:hover {
+    background: var(--success);
+    color: #fff;
+}
+
+.mobile-menu-back:hover,
+.mobile-menu-list li a:hover,
+.sidebar-menu-active-sublist li > a:hover,
+.mobile-menu li.active > a,
+.sidebar-menu-active-sublist li.active > a {
+    background: var(--success);
+    color: #fff;
+}
+
+.mobile-menu li > a:active, {
+    background: var(--success-active);
+    color: #fff;
+}
+
+.btn.view-website-btn {
+    background: var(--primary);
+    border: none;
+    color: #fff;
+}
+
+.btn.view-website-btn:hover {
+    background: var(--primary-hover);
+    color: #fff;
+}
+
+.btn.view-website-btn:active {
+    background: var(--primary-active);
+    color: #fff;
+}
+
+.sidebar-toggle {
+    color: var(--primary);
+}
+
+.sidebar-logo img,
+.header-logo img {
+    max-height: 50px;
+}
+
+.login-form-container .client-logo {
+    height: 50px;
+}
+
+.login-form-container .modal-header {
+    background: #fff;
+    color: var(--primary);
+}
+
+.login-form-container .nav-tabs > li > a {
+    color: #303030;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.signup-text a,
+.login-form-container .modal-footer a,
+.login-form-container .nav-tabs > li.active > a {
+    color: var(--primary);
+}
+
+.signup-text a:hover,
+.login-form-container .modal-footer a:hover,
+.login-form-container .nav-tabs > li > a:hover {
+    color: var(--primary-hover);
+}
+
+.login-buttons .btn {
+    text-transform: uppercase;
+}
+
+/* Shared footer */
+.footer-stats { box-shadow: 0 -2px 2px 0 #ddd, 0 2px 2px 0 #ddd; color: var(--primary); }
+.footer-stat h2:after {border-color: var(--success); }
+.footer-columns { border-top: none; }
+.footer-columns .container { width: 1040px; }
+.footer-columns dt { font-weight: inherit;}
+.footer-column-title { color: var(--primary); }
+
+.button--newsletter {background: var(--success); color: #fff;}
+.button--newsletter:hover {background: var(--success-hover); color: #fff;}
+.button--newsletter:active {background: var(--success-active); color: #fff;}

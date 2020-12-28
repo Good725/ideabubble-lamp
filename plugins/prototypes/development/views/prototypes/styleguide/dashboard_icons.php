@@ -1,0 +1,1 @@
+<?= Controller_Admin_Dashboard::get_dashboard_icons()['icon_html'] ?>

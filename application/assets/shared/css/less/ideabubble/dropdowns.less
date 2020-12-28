@@ -1,0 +1,57 @@
+// The dropdown menu (ul)
+// ----------------------
+.navbar .dropdown-menu {
+  background-color: @menuDropdownBackground;
+
+  // Links within the dropdown menu
+  a {
+    color: @menuDropdownLinkColor;
+  }
+}
+
+// Hover state
+// -----------
+.navbar .dropdown-menu li > a:hover,
+.navbar .dropdown-menu .active > a,
+.navbar .dropdown-menu .active > a:hover {
+  color: @menuDropdownLinkColorHover;
+  background-color: @menuDropdownLinkBackgroundHover;
+}
+
+.navbar .dropdown-menu {
+	background-clip: padding-box;
+	border-top: 0;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	float: left;
+	left: 0;
+	list-style: none outside none;
+	margin: 0;
+	min-width: 160px;
+	padding: 4px 0;
+	position: absolute;
+	top: 100%;
+	z-index: 1000;
+}
+
+.dropdown-menu span.link{
+	display: block;
+	padding: 3px 15px;
+	clear: both;
+	font-weight: normal;
+	line-height: 18px;
+	color: #333;
+	white-space: nowrap
+}
+
+.dropdown-menu span.link{
+	cursor: pointer;
+}
+
+.dropdown-menu li>span.link:hover,
+.dropdown-menu .active>span.link,
+.dropdown-menu .active>span.link:hover{
+	color: #fff;
+	text-decoration: none;
+	background-color: #08c
+}

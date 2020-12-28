@@ -1,0 +1,148 @@
+label.error {
+    display: inline;
+    float: none;
+    color: #cd5c5c;
+    padding-left: .5em;
+    vertical-align: middle;
+}
+
+.controls select, .controls input{margin-bottom: 0;}
+#datepicker{min-height:300px;height:auto;width: auto;}
+.eventsCalendar-monthWrap.currentMonth{width:600px;}
+#selected_dates{clear:both;margin-bottom:25px;}
+#selected_dates table {width:100%;}
+#selected_dates th{text-align:center;}
+#selected_dates tbody:empty + tfoot{display: none;}
+
+#selected_dates select,
+#selected_dates [type="text"] {
+    width: 100%;
+}
+
+#bulk_timeslot_update_times td,
+#paymentoptions td {
+    vertical-align: middle;
+}
+
+#paymentoptions .months {
+    width: 5em;
+}
+
+@media screen and (max-width: 767px) {
+    #selected_dates td {
+        text-align: left;
+    }
+
+    #selected_dates .prev {
+        float: left;
+        min-width: 40%;
+    }
+
+    #selected_dates .next {
+        min-width: 40%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #selected_dates td {
+        padding: .2em;
+        vertical-align: middle;
+    }
+
+    #selected_dates .timeslot_date {
+        width: 6.5em;
+    }
+
+    #selected_dates .timeslot_price {
+        width: 6em;
+    }
+
+    #selected_dates .timepicker {
+        width: 5em;
+    }
+
+    #selected_dates .trainer_select {
+        width: 14em;
+    }
+
+    #selected_dates .max_capacity {
+        white-space: nowrap;
+    }
+
+    #selected_dates .max_capacity input {
+        width: 4em;
+    }
+
+    #selected_dates [data-label="Monitored"],
+    #selected_dates [data-label="Delete"] {
+        text-align: center;
+    }
+}
+
+#schedule-form-timeslot-results[data-count="0"] {
+    display: none;
+}
+
+.eventsCalendar-day.day_selected a{background-color:#53A873;color:#fff;}
+.DTTT_button { background: none; border: 0; }
+.DTTT_button span { margin-left: 0.2em; }
+#container_copy, .DTTT_container { float: right; }
+#autotimetables_table_preview caption { font-weight: bold; font-size: 20px; padding: 8px; }
+.day_button {
+    position: absolute;
+    z-index:-9999;
+    opacity:0;
+}
+.day_button:focus + span {
+    box-shadow: 1px 1px 5px skyblue, 1px -1px 5px skyblue, -1px -1px 5px skyblue, -1px 1px 5px skyblue;
+}
+#days_of_week{display:none;}
+#timeslot_selection{clear:both;}
+
+.select_color_preview{border:1px solid #ccc;border-radius:3px;box-shadow:inset 0 1px 1px rgba(0, 0, 0, .075);cursor:pointer;height:40px;margin:0 10px 0 0;width:40px;}
+.color_palette{background:#efefef;border:1px solid #AAA;border-radius:5px;box-sizing:border-box;display:none;margin-top:5px;padding:5px;position:absolute;top:40px;width:172px;z-index:3;}
+.color_palette .sp-container{left:auto!important;margin-left:-205px;top:0!important;}
+.color_palette .sp-replacer{display:none;}
+.color_palette table{border-collapse:separate;border-spacing:1px;}
+.color_palette td{box-sizing:border-box;height:15px;text-align:right;width:15px;}
+.color_palette td[style]{border:1px solid #aaa;cursor:pointer;}
+.color_palette th{text-align:left;}
+.color_palette:after, .color_palette:before{border-left:8px solid transparent;border-right:8px solid transparent;content:'';top:-8px;left:10px;height:0;position:absolute;width:0;}
+.color_palette:after{border-bottom:8px solid #efefef;content:'';}
+.color_palette:before{border-bottom:8px solid #000;content:'';}
+.section_first_row td{border-top:4px solid #efefef;}
+
+.frequency_table td,  .frequency_table th {
+    padding: .3em;
+    text-align: center;
+}
+#form_add_edit_schedule .eventsCalendar-monthWrap.currentMonth {
+    margin-left:0;
+    width:100%;
+}
+.eventCalendar-wrap .blackout-date,
+.eventCalendar-wrap .blackout-date:hover {
+    background: #333;
+    color: #fff;
+    text-shadow: none;
+}
+.eventCalendar-wrap .blackout-date a {
+    color: inherit;
+}
+
+.timeslot-tab-count {
+    font-size: 80%;
+    color: #999
+}
+.timeslot-tab-count:empty {
+    display: none;
+}
+.timeslot-tab-count:before {
+    content: '(';
+}
+.timeslot-tab-count:after {
+    content: ')';
+}
+#images_table {
+    width: 100% !important;
+}

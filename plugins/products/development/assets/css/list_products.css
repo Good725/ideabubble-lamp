@@ -1,0 +1,54 @@
+.edit, .publish, .delete {
+    color: #000;
+    display: block;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.star_checkbox{
+    font-size:0.1px;
+    opacity:0;
+    position:absolute;
+}
+.star_checkbox + span {
+    cursor: pointer;
+    display:inline-block;
+}
+.star_checkbox + span:before{
+    content:'\f006';
+    display:inline-block;
+}
+.star_checkbox:checked + span:before{
+    content:'\f005';
+}
+.star_checkbox:focus + span {
+    outline:1px dotted #aaa;
+}
+.manage-categories-button {
+    white-space: nowrap;
+}
+[id="products_table"] .btn-link {
+    border: 0;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+.manage-product-categories-lists {
+    clear: both;
+}
+.manage-product-categories-list {
+    height: 400px;
+    overflow-y: scroll;
+}
+.form-control.search_init{width:100%;margin:0;}
+.dataTable .search_init {
+    width:100%;
+    margin:0;
+    border-radius: 3px;
+    font-weight: normal;
+    height: 2.1em;
+    padding: 0 .5em;
+}

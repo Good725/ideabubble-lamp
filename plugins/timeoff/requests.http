@@ -1,0 +1,91 @@
+### Submit request ###
+# period_start_date, period_end_date - unix timestamps
+# days float number of days
+# type {annual|bereavement|sick|force majeure|other}
+
+### Submit request ###
+
+POST http://{{host}}/api/timeoff/submit?_user_id=100066&XDEBUG_SESSION_START=1
+Content-Type: application/json
+
+{
+  "request": {
+    "period": ["2018-09-11 11:00", "2018-09-12 18:00", 1],
+    "type": "annual",
+    "department": {"id": "100067", "name": "something"},
+    "business_id": "0"
+  },
+  "note": "hello world"
+}
+
+### Approve request ###
+
+POST http://{{host}}/api/timeoff/approve
+Content-Type: application/x-www-form-urlencoded
+
+_user_id={{manager}}&id=1&note=helloworld
+
+### Decline request ###
+
+POST http://{{host}}/api/timeoff/decline
+Content-Type: application/x-www-form-urlencoded
+
+_user_id={{manager}}&id=1&note=helloworld
+
+
+### single request ###
+GET http://{{host}}/api/timeoff/getrequest?_user_id={{manager}}&id=10
+
+### Filter requests ###
+# available filters: staff_id, manager_id, department_id, status, type, period_start_date, period_end_date
+# sorting: order_by, order_dir
+#
+
+GET http://{{host}}/api/timeoff/?_user_id={{manager}}&order_by=period_end_date&order_dir=DESC
+
+### List requests by department #1 ###
+
+GET http://{{host}}/api/timeoff/?_user_id={{user}}&department_id=1
+
+### Export requests by department #1 ###
+
+GET http://{{host}}/api/timeoff/csv?_user_id={{user}}&department_id=100178&XDEBUG_SESSION_START=1
+
+### datatables list ###
+
+GET http://{{host}}/api/timeoff/items_datatable
+
+### View timeoff conflicts for task with id = 2 ###
+
+GET http://{{host}}/api/timeoff/timeoff_conflicts/?_user_id={{user}}&id=2
+
+### List all available departments
+
+GET http://{{host}}/api/timeoff/departments
+
+### Detailed report ###
+
+GET http://{{host}}/api/timeoff/details?department_id=0&start_date=2018-09-01&end_date=2018-09-13&period_type=days
+
+###
+
+GET http://{{host}}/api/timeoff/details?period_start_date=2018-08-01&period_end_date=2018-09-31&period_type=weeks
+
+###
+
+GET http://{{host}}/api/timeoff/ismanager?_user_id={{staff}}&department_id=1
+
+###
+
+GET http://{{host}}/api/timeoff/assignments?_user_id={{staff}}
+
+###
+
+GET http://{{host}}/api/timeoff/schedule_conflicts?staff_id=1111&period_start_date=2018-09-13&period_end_date=2018-09-15
+
+###
+
+GET http://{{host}}/api/timeoff/duration?period_start_date=2018-09-13 09:00:00&period_end_date=2018-09-13 11:00:00
+
+###
+

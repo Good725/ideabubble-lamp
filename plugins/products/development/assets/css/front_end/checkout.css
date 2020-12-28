@@ -1,0 +1,290 @@
+/* @override http://static.teethingsos.websitecms.dev/engine/plugins/products/css/front_end/checkout.css */
+
+/** General **/
+
+body#checkout #main div.ct.left div.content.ct_left.left {
+	width: 655px;
+}
+form#creditCardForm {
+	width: 100%;
+}
+div#checkoutTable {
+	width: 100%;
+}
+div#checkoutForm {
+	padding: 0;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.postage{ 
+text-align: right;
+	padding-right: 5px;
+}
+.subtotal{
+	padding-right: 5px;
+}
+/** Checkout tables **/
+.checkoutTable {
+	padding: 5px;
+	margin: 10px 5px;
+    width:100%;
+    width:-webkit-calc(100% - 10px);
+    width:   -moz-calc(100% - 10px);
+    width:        calc(100% - 10px);
+}
+.checkoutTable tbody{}
+.checkoutTable th {
+	text-align: left;
+}
+.checkoutTable tr th:first-child {
+	text-align: left;
+}
+
+.checkoutTable tr td{
+    width:85px;
+}
+.checkoutTable tr td:first-child{
+    width:auto;
+}
+.checkoutTable tr td:last-child{
+    width:10px;
+}
+@media screen and (max-width: 540px)
+{
+    .checkoutTable tr td{
+        width:50px;
+    }
+}
+
+
+.checkoutTable td.priceField {
+	text-align: right;
+	width: 60px;
+}
+.checkoutTable td.center {
+	text-align: center;
+}
+.checkoutTable td.item_counter{ 
+	margin: 0;
+	width: 100px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.checkoutTable img {
+	
+	cursor: pointer;
+}
+.checkoutTable td.item_counter input.quantity {
+	width: 20px;
+}
+.checkoutTable .item_price_background{
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align:right;
+}
+.checkoutTable .product_line_first_td{
+	font-weight: bold;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+.checkoutTable tbody tr.tr_destination .product_line_first_td{ 
+	font-size: 14px; 
+	font-weight: normal;
+}
+.checkoutTable tbody tr.tr_destination td,
+#checkoutTable table.checkoutTable tbody tr.tr_totalprice td{ 
+	border-bottom: medium none;
+}
+.checkoutTable tbody tr.tr_totalprice td.highlight_total{ 
+	padding-left: 20px;
+}
+#pl_discount_line .pb_discount_price{
+	text-align:center; 
+}
+
+
+.checkout_option{
+	clear: both;
+	float: left;
+	position: relative;
+}
+
+.checkout_option .checkout_option_description{
+	margin-left:186px;
+}
+
+
+/** Credit card payment **/
+
+.checkout-address-wrapper h2 {
+    padding-bottom: .5em;
+}
+
+.checkout-address-wrapper h2 + table {
+    margin-top: 1.5rem;
+}
+
+.checkout-address-wrapper h2 + label {
+    display: inline-block;
+    height: 1.5rem;
+}
+
+
+#CartDetailsBox {
+	clear: both;
+	margin: 0 auto;
+	padding-top: 12px;
+}
+#CartDetailsBox input,
+#CartDetailsBox select,
+#CartDetailsBox textarea{
+	margin-bottom: 5px;
+}
+.checkout_wrapper .label {
+	text-align: right;
+	padding-right: 10px;
+    vertical-align:top;
+}
+#CartDetailsBox .comments{
+	vertical-align: top;
+}
+.CartDetails td {
+	border-style: none; 
+	text-transform:uppercase; 
+	font-size:12px;
+}
+#CartDetailsBox #CustomerAddress {
+	float: left;
+	min-height: 350px;
+	overflow: auto;
+	width: 340px;
+	margin-right: 10px;
+}
+#CartDetailsBox #CardDetails {
+	float: left;
+	width: 276px;
+}
+#CartDetailsBox #CardDetails .label{
+	width: 100px;
+}
+#CartDetailsBox #CardDetails .credit_cars img{
+	padding-right: 15px;
+	vertical-align: top;
+}
+#CartDetailsBox #FinalDetails {
+	float: left;
+	margin-top: 20px;
+	width: 289px;
+}
+#CartDetailsBox #FinalDetails table.FinalDetails tbody tr td input.button {
+    height: 31px;
+    margin-left: 142px;
+    margin-top: 15px;
+    padding-right: 16px;
+    width: 151px;
+}
+form#ReturnsForm h2 {
+	font-size: 15px !important;
+	padding-left: 0 !important;
+}
+
+
+/* Checkout credit-card form */
+#checkoutForm p {clear: left;}
+#checkoutFrom table {float: left;}
+#checkoutForm td {padding: 2px;}
+#checkoutForm {margin: 20px;}
+/* @end */
+
+
+/** Messages **/
+.checkout_message{
+	clear: both;
+	margin-top: 10px; 
+	padding: 5px 10px;
+}
+.checkout_message_error{ 
+	clear: both; 
+	margin-top: 10px; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	position: relative;
+}
+.checkout_message a, 
+.checkout_message_error a { 
+	text-decoration: none !important;
+	margin-right: 8px;
+}
+.checkout_message a:hover, 
+.checkout_message_error a:hover{
+	cursor: pointer;
+}
+.txt_lable {
+	margin-left: 14px;
+}
+.realexmessage,
+.payment_partner_message{
+	text-transform:none; 
+	font-size:10px;
+	font-weight:600;
+}
+#FinalDetails {
+	font-size:12px; 
+	text-transform:none;
+}
+
+/** Alert box **/
+.ui-dialog.ui-widget{
+	font-size: 12px
+}
+.ui-dialog #dialog-confirm{
+	overflow: hidden;
+}
+
+#checkoutTable table.checkoutTable tbody tr.tr_totalprice td.highlight_total {
+    border-bottom: 1px dotted;
+    border-top: 1px dotted;
+    height: 24px;
+    font-weight: bold;
+}
+
+#coupon_code{margin:5px;max-width:130px;width:100%;}
+#postalZone{max-width:200px;width:100%;}
+
+.paymentSelect, #payment_button_area, #FinalDetails{clear:both;}
+.chkout_options{
+	line-height:17px;
+}
+.checkout_discount_applied{
+	float: right;
+    line-height: 20px;
+    margin-right: -244px;
+}
+
+.checkout-blackout {
+    background: #000;
+    background: rgba(0, 0, 0, .5);
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.checkout-blackout-inner {
+    background: #fff;
+    background: rgba(255,255,255,.9);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-left: -150px;
+    padding: 1em;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    max-width: 300px;
+}

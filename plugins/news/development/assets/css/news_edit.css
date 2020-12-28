@@ -1,0 +1,20 @@
+#ActionMenu.floatingMenu {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  visibility: visible;
+  padding: 5px 0px 5px 37px;
+  border-top: 1px solid #999999;
+  width: 100%;
+}
+#ActionMenu.fixedMenu {
+  float: left;
+}
+.floating-nav-marker {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+body#news .row {
+  margin-bottom: 8px;
+}

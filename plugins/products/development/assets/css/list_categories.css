@@ -1,0 +1,11 @@
+.edit, .publish, .delete {
+    display: block;
+}
+
+.icon-arrow-right {
+    padding-right: 4px;
+}
+
+.table td {
+    vertical-align: middle;
+}

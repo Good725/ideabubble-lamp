@@ -1,0 +1,117 @@
+/* Autocomplete */
+.messaging-ui-autocomplete {
+    z-index: 9999;
+}
+.messaging-ui-autocomplete .ui-menu-item {
+    padding: .5em 1em;
+}
+.messaging-ui-autocomplete .ui-state-focus {
+    background: #337ab7;
+}
+
+/* Datatable */
+.list_messages_table .search_init {
+    width: 100%;/* Stop tables going offscreen */
+}
+.list_messages_table_search_th_actions input,
+.list_messages_table_search_th_info input {
+    display: none !important; /* Hide unnecessary search fields. */
+}
+.list_messages_table tbody td:last-child {
+    text-align: center;
+}
+.messaging-actions {
+    display: block;
+    width: 65px;
+}
+.messaging-actions .icon-mobile {
+    font-size: 135%;
+}
+.messaging-actions [class*="icon"] {
+    display: inline-block;
+    text-align: center;
+    width: 19px;
+}
+.list_messages_table .dl-horizontal dt {
+    width: 80px;
+    text-align: left;
+}
+.list_messages_table .dl-horizontal dd {
+    margin-left: 85px;
+}
+
+/* Labels for list of target contacts for to, cc, bcc */
+.contact-list-labels .label {
+    display: inline-block;
+    margin-right: 1em;
+}
+.contact-list-labels a.remove-to {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Stylised checkboxes; star and tickbox */
+.checkbox-star-label [type="checkbox"],
+.checkbox-tick-label [type="checkbox"] {
+    position: absolute;
+    z-index: -999;
+    opacity: 0;
+}
+.checkbox-star-label [type="checkbox"] + span,
+.checkbox-tick-label [type="checkbox"] + span {
+    font-family: FontAwesome;
+    font-size: 14px;
+}
+.checkbox-star-label [type="checkbox"] + span:before {
+    content: "\f006"; /* star-o */
+    font-size: 16px;
+}
+.checkbox-tick-label [type="checkbox"] + span:before {
+    content: "\f096"; /* square-o */
+}
+.checkbox-star-label [type="checkbox"]:checked + span:before {
+    content: "\f005"; /* star */
+}
+.checkbox-tick-label [type="checkbox"]:checked + span:before {
+    content: "\f046"; /* check-square-o */
+}
+.checkbox-star-label [type="checkbox"]:focus + span,
+.checkbox-tick-label [type="checkbox"]:focus + span{
+    outline: 1px dotted #aaa;
+}
+
+/* Bold unread messages */
+.messaging_tr_unread {
+    font-weight: bold;
+}
+.messaging_tr_unread [class*="-icon"] {
+    font-weight: normal;
+}
+
+/* Modal */
+.send-message-modal .tab-pane {
+    padding-bottom: 1em;
+}
+.send-message-modal .tab-pane::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+.send-message-modal textarea[name*="[message]"],
+.send-message-modal textarea[name*="[description]"] {
+    height: 110px;
+}
+
+.message-interval-group {
+    padding: 8px 8px 8px 0;
+}
+.message-interval-group {
+    height: 135px;
+}
+
+@media screen and (max-width: 766px)
+{
+    .message-interval-group {
+        padding: 8px 15px;
+    }
+}

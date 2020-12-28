@@ -1,0 +1,33 @@
+<VirtualHost *:80>
+    DocumentRoot "/var/www/wms/engine/"
+    ServerAlias $HOSTNAME$
+
+    SetEnv KOHANA_ENV TESTING
+
+    RewriteEngine On
+    RewriteRule ^/engine/plugins/([^/]+)/(.+)  /plugins/$1/development/assets/$2 [L]
+    RewriteRule ^/engine/(.+) /application/assets/$1 [L]
+
+    # Public Project Content (e.g. project_name.websitecms.localing/(assets|media)/path/to/content)
+    #RewriteRule ^/(assets|media|shared_media)/(.+) /www/$1/$2 [L]
+    #RewriteRule ^/(shared_media)/(.+) /www/shared_media/$1/$2 [L]
+    #RewriteRule ^/shared_media/(.+)/media/(.+) /www/shared_media/$1/$2 [L]
+    #RewriteRule ^/shared_media/(.+) /www/shared_media/$1 [L]
+    # If the media is in /www/shared_media/project_name/media/
+    RewriteCond %{DOCUMENT_ROOT}/www/%{REQUEST_URI} -f
+    RewriteRule ^/shared_media/(.+) /www/shared_media/$1 [L]
+    # If the media is in /www/shared_media/project_name/
+    RewriteCond %{DOCUMENT_ROOT}/www/%{REQUEST_URI} !-f
+    RewriteRule ^/shared_media/(.+)/media/(.+) /www/shared_media/$1/$2 [L]
+
+    # Project Root (e.g. project_name.websitecms.testing/controller/action)
+    RewriteRule ^/ /www/index.php/%{REQUEST_URI} [L]
+
+    SetEnv dbhostname "$DBHOST$"
+    SetEnv dbusername "$DBUSERNAME$"
+    SetEnv dbpassword "$DBPASSWORD$"
+    SetEnv project_folder "$PROJECT_FOLDER$"
+
+    ErrorLog "logs/$HOSTNAME$-error_log"
+    CustomLog "logs/$HOSTNAME$-access_log" common
+</VirtualHost>

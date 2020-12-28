@@ -1,0 +1,46 @@
+.new-layout .tab-content { padding-top: 2em;}
+.new-layout #top_right_info .label{padding: 4px 10px; font-size: 16px;}
+.new-layout #top_right_info > span{margin-left: 5px;}
+.new-layout .table .btn.icon-book{font-size: 15px; min-height: 30px;}
+.new-layout .heading, .new-layout #customer_name{font-size: 26px;}
+.form-select::before{   background: -webkit-linear-gradient(left, transparent 0, transparent calc(100% - 2.75em), #33A2B0 calc(100% - 2.75em), #33A2B0 100%);
+    background: linear-gradient(to right, transparent 0, transparent calc(100% - 2.75em), #33A2B0 calc(100% - 2.75em), #33A2B0 100%);}
+.new-layout .form-input--pseudo select{padding-right: 50px;}
+.new-layout .pull-right .form-control{font-size: 17px; padding-right: 35px;}
+.new-layout .table-striped th{border: 1px solid #eee;}
+.new-layout .table-striped td{border: 1px solid #ddd;}
+.new-layout #detail_wrapper .nav-tabs > li > a{font-size: 17px; padding:9px 16px;}
+.new-layout #detail_wrapper .nav-tabs > .active a{font-size: 22px;}
+
+/* message page*/
+.message-wrapper{margin-top: -2px;}
+.message-wrapper .table-wrapper .tab-cell{width:22%;}
+.message-wrapper .table-wrapper .tab-cell:nth-child(2){width: 22%;}
+.message-wrapper .table-wrapper .tab-cell:nth-child(3){width:28%}
+.message-wrapper .table-wrapper .tab-cell:nth-child(4){width: 28%;}
+
+.message-wrapper .container{max-width: 960px;}
+.message--nav h3{font-size: 16px;}
+.message--nav ul li a{font-size: 16px; padding: 7px 5px;}
+.message--nav > ul > li .counts{height: 20px;font-size: 14px;min-width: 30px;}
+.mail-wrap .user-info .right-section > ul > li{float: left; width: 100%;}
+.mail-wrap .descbody,   .detali--view .label,   .message-wrapper .form-group li .txt,  .detali--view .tabs-content,   .message-wrapper pre{font-size: 14px;}
+.top-head ul li a{height: 34px; min-width: 34px; line-height: 34px; font-size: 16px;}
+.message-wrapper .table-border td{font-size: 14px;}
+.message-wrapper .table-border th{font-size: 16px;}
+.message-wrapper .table-border td img{max-width:70px;}
+.mail-title{padding: 6px 15px;}
+.mail-title h2{font-size: 16px;}
+.mail-wrap .user-info .right-section ul li:nth-child(2n){text-align: left;}
+.body-area .medialist > li{padding:10px; }
+.body-area .toptitle{padding-left:10px; padding-right: 10px; }
+.detali--view .tabs-content .label{width: 150px;}
+.temp-form .form-wrap{margin-bottom:10px;}
+.padding10{padding: 10px;}
+.set-interval {margin-left: -10px;}
+.set-interval li{width:50%; padding-left: 10px;}
+.write-email .middle, .write-email .signature-txt{padding: 10px;}
+.bottom-btn, .mail-wrap .descbody{padding: 10px;}
+.mail-wrap .descbody{line-height: 22px;}
+.link-wrap .grid:nth-child(2){width: 30%;}
+

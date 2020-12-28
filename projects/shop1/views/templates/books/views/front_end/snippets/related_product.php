@@ -1,0 +1,1 @@
+<?php include 'featured_product.php'; ?>

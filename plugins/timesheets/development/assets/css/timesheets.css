@@ -1,0 +1,207 @@
+@import url('../../timeoff/css/timeoff.css');
+
+/*------------------------------------*\
+  #Periods dropdown
+\*------------------------------------*/
+.timesheets-period-status-dropdown-item {
+    font-size: .9rem;
+    margin-bottom: 1em;
+}
+
+.timesheets-period-status-dropdown-item .btn {
+    font-size: .75rem;
+    margin-bottom: .25em;
+    padding: .33em .75em;
+}
+
+.timesheets-period-status-bar {
+    background: rgba(0, 0, 0, .07);
+    height: 8px;
+    min-width: 460px;
+    position: relative;
+}
+
+/* Marker to indicate today on the bar. Use a percentage value as the "left" inline style to set the position of this. */
+.timesheets-period-status-bar-marker {
+    background: rgb(99, 99, 99);
+    border: 1px solid rgb(99, 99, 99);
+    position: absolute;
+    top: -.125rem;
+    width: 1px;
+    height: .75rem;
+    z-index: 1;
+}
+
+.timesheets-period-status-bar-logged,
+.timesheets-period-status-bar-due,
+.timesheets-period-status-bar-logged_to_due {
+    height: .5rem;
+    position: absolute;
+    top: 0;
+}
+
+/* Highlight the time logged. Use a percentage value as the "width" inline style to control this. */
+.timesheets-period-status-bar-logged {
+    background: rgb(103, 171, 73);
+}
+
+/* Highlight the time logs due. Use a percentage value as the "width" inline style to control this. */
+.timesheets-period-status-bar-due {
+    background: rgb(235, 145, 17);
+}
+
+/* Highlight the time logged, up until the due date. Use a percentage value as the "width" inline style to control this. */
+.timesheets-period-status-bar-logged_to_due {
+    background: rgb(59, 115, 175);
+    transition: all 400ms cubic-bezier(.4, .15, 0, .975) 0s;
+}
+
+.timesheets-period-status-item-status {
+    font-size: .8333em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.timeoff-period-status-text-indicator,
+.timesheets-period-status-item-bottom {
+    font-size: .6875rem;
+}
+
+.timesheets-period-status-positive,
+.timesheets-period-status-negative {
+    margin-right: .5em;
+}
+
+.timesheets-period-status-positive {
+    color: rgb(103, 171, 73);
+}
+
+.timesheets-period-status-negative {
+    color: rgb(235, 145, 17);
+}
+
+.timesheets-period-status-item-bottom {
+    color: #a5a5a5;
+}
+
+.timesheets-status-badge {
+    border-radius: 2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+
+
+
+/*------------------------------------*\
+  #Submit period modal
+\*------------------------------------*/
+.timesheets-period-submit {
+    font-size: .875em;
+    margin-top: 1.75em;
+}
+
+.timesheets-submit-header-title {
+    font-size: 1rem;
+}
+
+.timesheets-submit-header-dates {
+    color: #a5a5a5;
+}
+
+.timesheets-submit-header .timesheets-status-badge {
+    margin: .5em 0 .5em .5em;
+
+}
+
+.timesheets-submit-work_required {
+    border: solid #ccc;
+    border-width: 1px 0;
+    padding: .357em;
+}
+
+.timesheets-submit-work_required ~ .timesheets-submit-work_required {
+    border-top: none;
+}
+
+.timesheets-submit-work_required-label {
+    color: #707070;
+    display: inline-block;
+    min-width: 7.5em;
+}
+
+.timesheets-submit-work_required-reached     { color: #67ab49; }
+.timesheets-submit-work_required-not_reached { color: #594300; }
+
+.timesheets-submit-footer {
+    border-top: 1px solid #ccc;
+    margin-top: 2em;
+    padding-top: 1.25em;
+}
+
+/*------------------------------------*\
+  #Approvals list
+\*------------------------------------*/
+.timesheets-list-select .form-checkbox-helper {
+    border-radius: 0;
+    box-shadow: 0 0 1px #aaa;
+}
+
+.timesheets-list-table {
+    font-size: .875em;
+    width: 100%;
+}
+
+.timesheets-list-table th,
+.timesheets-list-table td {
+    border: solid #eee;
+    border-width: 1px 0;
+    padding: .25em;
+}
+
+.timesheets-list-table th {
+    border-top-color: #ccc;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.timesheets-list-heading {
+    font-size: 1.1em;
+}
+
+.timesheets-list-heading td {
+    padding-top: 3em;
+    padding-bottom: .5em;
+}
+
+.timesheets-list-select {
+    display: inline-block;
+    font-size: .75rem;
+    margin-top: .7em;
+}
+
+/* Brackets around number of items selected. No brackets when empty. */
+.timesheets-list-actions-amount::before { content: '('; }
+.timesheets-list-actions-amount::after  { content: ')'; }
+.timesheets-list-actions-amount:empty   { display: none; }
+
+.timesheets-list-actions > .btn:first-child {
+    min-width: 7em;/* A little wider than necessary, so that the button width does not change when the counter changes */
+}
+
+
+
+
+/*------------------------------------*\
+  #Colour classes for different statuses
+\*------------------------------------*/
+.timesheets-status-text[data-status="open"]                 { color: #949494; }
+.timesheets-status-text[data-status="waiting for approval"] { color: #3b73af; }
+.timesheets-status-text[data-status="ready to submit"]      { color: #3b73af; }
+.timesheets-status-text[data-status="approved"]             { color: #14892c; }
+
+.timesheets-status-badge[data-status="open"]                 { background-color: #949494; }
+.timesheets-status-badge[data-status="waiting for approval"] { background-color: #3b73af; }
+.timesheets-status-badge[data-status="ready to submit"]      { background-color: #3b73af; }
+.timesheets-status-badge[data-status="approved"]             { background-color: #14892c; }
+

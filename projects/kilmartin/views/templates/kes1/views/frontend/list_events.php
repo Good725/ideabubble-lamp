@@ -1,0 +1,1 @@
+<?php include Kohana::find_file('views', 'templates/'.Settings::instance()->get('template_folder_path').'/course_list');

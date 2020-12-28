@@ -1,0 +1,21 @@
+.cs_holder{position:relative}
+.cs_holder.banners .bx-controls { display: inline-block;position: relative; }
+.cs_holder.banners .bx-pager { float: left; margin: 0 4em;}
+.cs_holder.banners .bx-pager-item { display: inline-block; margin-top: 5px; }
+.cs_holder.banners .bx-pager-item a { padding: 0 10px;}
+.cs_holder.banners .bx-next, .cs_holder.banners .bx-prev { padding: 5px; position: absolute; top: 0; }
+.cs_holder.banners .bx-next { right: 0;}
+.cs_holder.banners .bx-next::after { content: ' \00bb';}
+.cs_holder.banners .bx-prev { left: 0;}
+.cs_holder.banners .bx-prev::before { content: '\00ab\00a0';}
+.cs_item_link{position:relative}
+.cs_item_overlay{border-spacing:10px;position:absolute;bottom:0;left:0;width: 100%;}
+.cs_sequence{position:relative}
+.cs_sequence_item{position:relative;z-index: 0;}
+.cs_sequence_item a {position: relative;z-index: 2;}
+.overlay_label, .overlay_content { background: rgba(255, 255, 255, 0.5); display: table-cell; padding: 5px; vertical-align: top; }
+.overlay_label { font-weight: bold; width: 20%;}
+.overlay_content { width: 672px; }
+.panels ul.cs_sequence {margin-left:0;}
+.panels .cs_item_overlay{left:0;right:auto;}
+.cs_sequence_item a.cs_item_link {display: block; position: absolute;left: 0;top: 0;height: 100%;width: 100%;z-index: 1;}

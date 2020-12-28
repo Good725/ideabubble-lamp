@@ -1,0 +1,112 @@
+.product-reviews-wrapper,
+.product-reviews-form-wrapper {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.product-reviews-wrapper > * {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.product-review {
+    margin-bottom: 1em;
+}
+.product-review-comment p {
+    margin: .5em 0;
+}
+.product-review-rating {
+    float: left;
+    min-width: 60px;
+}
+.product-review-rating-amount {
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
+    opacity: 0;
+}
+.product-review-rating-stars span {
+    background: url('../../images/icons/star-full.png') no-repeat;
+    background-size: 9px;
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+}
+.product-review-rating-stars span.empty_star {
+    background-image: url('../../images/icons/star-empty.png');
+}
+
+.add-product-review-form {
+    display: none;
+    margin-top: 1em;
+}
+
+.review-form-group {
+    clear: both;
+    margin-top: .5em;
+}
+.review-form-group:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+.review-form-label {
+    float: left;
+    min-height: 1px;
+    width: 33.3333333%;
+}
+.review-form-controls {
+    float: left;
+    width: 66.6666667%;
+}
+.review-form-control {
+    font-family: Helvetica, Arial, sans-serif;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: .3em .5em;
+}
+.review-form-rating-stars {
+    float: left;
+}
+.review-form-rating-stars [type="radio"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+.review-form-rating-stars label {
+    float: right;
+    font-size: 0;
+}
+.review-form-rating-stars label:before {
+    content: '';
+    background: url('../../images/icons/star-empty.png') no-repeat;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+
+.review-form-rating-stars:not(:hover) [type="radio"]:checked + label:before,
+.review-form-rating-stars:not(:hover) [type="radio"]:checked ~ label:before,
+.review-form-rating-stars:not(:hover) [type="radio"]:not(:checked) > label:not(:hover):before,
+.review-form-rating-stars:not(:hover) [type="radio"]:not(:checked) > label ~ label:before  {
+    background-image: url('../../images/icons/star-full.png');
+}
+
+.review-form-rating-stars [type="radio"]:hover + label:before,
+.review-form-rating-stars [type="radio"]:hover ~ label:before,
+.review-form-rating-stars [type="radio"]:not(:hover) > label:before,
+.review-form-rating-stars [type="radio"]:not(:hover) > label ~ label:before {
+    background-image: url('../../images/icons/star-full.png');
+}
+
+.product-review-button {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    display: inline-block;
+    float: right;
+    padding: .2em .5em;
+    text-align: center;
+}

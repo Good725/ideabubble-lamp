@@ -1,0 +1,30 @@
+#form_renderer{width:430px;width:calc(100% - 410px);border:1px solid #777;border-radius:5px;min-height:500px;list-style:none;}
+#form_renderer .fieldset{border:1px solid #AAA;margin:20px 0 0 20px;min-height:100px;}
+#form_renderer .fieldset:before{background:#FFF;content:attr(data-name);float:left;margin:-12px 0 0 5px;padding:2px;}
+#form_renderer label{float:left;min-width:130px;padding-right:5px;}
+#form_renderer_complete_form input[type=checkbox]{margin:3px 0;}
+#form_renderer_complete_form li, .hidden_field_display {clear:left;border-bottom:1px dotted #CCC;margin:0 5px;padding:5px 0;}
+#form_renderer_complete_form ul{list-style:none;margin:0;}
+#form_renderer_complete_form .remove{color:#F00;display:block;float:left;text-align:center;text-decoration:none;height:18px;width:18px;}
+#form_designer{width:400px;min-height:460px;}
+#options_area{width:100%;}
+.dragged{position:absolute;opacity:0.5;z-index:2000;}
+.form-designer-actions{margin-top:.6em;}
+.hidden_field_display span{color:#AAA;display:block;margin-left:150px;cursor:pointer;}
+.left{float:left;}
+.right{float:right;}
+.options_text,
+.options_textarea,
+.options_dropdown,
+.options_checkbox,
+.options_button,
+.options_submit_button,
+.options_captcha,
+.options_hidden,
+.options_datepicker,
+.options_files,
+.options_fieldset{display:none;}
+.heading{margin:10px 0;}
+.width-100{width:100%;}
+.width-920{width:920px;}
+body.dragging, body.dragging *{cursor:move!important;}

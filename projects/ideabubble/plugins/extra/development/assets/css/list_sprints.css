@@ -1,0 +1,32 @@
+.edit-box {
+    padding: 10px;
+    background-color: #ddd;
+    margin-left: -65px;
+    border-radius: 13px;
+    z-index: 5;
+    position: absolute;
+}
+
+.edit-box textarea {
+    width: 170px;
+    resize: none;
+}
+
+.edit-box p {
+    display:flex;
+    margin: auto;
+}
+
+.edit-box button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit-box .save-button {
+    margin: 10px auto 0px auto;
+}
+
+.edit-box input[type="text"]{
+    width: 75%;
+    margin: 0px 10px
+}

@@ -1,0 +1,5 @@
+/*
+ts:2016-02-11 14:20:00
+*/
+
+ALTER IGNORE TABLE `users` ADD COLUMN user_column_profile VARCHAR(50) DEFAULT NULL;

@@ -1,0 +1,198 @@
+.textnote-area {
+    background: #E7E8EC;
+    color: #666;
+    position: relative;
+    right: 0px;
+    display: block;
+    z-index: 1;
+    width: auto;
+    height: 66px;
+    overflow: visible;
+    float: right;
+    clear: both;;
+}
+
+.textnote-area.expanded {
+   /* height: calc(100% + 18px);*/ /* 100% + footer margin-top */
+    position: fixed;
+    top:0;
+    bottom: 0px;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    z-index: 55;
+}
+
+.textnote-area-expanded {
+    width: 360px;
+}
+
+.textnote-header {
+/*    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;*/
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #A1A2A4;
+}
+.textnote-header > span, .textnote-header > button{
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+.textnote-header-icon {
+    color: #44C6ED;
+    font-size: 21px;
+    padding-left: 27px;
+}
+
+.textnote-user {
+    -webkit-box-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    width: 260px;
+    white-space: nowrap;
+    padding: 0 20px;
+    text-align: right;
+}
+
+.textnote-user-avatar {
+    border-radius: 50px;
+    margin-left: 1em;
+}
+
+.textnote-toggle {
+    background: none;
+    padding:17px  25px;
+    border-left: 0px;
+    border-right:0px;
+    border-top:1px solid #d1d1d1;
+    border-bottom:1px solid #d1d1d1;
+}
+
+.textnote-area-expanded .textnote-toggle {
+    border-left: 1px solid #A1A2A4;
+}
+
+.textnote-body {
+    padding: 20px 30px;
+}
+
+.textnote-area .form-control {
+    font-size: 15px;
+    height: 2.5em;
+}
+
+.textnote-area .form-control[rows] {
+    height: auto;
+}
+
+.textnote-area h3 {
+    font-weight: normal;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    padding-bottom: 10px;
+}
+
+.textnote-info_icon {
+    background: none;
+    border: 1px solid #44C5EC;
+    border-radius: 50%;
+    width: 1.75em;
+    height: 1.75em;
+    color: #44C5EC;
+    float: right;
+    font-size: .8em;
+    position: absolute;
+    right: 15px;
+}
+
+.textnote-info_icon ~ textarea {
+    width: -webkit-calc(100% - 2em);
+    width: calc(100% - 2em);
+}
+
+.textnote-footer {
+    padding: 10px 20px 20px;
+    text-align: center;
+}
+
+.textnote-footer .btn {
+    box-shadow: 1px 1px 3px #999;
+}
+
+/*23 feb =============*/
+
+body #chat-panel-collapsed{
+    position: static;
+}
+
+.textnote-toggle .icon-outdent:before{
+    content: "\f044";
+}
+body .chat-panel-toggle{
+    padding: 17px;
+}
+.textnote-area.expanded .textnote-toggle{
+    border: none;
+
+}
+.textnote-area.expanded .textnote-user{
+    padding:5px;
+    border-left: 1px solid #a1a2a4;
+    border-right: 1px solid #a1a2a4;
+    font-size: 16px;
+    font-weight: 500;
+
+}
+
+.textnote-area.expanded .textnote-header-icon{
+    width: 65px;
+    line-height: 65px;
+}
+.textnote-area.expanded .textnote-header-icon .icon-bullhorn:before{
+    content: "\f044";
+}
+
+.textnote-area.expanded:after{
+    
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+.textnote-area.expanded  .textnote-area-expanded{
+    background: #e6e8eb;
+    top:0px;
+    bottom: 0px;
+    position: fixed;
+    right: 0px;
+    width: 380px;
+}
+.textnote-area.expanded input[type="text"], .textnote-area.expanded  textarea{
+    width: 100%;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    padding: 7px 10px;
+    box-shadow: none;
+    resize: vertical;
+    color: #333;
+    font-weight: 300;
+}
+
+.textnote-user .username{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.textnote-user-avatar{
+  margin-left: 10px;
+}

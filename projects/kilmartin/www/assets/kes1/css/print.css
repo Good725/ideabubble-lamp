@@ -1,0 +1,27 @@
+.wrapper > .footer {
+    display: none;
+}
+
+.dashboard-wrapper .db-sidebar {
+    display: none;
+}
+
+.booking-timetables .f_right {
+    display: none;
+}
+
+.booking-timetables .filter-wrap {
+    display: none;
+}
+
+.booking-timetables .fc-toolbar {
+    display: none;
+}
+
+.xdsoft_datetimepicker {
+    display: none;
+}
+
+[id*=slaask] {
+    display: none;
+}

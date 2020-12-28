@@ -1,0 +1,14 @@
+.icon-messages {
+	display:inline-block;
+	float:left;
+	width:26px !important;
+	height:20px !important;
+	background-image:url('/engine/img/dashboard/grey/inactive_notifications.png');
+	background-size:26px auto;
+	opacity:0.5;
+}
+
+.icon-messages.has-new-message {
+	opacity:1;
+}
+

@@ -1,0 +1,98 @@
+html {
+    height: 100%;
+}
+.login-form-container {
+    background: url('../img/background.jpg') no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+#backstretch {
+    display: none;
+}
+.payment-login-form-container {
+
+}
+.login-form-container .modal-header {
+    font-family: 'Libre Baskerville', 'Times New Roman', serif;
+}
+.login-form-container .modal-header h1 {
+    color: #001768;
+}
+.login-form-container .modal-header h2 {
+    color: #7A6E66;
+}
+.login-form-container .client-logo {
+    margin: 1em 1em 0;
+    max-width: 54px;
+}
+.login-form-container .modal-dialog {
+    max-width: 470px;
+}
+
+.payment-login-form-container .control-label {
+    text-align: left;
+}
+
+.payment-login-form-container .input-group {
+    width: 100%;
+}
+.payment-login-form-container .input-group-addon {
+    width: 14.2857%;
+}
+
+.password-digit-fields .form-control,
+.password-digit-fields > div {
+    border-radius: 0;
+    width: 14.66667%;
+    display: table-cell;
+    margin: 0 1%;
+    text-align: center;
+}
+.password-digit-fields .input-group-addon:first-child {
+    border-right: 1px solid #ccc;
+}
+
+
+@media screen and (max-width: 500px)
+{
+    .login .modal-header .client-logo + div {
+        width: calc(100% - 85px);
+    }
+    .login .modal-header h1 {
+        font-size: 1.6em;
+    }
+    .login .modal-header h2 {
+        font-size: 1.28em;
+    }
+}
+@media screen and (max-width: 480px)
+{
+    .login {
+        margin-top: 10px;
+    }
+    .login {
+        margin: 10px;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 767px)
+{
+    .login {
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: 767px)
+{
+    .login-form-container .modal-dialog {
+        margin: 10px auto;
+    }
+}
+@media screen and (min-width: 768px)
+{
+    .login {
+        margin-top: 50px;
+    }
+}

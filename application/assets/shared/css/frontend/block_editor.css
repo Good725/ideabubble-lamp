@@ -1,0 +1,486 @@
+.simplebox {
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    position: relative;
+}
+
+.simplebox-title {
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1040px;
+    text-align: center;
+}
+
+.simplebox-columns {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.simplebox-align-top > .simplebox-columns {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    -ms-grid-row-align: flex-start;
+    align-items: flex-start;
+}
+
+.simplebox-column-light_text {
+    color: #fff;
+}
+
+div.simplebox-column-light_text h1,
+div.simplebox-column-light_text h2,
+div.simplebox-column-light_text h3,
+div.simplebox-column-light_text h4,
+div.simplebox-column-light_text h5,
+div.simplebox-column-light_text h6 {
+    color: inherit;
+}
+
+.simplebox-bordered > .simplebox-columns > .simplebox-column > .simplebox-content {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-bottom: 1em;
+}
+
+.simplebox-bordered img {
+    margin-left: 1em;
+}
+
+.simplebox-bordered .simplebox-columns{
+    min-height: 5.35rem;
+}
+
+.simplebox-bordered h3 {
+    line-height: 1;
+    margin: 0;
+}
+
+.simplebox-bordered p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.simplebox-shadowed > .simplebox-columns > .simplebox-column {
+    box-shadow: 1px 1px 20px #999;
+    margin-bottom: 2rem;
+    padding: 4rem 3rem 1rem;
+}
+
+.simplebox-background_image,
+.simplebox-content-toolbar {
+    display: none;
+}
+
+.simplebox-content-toolbar + p:last-child,
+.simplebox p:only-child {
+    margin: .25em 0;
+}
+
+/* todo: remove the inline width and height, unless the user consciously adds them */
+.simplebox-column img:only-child:not([src*=".svg"]) {
+    width: auto !important;
+    height: auto !important;
+}
+
+.simplebox-padded-content .simplebox-content > :first-child {margin-top:0}
+.simplebox-padded-content .simplebox-content > :last-child {margin-bottom:0}
+
+/* Style to suit team pages */
+.simplebox.team .simplebox-columns {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    -ms-grid-row-align: stretch;
+    align-items: stretch;
+}
+
+.simplebox.team .simplebox-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem
+}
+
+.simplebox.team .simplebox-content {
+    background: #f5f5f5;
+    border: 1px solid;
+    border-color: #f5f5f5 #e0e0e0 #c0c0c0;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+
+.simplebox.team .simplebox-content h2,
+.simplebox.team .simplebox-content p {
+    margin: .5em 0;
+}
+
+.simplebox.team .simplebox-content :first-child {
+    margin-top: 0;
+}
+
+.simplebox.team .simplebox-content :first-child img {
+    border-radius: .5rem .5rem 0 0;
+}
+
+.simplebox.team .simplebox-content hr {
+    margin: auto;
+    width: 40%
+}
+
+
+.simplebox.gray {
+    overflow: auto;
+}
+
+.simplebox.gray:before {
+    content: '';
+    background: #f0f0f0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.simplebox-raised .simplebox-column {
+    background: #fff;
+    box-shadow: 0 0 38px rgba(0, 0, 0, .11);
+}
+
+.simplebox-overlap-left .simplebox-column:last-child .simplebox-content,
+.simplebox-overlap-right .simplebox-column:first-child .simplebox-content {
+    background: #fff;
+}
+
+.simplebox-overlap-left .simplebox-column:last-child .simplebox-content > :first-child,
+.simplebox-overlap-right .simplebox-column:first-child .simplebox-content > :first-child {
+    margin-top: 0;
+}
+
+.simplebox-overlap-left .simplebox-column:last-child .simplebox-content > :last-child,
+.simplebox-overlap-right .simplebox-column:first-child .simplebox-content > :last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .simplebox {
+        margin-left: -19px;
+        margin-right: -19px;
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .simplebox-columns {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .reverse-mobile > .simplebox-columns {
+        flex-direction: column-reverse;
+    }
+
+    .simplebox-shadowed > .simplebox-columns {
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+
+    .simplebox:not(.stay_inline) > div > .simplebox-column {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100% !important; /* temporary */
+    }
+
+    /* need a better solution than this */
+    .simplebox:not(.stay_inline):not(.simplebox-raised):not([class*="simplebox-overlap-"]) > div > .simplebox-column {
+        padding: 1em .25em;
+    }
+
+    .simplebox-padded-content .simplebox-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .simplebox.simplebox.simplebox-raised {
+        margin-top: -60px;
+    }
+
+    .simplebox-raised .simplebox-column {
+        padding: 20px 18px 20px;
+    }
+
+    .simplebox-raised .simplebox-column + .simplebox-column {
+        margin-top: 30px;
+    }
+
+    .simplebox.simplebox-overlap-left,
+    .simplebox.simplebox-overlap-right,
+    .simplebox.simplebox-overlap-left-mobile,
+    .simplebox.simplebox-overlap-right-mobile {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .simplebox-overlap-right .simplebox-columns,
+    .simplebox-overlap-right-mobile .simplebox-columns {
+        flex-direction: column-reverse;
+    }
+
+    .simplebox-overlap-left > div > .simplebox-column:last-child,
+    .simplebox-overlap-right > div > .simplebox-column:first-child,
+    .simplebox-overlap-left-mobile > div > .simplebox-column:last-child,
+    .simplebox-overlap-right-mobile > div > .simplebox-column:first-child {
+        margin-top: -70px;
+        padding-left: 20px;
+        padding-right: 20px;
+        z-index: 1;
+    }
+
+    .simplebox-overlap-left .simplebox-column:last-child .simplebox-content,
+    .simplebox-overlap-right .simplebox-column:first-child .simplebox-content,
+    .simplebox-overlap-left-mobile .simplebox-column:last-child .simplebox-content,
+    .simplebox-overlap-right-mobile .simplebox-column:first-child .simplebox-content {
+        background: #fff;
+        padding: 19px 20px 25px;
+    }
+
+    .simplebox-overlap-left .simplebox-column:first-child img:only-child,
+    .simplebox-overlap-right .simplebox-column:last-child img:only-child,
+    .simplebox-overlap-left-mobile .simplebox-column:first-child img:only-child,
+    .simplebox-overlap-right-mobile .simplebox-column:last-child img:only-child {
+        width: 100% !important
+    }
+
+    .simplebox-overlap-left.reverse-mobile > div > .simplebox-column:first-child,
+    .simplebox-overlap-right.reverse-mobile > div > .simplebox-column:last-child {
+        margin-top: -20px;
+    }
+
+    .simplebox-overlap-left.reverse-mobile > div > .simplebox-column:last-child,
+    .simplebox-overlap-right.reverse-mobile > div > .simplebox-column:first-child {
+        margin-top: 2rem;
+    }
+
+    .simplebox-overlap-left.reverse-mobile > div > .simplebox-column:last-child .simplebox-content,
+    .simplebox-overlap-right.reverse-mobile > div > .simplebox-column:first-child .simplebox-content {
+        padding: 18px 19px 34px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .simplebox .simplebox {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .simplebox-columns {
+        margin: auto;
+        max-width: 1040px;
+    }
+
+    .simplebox-column {
+        margin-left: 13px;
+        margin-right: 13px;
+        width: 100%;
+    }
+
+    .simplebox-column:first-child {
+        margin-left: 0;
+    }
+
+    .simplebox-column:last-child {
+        margin-right: 0;
+    }
+
+    .simplebox-shadowed > .simplebox-columns > .simplebox-column {
+        box-shadow: 1px 1px 20px #999;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 2rem;
+        padding: 4rem 3rem 1rem;
+    }
+
+    .simplebox-shadowed > .simplebox-columns {
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+
+    .simplebox-equal-heights .simplebox-columns {
+        align-items: normal;
+    }
+
+    .simplebox-equal-heights .simplebox-column {
+        display: flex;
+    }
+
+    .simplebox-equal-heights .simplebox-content {
+        width: 100%;
+    }
+
+    .simplebox.simplebox.simplebox-raised {
+        margin-top: -130px;
+    }
+
+    .simplebox-padded-content .simplebox-content {
+        padding: 49px 60px 44px;
+    }
+
+    .simplebox-raised .simplebox-column {
+        padding: 36px 40px 30px;
+    }
+
+    .simplebox-raised .simplebox-column:only-child {
+        padding: 43px 46px 50px 74px;
+    }
+
+    .simplebox-overlap-left .simplebox-column:first-child { width: 75%; }
+    .simplebox-overlap-left .simplebox-column:last-child  { width: 25%; }
+    .simplebox-overlap-left .simplebox-column:last-child .simplebox-content { margin-left: -116%; }
+
+    .simplebox-overlap-right .simplebox-column:first-child { width: 35%; z-index: 1; }
+    .simplebox-overlap-right .simplebox-column:last-child  { width: 65%; }
+    .simplebox-overlap-right .simplebox-column:first-child .simplebox-content { margin-right: -52%; }
+
+
+    .simplebox-raised .simplebox-content > :first-child,
+    .simplebox-content[class*=" p-"]  > :first-child,
+    .simplebox-content[class^="p-"]   > :first-child,
+    .simplebox-content[class*=" py-"] > :first-child,
+    .simplebox-content[class^="py-"]  > :first-child,
+    .simplebox-content[class*=" pt-"] > :first-child,
+    .simplebox-content[class^="pt-"]  > :first-child {
+        margin-top: 0;
+    }
+
+    .simplebox-raised .simplebox-content > :last-child,
+    .simplebox-content[class*=" p-"]  > :last-child,
+    .simplebox-content[class^="p-"]   > :last-child,
+    .simplebox-content[class*=" py-"] > :last-child,
+    .simplebox-content[class^="py-"]  > :last-child,
+    .simplebox-content[class*=" pb-"] > :last-child,
+    .simplebox-content[class^="pb-"]  > :last-child {
+        margin-bottom: 0;
+    }
+
+    .simplebox-overlap-left .simplebox-column:last-child .simplebox-content {
+        padding: 24px 24px 40px 43px;
+    }
+
+    .simplebox-overlap-right .simplebox-column:first-child .simplebox-content {
+        padding: 24px 43px 40px 24px;
+    }
+
+    /* Hack to fix a bug in Chrome where the simplebox centring causes a horizontal scrollbar */
+    @supports (-webkit-appearance:none) {
+        body {
+            overflow-x: hidden;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    .simplebox-shadowed > .simplebox-columns > .simplebox-column {
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+
+    .simplebox-has_nested_box > .simplebox-columns {
+        display: block;
+    }
+
+    .simplebox-has_nested_box > .simplebox-columns > .simplebox-column {
+        width: 100% !important;
+    }
+}
+
+/* Tablet sizes */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Simple boxes are within a fixed-width container. Stretch backgrounds to go outside them. */
+    .simplebox:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(50% - 50vw);
+        right: calc(50% - 50vw);
+        display: block;
+        background: inherit;
+        z-index: -1;
+    }
+}
+
+/* Larger than tablet */
+@media screen and (min-width: 1025px) {
+    /* Stretch the entire simplebox to fill the screen. It will have a fixed width container inside it. */
+    .simplebox {
+        margin-left: calc(50% - 50vw);
+        width: 100vw;
+    }
+}
+
+/* Modal boxes */
+.ib-modal {
+    overflow: auto;
+}
+
+.ib-modal-open {
+    overflow: hidden;
+}
+
+.ib-modal {
+    background: rgba(0, 0, 0, .7);
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+
+.ib-modal-close {
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    display: block;
+    font-size: 3rem;
+    font-weight: 100;
+    padding: 0;
+    position: absolute;
+    top: .5rem;
+    right: .5em;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.ib-modal-dialog {
+    background: #fff;
+    margin: 1rem auto;
+    width: 740px;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .ib-modal-content {
+        padding: 2em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .ib-modal-content {
+        padding: 2em 4em;
+    }
+}

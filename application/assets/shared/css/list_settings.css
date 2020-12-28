@@ -1,0 +1,44 @@
+.color_picker_wrapper, .color_picker_wrapper > div{display:inline-block;}
+.color_picker_wrapper .color_palette{display:none;}
+.select_color_preview{border:1px solid #ccc;border-radius:3px;box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075);display:inline-block;height:26px;margin:0 0 -11px 10px;width:26px;}
+
+.color_palette{background:#efefef;border:1px solid #AAA;border-radius:5px;box-sizing:border-box;display:none;margin-top:5px;padding:5px;position:absolute;width:172px;z-index:3;}
+.color_palette .sp-container{left:auto!important;margin-left:-205px;top:0!important;}
+.color_palette .sp-replacer{display:none;}
+.color_palette table{border-collapse:separate;border-spacing:1px;}
+.color_palette td{box-sizing:border-box;height:15px;text-align:right;width:15px;}
+.color_palette td[style]{border:1px solid #aaa;cursor:pointer;}
+.color_palette th{text-align:left;}
+.color_palette:after, .color_palette:before{border-left:8px solid transparent;border-right:8px solid transparent;content:'';top:-8px;left:10px;height:0;position:absolute;width:0;}
+.color_palette:after{border-bottom:8px solid #efefef;content:'';}
+.color_palette:before{border-bottom:8px solid #000;content:'';}
+
+/* Style multiselects to match Boostrap 3 form-controls */
+.form-control.multipleselect + .btn-group {
+    width: 100%;
+}
+.form-control.multipleselect + .btn-group button {
+    background: #fff;
+    border-color: #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    height: 32px;
+    text-align: left;
+    width: 100%;
+}
+.form-control.multipleselect + .btn-group .caret {
+    float: right;
+    margin-top: 8px;
+    position: absolute;
+    right: 9px;
+}
+.form-control.multipleselect + .btn-group .dropdown-menu {
+    width: 100%;
+}
+.form-control.multipleselect + .btn-group.open>.dropdown-toggle:focus {
+    background: #fff;
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}

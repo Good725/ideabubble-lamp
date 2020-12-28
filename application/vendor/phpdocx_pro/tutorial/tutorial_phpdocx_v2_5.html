@@ -1,0 +1,1089 @@
+<h2 class="ico_doc">PHPDocX v2.5 Tutorial</h2>
+<p>In this basic tutorial we are going to show you:</p>
+<ul>
+<li><a href="#installation">How to install PHPDocX</a></li>
+<li><a href="#creation">How to buil a Word document from scratch using PHPDocX</a></li>
+<li><a href="#preparation">How to prepare a template for PHPDocX</a></li>
+<li><a href="#template">How to process a template with PHPDocX</a></li>
+<li><a href="#plugin">Appendix: how to use the PDF/DOC/RTF/HTML/ODT conversion plugin</a></li>
+<li><a href="#utilities">Appendix: Docx general utilities</a></li>
+<li><a href="#debug">Appendix: debugging options</a></li>
+</ul>
+<h3 id="installation">PHPDocX installation</h3>
+<p>PHPDocX is very easy to install. Usually it is just enough to unzip the package   somewhere in your server and it is (almost) ready to go. </p>
+<p>Obviously, as you could have guessed by its name, PHPDocX requires PHP 5 to   be installed in your server. Moreover the following PHP modules should be activated:</p>
+<ul>
+<li>ZipArchive</li>
+<li>XSLT</li>
+<li>Tidy (not strictly necessary but highly recommended)</li>
+</ul>
+<p>For your convenience we have included a PHP script in the package (directly   located in the app root folder), check.php, that will check if any of the requirements are missing.</p>
+<p>Of course, <strong>DO NOT FORGET</strong> to include the license key for the PRO version:</p>
+<ul>
+<li>Download the license key from the &quot;MyPHPDocX section&quot; of this     website.</li>
+<li>Copy it (plain, with no other word or character) in the code file with no     extension that you will find in the classes folder: classes/code with no file extension.</li>
+<li>If you have got the <strong>Corporate version</strong> of the library you also need to include the domain name in the domain file that you may find also in the classes folder.</li>
+</ul>
+<div class="warning2">
+<p><strong>WARNINGS:</strong> </p>
+<ul>
+<li>The folder where your scripts are running and/or the folder where you want to store the resulting Word documents have to have writing permissions rights.
+  </li>
+<li>If posible use always UTF-8 compatible editors to code your scripts or modify any script in the PHPDocX library. The final Word documents have to be UTF-8     encoded and nonUTF-8 characters may break the final document.</li>
+<li>Make sure that your web server has activated the .docx MIME type in case you want your users to download directly the resulting Word documents to the browser (if not IE will believe that is a zip file).
+</ul>
+</div>
+<p>There is no a priori restrictions about the OS and server software as long   as it may run PHP 5. That includes, of course, basically all LINUX and UNIX   distributions as well as Windows and Mac OS. You may use Apache as web server   or lighttp, nginX, IIS, etcetera.</p>
+<p>PHPDocX may use external data for your reports and documents coming from virtually   any data source and it is the responsability of the user to prepare it   so PHPDocX can represent it adequately. PHPDocX DOES NOT require MySQL or any   other specific Database software for its deployment and correct functioning.</p>
+<p>You DO NOT need any copy of Microsoft Office Word to generate your Word documents.</p>
+<p>PHPDocX PRO does also not need any kind of outbound connection to work    so it does not depend directly of a working Internet connection or any kind   of additional third party software.</p>
+<h3 id="creation">Creating a Word document from scratch</h3>
+<p>Let&acute;s start with the standard &quot;hello world&quot; document.</p>
+<p>The required script reads as follows:</p>
+<pre class="brush: php; ">
+
+require_once(path_to_phpdocx/classes/createDocx.inc);
+$docx = new CreateDocx();
+$docx-&gt;addText(&#039;Hello world!&#039;);
+$docx-&gt;createDocx(&#039;../word_documents/hello_world&#039;);
+</pre>
+<p>The first line: require_once(path_to_phpdocx/classes/createDocx.inc) is a call   to the main class in PHPdocX, and path_to_phpdocx has to be sustituted by the   actual path to the library relative to the current script.</p>
+<p>You can see here the final result and download the corresponding 	<a href="word_documents/hello_world.docx" title="sample PHPDOCX Word document" target="_blank">   Word document </a>:</p>
+<p> <a href="img/hello_world.png" rel="lightbox[roadtrip]" > <img src="img/thumb_hello_world.png" /></a></p>
+<p>OK, this has been simple enough but not very rewarding. Let&#8217;s go one step further   and introduce a little more of formatting:</p>
+<pre class="brush: php; ">
+
+require_once(path_to_phpdocx/classes/createDocx.inc);
+
+$docx = new CreateDocx();
+$text = array();
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039;I am going to write&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; Hello World!&#039;,
+	&#039;b&#039; =&gt; &#039;single&#039;,
+	);
+
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; using bold characters.&#039;,
+	);
+$docx-&gt;addText($text);
+$docx-&gt;createDocx(&#039;../word_documents/hello_world_2&#039;);
+</pre>
+<p>Well now this start to look a little nicer although we have still some work   ahead (download the corresponding   <a href="word_documents/hello_world2.docx" title="sample PHPDOCX Word document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/hello_world2.png" rel="lightbox[roadtrip]" ><img src="img/thumb_hello_world2.png" /></a></p>
+<p>At this point one may wonder if there is a simple way to &quot;wrap&quot; our   document in a more beautiful frame including, for example, headers and footers   and even a first page.</p>
+<p>There are two ways to do so:</p>
+<ul>
+<li>Importing the headers and footers from an existing Word document.</li>
+<li>Using a different base template with all the required formatting.</li>
+</ul>
+<p>Like we have not yet talked about the &quot;base template&quot;, which turns   to be an important and useful concept in the 2.5 version of the library, we   will restrict ourselves,by the time being (please, be patient), to the first   of both solutions.</p>
+<p>We have already prepared a standard Word document (.docx, of course) with a   nice header and footer that we would like to insert in our current document.   Its relative path to this script is, for example, resources/niceHeaderAndFooter.docx.</p>
+<p>So let&#8217;s proceed:</p>
+<pre class="brush: php; ">
+
+require_once(path_to_phpdocx/classes/createDocx.inc);
+
+$docx = new CreateDocx();
+
+//Importing header and footer from external .docx file
+$docx -&gt;importHeadersAndFooters(&#039;../word_documents/templateHeaderAndFooter.docx&#039;);
+$text = array();
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039;I am going to write&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; Hello World!&#039;,
+	&#039;b&#039; =&gt; &#039;single&#039;,
+	);
+
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; using bold characters.&#039;,
+	);
+$docx-&gt;addText($text);
+
+$docx-&gt;createDocx(&#039;../word_documents/hello_world_headersAndFooters&#039;);
+</pre>
+<p>This is definitely starting to look much nicer (download the corresponding   <a href="word_documents/hello_world_headersAndFooters.docx" title="sample PHPDOCX Word document" target="_blank"> Word document</a>):</p>
+<p><a href="img/hello_world_headersAndFooters.png" rel="lightbox[roadtrip]" ><img src="img/thumb_hello_world_headersAndFooters.png" /></a></p>
+<p>If you prefer only to import the header you may have used:
+<pre class="brush: php; ">
+$docx -&gt;importHeadersAndFooters(&#039;../word_documents/templateHeaderAndFooter.docx&#039;, &#039;header&#039;)
+</pre>
+<p> and equivalently
+<pre class="brush: php; ">
+$docx -&gt;importHeadersAndFooters(&#039;../word_documents/templateHeaderAndFooter.docx&#039;, &#039;footer&#039;)
+</pre>
+<p> if you only wish to import the footer.</p>
+<p>The footers and headers can include photos, tables, standard text, lists, links, shapes,   etcetera. The import procedure also preserves the display properties of the headers and   footers (first, even and odd pages).</p>
+<p>Now to continue we are going to populate our word document with a series of standard objects:</p>
+<ul>
+<li>Lists</li>
+<li>Tables</li>
+<li>Images</li>
+<li>Charts</li>
+</ul>
+<p>There are many other posibilities but we prefer to refer to the documentation   for a complete set of examples in order not to clutter this tutorial with unneeded   details.</p>
+<p>Let us first include a simple unordered nested list after our &quot;hello world&quot;   paragraph. In order to do so we should use the addList method:</p>
+<pre class="brush: php; ">
+
+//Call to PHPDocX
+require_once(path_to_phpdocx/classes/createDocx.inc);
+
+$docx = new CreateDocx();
+
+//Importing header and footer from external .docx file
+$docx -&gt;importHeadersAndFooters(&#039;../word_documents/templateHeaderAndFooter.docx&#039;);
+
+$text = array();
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039;I am going to write&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; Hello World!&#039;,
+	&#039;b&#039; =&gt; &#039;single&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; using bold characters.&#039;,
+	);
+//We insert the the text into the Word document
+$docx-&gt;addText($text);
+
+//Let us now to add a nested unordered list
+$myList = array(&#039;item 1&#039;,
+                &#039;item 2&#039;,
+                array(&#039;subitem 2_1&#039;,
+                      &#039;subitem 2_2&#039;),
+                &#039;item 3&#039;,
+                array(&#039;subitem 3_1&#039;,
+                      &#039;subitem 3_2&#039;,
+                      array(&#039;sub_subitem 3_2_1&#039;,
+                            &#039;sub_subitem 3_2_1&#039;)),
+                &#039;item 4&#039;);
+
+$docx-&gt;addList($myList, array(&#039;val&#039; =&gt; 1));
+
+$docx-&gt;createDocx(&#039;../word_documents/hello_world_list&#039;);
+</pre>
+<p>What we get looks like this (download the corresponding <a href="word_documents/hello_world_list.docx" title="sample PHPDOCX Word document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/hello_world_list.png" rel="lightbox[roadtrip]" ><img src="img/thumb_hello_world_list.png" /></a></p>
+<p>If you had choosen array(&#8217;val&#8217; =&gt; 2) you would have got a standard numbered   list. Now you may wonder:</p>
+<ul>
+<li>How can I get customized list styles?</li>
+<li>How can I insert something more than plain text as an item for a list?</li>
+</ul>
+<p>The answer to the first question is pretty simple: you may run the parseStyles()   method (<a href="examples/easy/parseStyles.php">see example</a>) in a separate script and generate a Word   document with all the info about the list, paragraph and table styles that are   available by default. We will see later that if you choose to use your own &quot;base   template&quot; you may incorporate all the styles you wish.</p>
+<p>The answer to the second question is a little more elaborate but still simple   enough: you should use the addElement method to achieve more sophisticated   formatting:</p>
+<p>The corresponding code reads:</p>
+<pre class="brush: php; ">
+
+//Call to PHPDocX
+require_once(path_to_phpdocx/classes/createDocx.inc);
+
+$docx = new CreateDocx();
+
+//Importing header and footer from external .docx file
+$docx -&gt;importHeadersAndFooters(&#039;../word_documents/templateHeaderAndFooter.docx&#039;);
+
+$text = array();
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039;I am going to write&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; Hello World!&#039;,
+	&#039;b&#039; =&gt; &#039;single&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; using bold characters.&#039;,
+	);
+//We insert the the text into the Word document
+$docx-&gt;addText($text);
+
+//We first prepare an item list element with more sophisticated formatting:
+$paramsItem = array(
+	array(
+		&#039;text&#039; =&gt; &#039;This is the text associated with the first item&#039;,
+		&#039;b&#039; =&gt; &#039;single&#039;,
+		&#039;color&#039; =&gt; &#039;b70000&#039;,
+	),
+	array(
+		&#039;text&#039; =&gt; &#039; now without bold&#039;
+	),
+	array(
+		&#039;text&#039; =&gt; &#039; and blue&#039;,
+		&#039;color&#039; =&gt; &#039;0000b7&#039;
+	)
+);
+
+$myItem = $docx-&gt;addElement(&#039;addText&#039;, $paramsItem);
+
+//Let us now to add a nested unordered list
+$myList = array($myItem,
+                &#039;item 2&#039;,
+                array(&#039;subitem 2_1&#039;,
+                      &#039;subitem 2_2&#039;),
+                &#039;item 3&#039;,
+                array(&#039;subitem 3_1&#039;,
+                      &#039;subitem 3_2&#039;,
+                      array(&#039;sub_subitem 3_2_1&#039;,
+                            &#039;sub_subitem 3_2_1&#039;)),
+                &#039;item 4&#039;);
+
+$docx-&gt;addList($myList, array(&#039;val&#039; =&gt; 1));
+
+$docx-&gt;createDocx(&#039;../word_documents/hello_world_list2&#039;);
+</pre>
+<p>And you get (download the corresponding <a href="word_documents/hello_world_list2.docx" title="sample PHPDOCX Word document" target="_blank">   Word document</a>):</p>
+<p>    <a href="img/hello_world_list2.png" rel="lightbox[roadtrip]" ><img src="img/thumb_hello_world_list2.png" /></a></p>
+<p>This use of addElement can be extended to the other type of elements (images, charts, &#8230;) in a similar way:</p>
+<ol>
+<li>Replace the plain text usually inserted by the contents stored in a variable</li>
+<li>Use the addElement with two parameters:
+<ol>
+<li>The method we would like to use</li>
+<li>The array of parameters that we would normally pass to that method</li>
+</ol>
+</li>
+</ol>
+<p>Now we will try to insert a simple table so our Word document gets richer in   contents.</p>
+<pre class="brush: php; ">
+
+//Call to PHPDocX
+require_once(path_to_phpdocx/classes/createDocx.inc);
+
+$docx = new CreateDocx();
+
+//Importing header and footer from external .docx file
+$docx -&gt;importHeadersAndFooters(&#039;../word_documents/templateHeaderAndFooter.docx&#039;);
+
+$text = array();
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039;I am going to write&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; Hello World!&#039;,
+	&#039;b&#039; =&gt; &#039;single&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; using bold characters.&#039;,
+	);
+//We insert the the text into the Word document
+$docx-&gt;addText($text);
+
+//We first prepare an item list element with more sophisticated formatting:
+$paramsItem = array(
+	array(
+		&#039;text&#039; =&gt; &#039;This is the text associated with the first item&#039;,
+		&#039;b&#039; =&gt; &#039;single&#039;,
+		&#039;color&#039; =&gt; &#039;b70000&#039;,
+	),
+	array(
+		&#039;text&#039; =&gt; &#039; now without bold&#039;
+	),
+	array(
+		&#039;text&#039; =&gt; &#039; and blue&#039;,
+		&#039;color&#039; =&gt; &#039;0000b7&#039;
+	)
+);
+
+$myItem = $docx-&gt;addElement(&#039;addText&#039;, $paramsItem);
+
+//Let us now to add a nested unordered list
+$myList = array($myItem,
+                &#039;item 2&#039;,
+                array(&#039;subitem 2_1&#039;,
+                      &#039;subitem 2_2&#039;),
+                &#039;item 3&#039;,
+                array(&#039;subitem 3_1&#039;,
+                      &#039;subitem 3_2&#039;,
+                      array(&#039;sub_subitem 3_2_1&#039;,
+                            &#039;sub_subitem 3_2_1&#039;)),
+                &#039;item 4&#039;);
+
+$docx-&gt;addList($myList, array(&#039;val&#039; =&gt; 1));
+
+$valuesTable = array(
+	array(
+	&#039;cell_1_1&#039;,
+	&#039;cell_1_2&#039;,
+	&#039;cell_1_3&#039;,
+	&#039;cell_1_4&#039;
+	),
+	array(
+	&#039;cell_2_1&#039;,
+	&#039;cell_2_2&#039;,
+	&#039;cell_2_3&#039;,
+	&#039;cell_2_4&#039;
+	),
+	array(
+	&#039;cell_3_1&#039;,
+	&#039;cell_3_2&#039;,
+	&#039;cell_3_3&#039;,
+	&#039;cell_3_4&#039;
+	)
+);
+
+$paramsTable = array(
+	&#039;border&#039; =&gt; &#039;single&#039;,
+	&#039;border_sz&#039; =&gt; 10
+	);
+
+$docx-&gt;addTable($valuesTable, $paramsTable);
+
+$docx-&gt;createDocx(&#039;../word_documents/example_table&#039;);
+</pre>
+<p>And you get (download the corresponding <a href="word_documents/example_table.docx" title="sample PHPDOCX Word document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/example_table.png" rel="lightbox[roadtrip]" ><img src="img/thumb_example_table.png" /></a></p>
+<p>This is certainly not the most beautiful table you have ever seen but we can   solve that problem pretty easily by having a look at the available table styles   in the document that we have generated before with the parseStyles() method.</p>
+<p>For example we may use the &quot;MediumGrid3-accent5PHPDOCX&quot; accent table   style (blame Word for the funky names):</p>
+<pre class="brush: php; ">
+
+//Call to PHPDocX
+require_once(path_to_phpdocx/classes/createDocx.inc);
+
+$docx = new CreateDocx();
+
+//Importing header and footer from external .docx file
+$docx -&gt;importHeadersAndFooters(&#039;../word_documents/templateHeaderAndFooter.docx&#039;);
+$text = array();
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039;I am going to write&#039;,
+	);
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; Hello World!&#039;,
+	&#039;b&#039; =&gt; &#039;single&#039;,
+	);
+
+$text[] =
+	array(
+	&#039;text&#039; =&gt; &#039; using bold characters.&#039;,
+	);
+$docx-&gt;addText($text);
+
+//We first prepare an item list element with more sophisticated formatting:
+
+$paramsItem = array(
+	array(
+		&#039;text&#039; =&gt; &#039;This is the text associated with the first item&#039;,
+		&#039;b&#039; =&gt; &#039;single&#039;,
+		&#039;color&#039; =&gt; &#039;b70000&#039;,
+	),
+	array(
+		&#039;text&#039; =&gt; &#039; now without bold&#039;
+	),
+	array(
+		&#039;text&#039; =&gt; &#039; and blue&#039;,
+		&#039;color&#039; =&gt; &#039;0000b7&#039;,
+	)
+);
+
+$myItem = $docx-&gt;addElement(&#039;addText&#039;, $paramsItem);
+
+//Let us now to add a nested unordered list
+$myList = array($myItem,
+                &#039;item 2&#039;,
+                array(&#039;subitem 2_1&#039;,
+                      &#039;subitem 2_2&#039;),
+                &#039;item 3&#039;,
+                array(&#039;subitem 3_1&#039;,
+                      &#039;subitem 3_2&#039;,
+                      array(&#039;sub_subitem 3_2_1&#039;,
+                            &#039;sub_subitem 3_2_1&#039;)),
+                &#039;item 4&#039;);
+
+$docx-&gt;addList($myList, array(&#039;val&#039; =&gt; 1));
+
+$valuesTable = array(
+	array(
+	&#039;cell_1_1&#039;,
+	&#039;cell_1_2&#039;,
+	&#039;cell_1_3&#039;,
+	&#039;cell_1_4&#039;
+	),
+	array(
+	&#039;cell_2_1&#039;,
+	&#039;cell_2_2&#039;,
+	&#039;cell_2_3&#039;,
+	&#039;cell_2_4&#039;
+	),
+	array(
+	&#039;cell_3_1&#039;,
+	&#039;cell_3_2&#039;,
+	&#039;cell_3_3&#039;,
+	&#039;cell_3_4&#039;
+	)
+);
+
+$paramsTable = array(&#039;TBLSTYLEval&#039; =&gt; &#039;MediumGrid3-accent5PHPDOCX&#039;);
+
+$docx-&gt;addTable($valuesTable, $paramsTable);
+
+$docx-&gt;createDocx(&#039;../word_documents/example_table_style&#039;);
+</pre>
+<p>This certainly looks much nicer and pretty simple to implement (download the   corresponding <a href="word_documents/example_table_style.docx" title="sample PHPDOCX Word document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/example_table_style.png" rel="lightbox[roadtrip]" ><img src="img/thumb_example_table_style.png" /></a></p>
+<p>But one always want something more and eventually one may need to insert tables   with &quot;rowspans&quot; and &quot;colspans&quot;. What can we do about that?</p>
+<p>The simplest way to do it is to parse an HTML table and associate a Word style   to it.</p>
+<p>Like our script is starting to get a little lengthly let us concentrate only   in the relevant part of it. Let&#8217;s define a $myTable variable as follows:</p>
+<pre class="brush: php; ">
+
+$myHTML = &#039;&lt;br /&gt;&lt;p style=&quot;font-family: Calibri; font-size: 11pt&quot;&gt;We include a table with rowspans and colspans using the embedHTML method.&lt;/p&gt;
+&lt;table style=&quot;font-family: Calibri; font-size: 11pt&quot;&gt;
+  &lt;tr&gt;
+	  &lt;td&gt;header 1&lt;/td&gt;
+	  &lt;td&gt;header 2&lt;/td&gt;
+	  &lt;td&gt;header 3&lt;/td&gt;
+	  &lt;td&gt;header 4&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+	  &lt;td rowspan=&quot;2&quot; colspan=&quot;2&quot;&gt;cell_1_1&lt;/td&gt;
+	  &lt;td&gt;cell_1_3&lt;/td&gt;
+	  &lt;td&gt;cell_1_4&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+	  &lt;td&gt;cell_2_3&lt;/td&gt;
+	  &lt;td&gt;cell_2_4&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+	  &lt;td&gt;cell_3_1&lt;/td&gt;
+	  &lt;td&gt;cell_3_2&lt;/td&gt;
+	  &lt;td&gt;cell_3_3&lt;/td&gt;
+	  &lt;td&gt;cell_3_4&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&#039;;
+ $docx-&gt;embedHTML($myHTML, array(&#039;tableStyle&#039; =&gt; &#039;MediumGrid3-accent5PHPDOCX&#039;));
+</pre>
+<p>This should render a table like this (download the corresponding <a href="word_documents/example_table_style_HTML.docx" title="hello_world_list2" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/example_table_HTML.png" rel="lightbox[roadtrip]" ><img src="img/thumb_example_table_HTML.png" /></a></p>
+<div class="warning2">
+<p><strong>WARNINGS:</strong> </p>
+<p> If you use px instead of pt as your CSS units take into account a 0.75 relative scale factor.</p>
+</div>
+<p>By the way, if you do not like the styles that come bundled with PHPDocX (basically   the quick styles that come with the standard Word 2007 distribution) you may   import custom styles from other Word document using the importStyles() method   or by using your own base template.</p>
+<p>As you can foresee the embedHTML method may have multiple uses but for the   sake of brevity we will ignore them by the time being and we will move forward   to investigate how to include images and charts.</p>
+<p>To insert an image is as simple as this:</p>
+<pre class="brush: php; ">
+
+$paramsImg = array(
+&#039;name&#039; =&gt; &#039;../img/image.png&#039;,//path to the image that we would like to insert
+&#039;scaling&#039; =&gt; 90,//scaling factor, 100 corresponds to no scaling
+&#039;spacingTop&#039; =&gt; 10,//top padding
+&#039;spacingBottom&#039; =&gt; 10,//bottom padding
+&#039;spacingLeft&#039; =&gt; 10,//left padding
+&#039;spacingRight&#039; =&gt; 10,//right padding
+&#039;textWrap&#039; =&gt; 1//corresponding to square format
+);
+$docx-&gt;addImage($paramsImg);
+</pre>
+<p>This should render an image like this (download the corresponding <a href="word_documents/example_image.docx" title="hello world phpdocx document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/example_image.png" rel="lightbox[roadtrip]" ><img src="img/thumb_example_image.png" /></a></p>
+<p>If you need to include more than one photo with a precise layout you may combine   the addTable method with addElement to generate the desired ouput. For example:</p>
+<pre class="brush: php; ">
+
+$text = &#039;We are going to locate three pictures in a row just below this text. And we are going to use Trebuchet MS font to change a little bit :-)&#039;;
+
+$paramsText = array(
+&#039;font&#039; =&gt; &#039;Trebuchet MS&#039;
+);
+
+$docx-&gt;addText($text, $paramsText);
+
+$images = array(&#039;../img/image.png&#039;,&#039;../img/image.png&#039;,&#039;../img/image.png&#039;);
+$wordImages = array();
+
+foreach ($images as $image) {
+$paramsImg = array(
+&#039;name&#039; =&gt; $image,//The image to be inserted
+&#039;dpi&#039; =&gt; 120,//We force the images to a 100 dpi resolution
+&#039;scaling&#039; =&gt; 90,//We scale them at 90% size
+&#039;spacingTop&#039; =&gt; 10,//top padding
+&#039;spacingBottom&#039; =&gt; 10,//bottom padding
+&#039;spacingLeft&#039; =&gt; 10,//left padding
+&#039;spacingRight&#039; =&gt; 10,//right padding
+&#039;textWrap&#039; =&gt; 1//corresponding to square format
+);
+
+array_push($wordImages, $docx-&gt;addElement(&#039;addImage&#039;, $paramsImg));
+
+}
+$paramsTable = array(
+&#039;TBLSTYLEval&#039; =&gt; &#039;NormalTablePHPDOCX&#039;,
+);
+$valuesTable = array($wordImages);
+$docx-&gt;addTable($valuesTable, $paramsTable);
+</pre>
+<p>This should now render the three inserted image like this(download the corresponding <a href="word_documents/example_image_table.docx" title="hello world phpdocx document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/example_image_table.png" rel="lightbox[roadtrip]" ><img src="img/thumb_example_image_table.png" /></a></p>
+<p>To finish with the most basic functionality of PHPDocX we are going now to   insert a chart.</p>
+<p>PHPDocX virtually allows to include any chart that can be included through   the standard Word interface:</p>
+<ul>
+<li>pie charts</li>
+<li>bar grapphs</li>
+<li>col bars</li>
+<li>radar charts</li>
+<li>area</li>
+<li>linear</li>
+</ul>
+<p>As an example we will include a radar type chart:</p>
+<pre class="brush: php; ">
+
+$legends = array(
+&#039;legend&#039; =&gt; array(&#039;sequence 1&#039;, &#039;sequence 2&#039;, &#039;sequence 3&#039;),
+&#039;Category 1&#039; =&gt; array(9.3, 2.4, 2),
+&#039;Category 2&#039; =&gt; array(8.5, 4.4, 1),
+&#039;Category 3&#039; =&gt; array(6.5, 1.8, 0.5),
+&#039;Category 4&#039; =&gt; array(8.5, 3, 1),
+&#039;Category 5&#039; =&gt; array(6, 5, 2.6),
+);
+$args = array(
+&#039;data&#039; =&gt; $legends,
+&#039;type&#039; =&gt; &#039;radar&#039;,
+&#039;style&#039; =&gt; &#039;radar&#039;,
+&#039;title&#039; =&gt; &#039;Radar chart&#039;,
+&#039;sizeX&#039; =&gt; 15, &#039;sizeY&#039; =&gt; 15,
+&#039;legendpos&#039; =&gt; &#039;t&#039;,
+&#039;border&#039; =&gt; 1,
+&#039;vgrid&#039; =&gt; 1
+);
+$docx-&gt;addChart($args);
+</pre>
+<p>And you get (download the corresponding <a href="word_documents/example_radar_chart.docx" title="sample PHPDOCX Word document" target="_blank">   Word document</a>):</p>
+<p> <a href="img/example_radar_chart.png" rel="lightbox[roadtrip]" > <img src="img/thumb_example_radar_chart.png" /></a></p>
+<p>In order to see all the available options you should visit the Full reference   Documentation, nevertheless to illustrate the flexibility of PHPDocX you may   chane very easily to a bar chart with the associated data data table just by setting the &#8217;showtable&#8217; option to   1 and setting the type to &quot;colBar&quot;: </p>
+<pre class="brush: php; ">
+
+$legends = array(
+&#039;legend&#039; =&gt; array(&#039;sequence 1&#039;, &#039;sequence 2&#039;, &#039;sequence 3&#039;),
+&#039;Category 1&#039; =&gt; array(9.3, 2.4, 2),
+&#039;Category 2&#039; =&gt; array(8.5, 4.4, 1),
+&#039;Category 3&#039; =&gt; array(6.5, 1.8, 0.5),
+&#039;Category 4&#039; =&gt; array(8.5, 3, 1),
+&#039;Category 5&#039; =&gt; array(6, 5, 2.6),
+);
+$args = array(
+&#039;data&#039; =&gt; $legends,
+&#039;type&#039; =&gt; &#039;colBar&#039;,
+&#039;title&#039; =&gt; &#039;Chart with table&#039;,
+&#039;sizeX&#039; =&gt; 15, &#039;sizeY&#039; =&gt; 15,
+&#039;legendpos&#039; =&gt; &#039;t&#039;,
+&#039;border&#039; =&gt; 1,
+&#039;vgrid&#039; =&gt; 1,
+&#039;showtable&#039; =&gt; 1
+);
+$docx-&gt;addChart($args);
+</pre>
+<p>So this time we will obtain (download the corresponding <a href="word_documents/example_chart_showtable.docx" title="sample PHPDOCX Word document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/example_chart_table.png" rel="lightbox[roadtrip]" > <img src="img/thumb_example_chart_table.png" /></a></p>
+<h4>Using your own base template and setting up general config options</h4>
+<p>We have already commented that PHPDocX users may use their own &quot;base templates&quot;   in order to generate their custom documents or reports.</p>
+<p>The procedure is quite simple. One only has to make a call to the desired template   whenever a new docx is created:</p>
+<pre class="brush: php; ">
+
+require_once(path_to_phpdocx/classes/createDocx.inc);
+$docx = new CreateDocx(&#039;../word_documents/numberedHeadings.docx&#039;);//You should include the path to your base template
+$docx-&gt;addText(&#039;This is a numbered Heading&#039;, array(&#039;pStyle&#039; =&gt; &#039;Heading1PHPDOCX&#039;));
+$docx-&gt;addText(&#039;Hello world again!&#039;);
+$docx-&gt;addText(&#039;This is a  Subheading&#039;, array(&#039;pStyle&#039; =&gt; &#039;Heading2PHPDOCX&#039;));
+$docx-&gt;addText(&#039;No more Hello world, please!&#039;);
+$docx-&gt;createDocx(&#039;../word_documents/new_baseTemplate&#039;);
+</pre>
+<p>As you may see from the result(download the corresponding <a href="word_documents/new_baseTemplate.docx" title="hello world phpdocx document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/new_base_template.png" rel="lightbox[roadtrip]" ><img src="img/thumb_new_base_template.png" /></a></p>
+<p>You may get customized headers and footers as well as many other configuration   options in just one shot. </p>
+<p>For example you may also include a &quot;front page&quot; as structured content   that will be preserved by PHPDocX:</p>
+<pre class="brush: php; ">
+
+require_once(path_to_phpdocx/classes/createDocx.inc);
+$docx = new CreateDocx(&#039;../word_documents/frontPageTemplate.docx&#039;);//You should include the path to your base template
+
+$docx-&gt;addText(&#039;This is a numbered Heading&#039;, array(&#039;pStyle&#039; =&gt; &#039;Heading1PHPDOCX&#039;));
+$docx-&gt;addText(&#039;Hello world again!&#039;);
+$docx-&gt;addText(&#039;This is a  Subheading&#039;, array(&#039;pStyle&#039; =&gt; &#039;Heading2PHPDOCX&#039;));
+$docx-&gt;addText(&#039;No more Hello world, please!&#039;);
+$docx-&gt;createDocx(&#039;../word_documents/front_page&#039;);;
+</pre>
+<p>So we get (download the corresponding <a href="word_documents/front_page.docx" title="hello world phpdocx document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/front_page.png" rel="lightbox[roadtrip]" ><img src="img/thumb_front_page.png" /></a></p>
+<p>Nevertheles to use the default template may show convenient because it has   been prepared to have available all the standard Word style options.</p>
+<p>If you use your own template make sure, by using the parseStyles() method that   you have enough styles at your disposal.</p>
+<div class="warning2">
+<p><strong>WARNINGS:</strong> </p>
+<p>The contents of your baseTemplate will be ignored (only headers,footers and   &quot;front page&quot;, if it has been inserted as stuctured content, will survive in the final document). If you   really want to work with an existing template for your document content you should use   the addTemplate() method on which we will ellaborate on next section.</p>
+</div>
+<p>Before going ahead with templates we would like to comment on the fact that   since PHPDocX v2.5 there is a configuration file: classes/PHPDOCXConfig.inc   where the following parameters can be globally set (although they can be override   by the corresponding methods for each particular document):</p>
+<ul>
+<li>Base Template</li>
+<li>Default language</li>
+<li>Deafault paper size (A4, A3, letter or legal)</li>
+</ul>
+<h3 id="preparation"> How to prepare a template for PHPDocX</h3>
+<p>It is quite often that rather than writing a full document from scratch we   just need to do certain modifications on an existing document:</p>
+<ul>
+<li>Include a client&quot;s name</li>
+<li>Redraw a chart depending on new dynamical data</li>
+<li>Populate a table with certain dynamical data coming from a database, i.e.     items in an invoice</li>
+<li>Change certain images</li>
+<li>Etcetera</li>
+</ul>
+<p>For all those cases PHPDocX allows to use an existing Word document and do all   the required substitutions just by inserting the adequate placeholders variables.</p>
+<p>For example, if we have a letter where the only &quot;variable&quot; part of   it is a name we could:</p>
+<ul>
+<li>Replace the name by the variable: $NAME$</li>
+<li>Extract from a data source the actual name to be used in the resulting document and perform     the substitution via the addTemplateVariable() method.</li>
+</ul>
+<p>Let us carry out this process in greater detail.</p>
+<p>First write, using your favourite Word editor, a very simple Word document   like this:</p>
+<div class="subtheme_explication">
+<p>Dear $NAME$,</p>
+<p>I would like to say something interesting but unfortunately I do not have much   to say.</p>
+<p>Best regards,</p>
+<p style="font-weight: bold; color: #b70000">PHPDOCX Guru</p>
+</div>
+<div class="warning2">
+<p><strong>WARNINGS:</strong> </p>
+<p> Do not forget to save your document with the .docx extension and call   it, for example, myTestTemplate.docx.</p>
+</div>
+<p>For your convenience you may <a href="word_documents/myTestTemplate.docx" >download the document   here</a>.</p>
+<p>The required PHPDocX script needed to carry away the replacement is as simple   as this:</p>
+<pre class="brush: php; ">
+
+require_once(path_to_phpdocx/classes/createDocx.inc);
+$docx = new CreateDocx();
+$docx-&gt;addTemplate(&#039;../word_documents/myTestTemplate.docx&#039;);
+$docx-&gt;addTemplateVariable(&#039;NAME&#039;, &#039;John Smith&#039;);
+$docx-&gt;createDocx(&#039;../word_documents/test_template&#039;);
+?&gt;
+</pre>
+<p>And you will get as a result(download the corresponding 	<a href="word_documents/test_template.docx" title="hello world phpdocx document" target="_blank">   Word document</a>):</p>
+<p>  <a href="img/test_template.png" rel="lightbox[roadtrip]" ><img src="img/thumb_test_template.png" /></a></p>
+<p>If you wish you may change the symbol used to enclosed the placeholder variable   to, for example &#8216;#&#8217; using the setTemplateSymbol(&#8217;#') method. </p>
+<div class="warning2">
+<p><strong>WARNINGS:</strong> </p>
+<p>The inclusion of placeholder variables is slightly different in the   case of images. In that case one should include the placeholder variable in   the alternative text associated with the image. This is done, for example in   the Word 2007 interface by clicking on the selected image with the right mouse   button, choosing the size menu entry and going to the &quot;alternative text&quot;   tab. </p>
+</div>
+<p>Since PHPDocX v2.5.1 we have a new method available, replaceTemplateVariableByHTML() that may be of great help. It basically simplifies the process to include new content from HTML into a Word document.</p>
+<p>replaceTemplateVariableByHTML() basically extends the functionality of the embedHTML() in the case of templates. But everything may be more easily explained by a simple example.</p>
+<p>Let us assume that you want to include some information coming from a <a href="http://www.2mdc.com/PHPDOCX/example.html" target="_blank">web page</a> into your <a href="word_documents/testHTML2mdc.docx" >Word document</a>. You may do so, preserving the format of the original HTML document in a very simple way:</p>
+<pre class="brush: php; ">
+
+require_once(path_to_phpdocx/classes/createDocx.inc);
+$docx-&gt;addTemplate(&#039;../word_documents/testHTML2mdc.docx&#039;);
+
+$docx-&gt;replaceTemplateVariableByHTML(&#039;ADDRESS&#039;, &#039;inline&#039;, &#039;&lt;p style=&quot;font-family: verdana; font-size: 11px&quot;&gt;C/ Matías Turrión 24, Madrid 28043 &lt;b&gt;Spain&lt;/b&gt;&lt;/p&gt;&#039;, array(&#039;isFile&#039; =&gt; false, &#039;parseDivsAsPs&#039; =&gt; true, &#039;downloadImages&#039; =&gt; false));
+$docx-&gt;replaceTemplateVariableByHTML(&#039;CHUNK_1&#039;, &#039;block&#039;, &#039;http://www.2mdc.com/PHPDOCX/example.html&#039;, array(&#039;isFile&#039; =&gt; true, &#039;parseDivsAsPs&#039; =&gt; true,  &#039;filter&#039; =&gt; &#039;#capa_bg_bottom&#039;, &#039;downloadImages&#039; =&gt; true));
+$docx-&gt;replaceTemplateVariableByHTML(&#039;CHUNK_2&#039;, &#039;block&#039;, &#039;http://www.2mdc.com/PHPDOCX/example.html&#039;, array(&#039;isFile&#039; =&gt; true, &#039;parseDivsAsPs&#039; =&gt; false,  &#039;filter&#039; =&gt; &#039;#lateral&#039;, &#039;downloadImages&#039; =&gt; true));
+
+$docx-&gt;createDocx(&#039;../docx/replaceTemplateVariableByHTML&#039;);	
+</pre>
+<p>And you will get as a result (download the corresponding <a href="word_documents/replaceTemplateVariableByHTML.docx" title="replaceTemplateVariableByHTML" target="_blank"> Word document</a>):</p>
+<p><a href="img/webpage.png" rel="lightbox[roadtrip]" ><img src="img/thumb_webpage.png" /></a></p>
+<p>The HTML content, as seen in the example, may come from a external HTML page or from a string. The filter parameter has been used to select different portions of the original HTML code and insert them in the Word document as desired. it does not only admits single id references one can introduce an array with different ids, classes and tags of his choice.</p>
+<h3 id="template">How to process a template with PHPDocX</h3>
+<p>Now we are going to show you an example that you may see at work in this very   same website: <a href="http://www.phpdocx.com/demo" target="_blank">http://www.phpdocx.com/demo</a>.</p>
+<p>This demo requires three different templates that you may download, together   with the PHP script, from this <a href="files/phpdocx_demo.zip" target="_blank">zip file</a>   available online.</p>
+<p>Like you can download all the required files and the resulting Word document from our <a href="http://www.phpdocx.com/demo" target="_blank">&quot;Demo Page&#038;quot</a>; 	we will not include in the following nor screen capture neither the eesulting .docx files.</p>
+<p>Let us first have a look at the whole script:</p>
+<pre class="brush: php; ">
+
+require_once &#039;path to phpdocx&#039;;
+$docx = new CreateDocx();
+$dir = &#039;path to the folder with the templates&#039;;
+$docx-&gt;addTemplate($dir. &#039;template_&#039; . $_POST[&#039;template&#039;] . &#039;.docx&#039;);//We use the template chosen by the user
+
+//Some variables included in the front page
+$docx-&gt;addTemplateVariable(&#039;VAR_DATE&#039;, date(&quot;n/d/Y&quot;));
+$docx-&gt;addTemplateVariable(&#039;VAR_NAME&#039;, $_POST[&#039;FullName&#039;]);
+$docx-&gt;addTemplateVariable(&#039;VAR_TITLE&#039;, $_POST[&#039;Title&#039;]);
+
+if(!empty($_POST[&#039;emptyData&#039;])
+   $_POST[&#039;emptyData&#039;] == &#039;true&#039;){
+   $docx-&gt;deleteTemplateBlock(&#039;chart&#039;);//If there is no data we eliminate the block that includes the chart
+}else{
+    $aData = array();
+    foreach($_POST as $ind =&gt; $val){
+        if(substr($ind, 0, strlen(&#039;DataName_&#039;)) == &#039;DataName_&#039;){
+            $aData[$val] = array($_POST[&#039;DataValue_&#039; . substr($ind, strlen(&#039;DataName_&#039;))]);
+        }
+    }
+        $chart1 = array(
+        &#039;type&#039; =&gt; &#039;pie3DChart&#039;,
+        &#039;showPercent&#039; =&gt; 1,
+        &#039;sizeX&#039; =&gt; 10,
+        &#039;sizeY&#039; =&gt; 6,
+        &#039;js&#039; =&gt; &#039;center&#039;
+    );
+    if($_POST[&#039;template&#039;] == 2){//Different templates have different charts
+        $chart1[&#039;type&#039;] = &#039;pieChart&#039;;
+    }elseif($_POST[&#039;template&#039;] == 3){
+        $chart1 = array(
+            &#039;type&#039; =&gt; &#039;colChart&#039;,
+            &#039;font&#039; =&gt; &#039;Times New Roman&#039;,
+            &#039;sizeX&#039; =&gt; 14,
+            &#039;sizeY&#039; =&gt; 7,
+            &#039;border&#039;=&gt; &#039;none&#039;,
+            &#039;jc&#039; =&gt; &#039;center&#039;/*,
+            &#039;groupBar&#039; =&gt; &#039;stacked&#039;*/
+        );
+        $chart1[&#039;type&#039;] = &#039;colChart&#039;;
+        $aData[&#039;legend&#039;] = array(&#039;&#039;);            }
+
+    $chart1[&#039;data&#039;] = $aData;
+    $docx-&gt;addTemplateChart(&#039;CHART_1&#039;, $chart1);
+}
+
+if(!empty($_POST[&#039;emptyList&#039;])
+   $_POST[&#039;emptyList&#039;] == &#039;true&#039;){//If there is no data we eliminate the block containing the table
+   $docx-&gt;deleteTemplateBlock(&#039;table&#039;);
+}else{
+   $aData = array();
+    foreach($_POST as $ind =&gt; $val){
+        if(substr($ind, 0, strlen(&#039;List_&#039;)) == &#039;List_&#039;){
+            $aData[] = array(&#039;VAR_ITEM&#039; =&gt; $val, &#039;VAR_PRICE&#039; =&gt; $_POST[&#039;AddressList_&#039; . substr($ind, strlen(&#039;List_&#039;))]);
+        }
+    }
+    $docx-&gt;addTemplateVariable($aData, &#039;table&#039;, array(&#039;header&#039; =&gt; false));
+}
+ if(empty($_POST[&#039;HTMLCode&#039;]) || $_POST[&#039;HTMLCode&#039;] == &#039;&lt;p&gt;Text with HTML format.&lt;/p&gt;&#039;)//If the user has not included any HTML text we eliminate the associated block
+   $docx-&gt;deleteTemplateBlock(&#039;html&#039;);
+else{
+	  $code = stripslashes($_POST[&#039;HTMLCode&#039;]);
+    $code = &#039;&lt;head&gt;&lt;style type=&quot;text/css&quot;&gt;p{font-family: Arial;font-size:11pt;}li{font-family: Arial;font-size:11pt;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&#039; .  $code . &#039;&lt;/body&gt;&#039;;
+    $docx-&gt;addTemplateVariable(&#039;CHUNK_1&#039;,$code, &#039;html&#039;);
+}
+$docx-&gt;addTemplateImage(&#039;IMAGE_1&#039; , $dir . &#039;image_&#039;.$_POST[&#039;image&#039;].&#039;.jpg&#039;);
+$docx-&gt;clearBlocks();//We clean any remaining block tags
+$docx-&gt;createDocxAndDownload(&#039;/tmp/demo_template&#039;);//we send the resulting document to the browser
+</pre>
+<p>Let us analyse this script step by step.</p>
+<p>The first chunk of code reads:</p>
+<pre class="brush: php; ">
+$docx = new CreateDocx();
+$dir = &#039;path to the folder with the templates&#039;;
+$docx-&gt;addTemplate($dir. &#039;template_&#039; . $_POST[&#039;template&#039;] . &#039;.docx&#039;);//We use the template chosen by the user
+</pre>
+<p>We just create a new PHPDocX instance. Depending on the template choosen by the user in the corresponding webform we load into PHPDocX the coprresponding template with the addTemplate() method.</p>
+<p>In the following block of code we start the actual parsing of the selected template:</p>
+<pre class="brush: php; ">
+
+//Some variables included in the front page
+$docx-&gt;addTemplateVariable(&#039;VAR_DATE&#039;, date(&quot;n/d/Y&quot;));
+$docx-&gt;addTemplateVariable(&#039;VAR_NAME&#039;, $_POST[&#039;FullName&#039;]);
+$docx-&gt;addTemplateVariable(&#039;VAR_TITLE&#039;, $_POST[&#039;Title&#039;]);
+</pre>
+<p>This three lines of code do an standard &quot;variable by string&quot; substitution. The first of them all inserts the current date using the standard PHP date() method, while the last two substitute the VAR_NAME (in the header) and VAR_TITLE (front page) variables by the values introduced by the user in the corresponding web form.
+</p>
+<p>Now things start to get more sophisticated with:</p>
+<pre class="brush: php; ">
+
+if(!empty($_POST[&#039;emptyData&#039;])
+   $_POST[&#039;emptyData&#039;] == &#039;true&#039;){
+   $docx-&gt;deleteTemplateBlock(&#039;chart&#039;);//If there is no data we eliminate the block that includes the chart
+}else{
+    $aData = array();
+    foreach($_POST as $ind =&gt; $val){
+        if(substr($ind, 0, strlen(&#039;DataName_&#039;)) == &#039;DataName_&#039;){
+            $aData[$val] = array($_POST[&#039;DataValue_&#039; . substr($ind, strlen(&#039;DataName_&#039;))]);
+        }
+    }
+        $chart1 = array(
+        &#039;type&#039; =&gt; &#039;pie3DChart&#039;,
+        &#039;showPercent&#039; =&gt; 1,
+        &#039;sizeX&#039; =&gt; 10,
+        &#039;sizeY&#039; =&gt; 6,
+        &#039;js&#039; =&gt; &#039;center&#039;
+    );
+    if($_POST[&#039;template&#039;] == 2){//Different templates have different charts
+        $chart1[&#039;type&#039;] = &#039;pieChart&#039;;
+    }elseif($_POST[&#039;template&#039;] == 3){
+        $chart1 = array(
+            &#039;type&#039; =&gt; &#039;colChart&#039;,
+            &#039;font&#039; =&gt; &#039;Times New Roman&#039;,
+            &#039;sizeX&#039; =&gt; 14,
+            &#039;sizeY&#039; =&gt; 7,
+            &#039;border&#039;=&gt; &#039;none&#039;,
+            &#039;jc&#039; =&gt; &#039;center&#039;/*,
+            &#039;groupBar&#039; =&gt; &#039;stacked&#039;*/
+        );
+        $chart1[&#039;type&#039;] = &#039;colChart&#039;;
+        $aData[&#039;legend&#039;] = array(&#039;&#039;);            }
+
+    $chart1[&#039;data&#039;] = $aData;
+    $docx-&gt;addTemplateChart(&#039;CHART_1&#039;, $chart1);
+}
+</pre>
+<p>The first &quot;if&quot; checks wether the user has introduced any data for the chart. If false we delete all the content between the two placeholder variables $BLOCK_chart$ with the deleteTemplateBlock() method (note that the prefix &quot;BLOCK_&quot; is omitted from the argument).</p>
+<p>If there is data to represent graphically we prepare it, as usual, in an array with the standard options and use the addTemplateChart() method for the replacement. This example is a little more convoluted because the user may choose<br />
+between three different ways to represent his/her data.</p>
+<p>The following chunk of code is particularly interesting because it allows us to populate a table with a custom number of rows depending on the user input:</p>
+<pre class="brush: php; ">
+
+if(!empty($_POST[&#039;emptyList&#039;])
+   $_POST[&#039;emptyList&#039;] == &#039;true&#039;){//If there is no data we eliminate the block containing the table
+   $docx-&gt;deleteTemplateBlock(&#039;table&#039;);
+}else{
+   $aData = array();
+    foreach($_POST as $ind =&gt; $val){
+        if(substr($ind, 0, strlen(&#039;List_&#039;)) == &#039;List_&#039;){
+            $aData[] = array(&#039;VAR_ITEM&#039; =&gt; $val, &#039;VAR_PRICE&#039; =&gt; $_POST[&#039;AddressList_&#039; . substr($ind, strlen(&#039;List_&#039;))]);
+        }
+    }
+    $docx-&gt;addTemplateVariable($aData, &#039;table&#039;, array(&#039;header&#039; =&gt; false));
+}
+</pre>
+<p>Again we check if there is data to populate the table and in the contrary we remove the corresponding block of the document.
+</p>
+<p>if there is data, we include it in an array and insert it in the preformatted table with the addTemplateVariable() method that has been overloaded with two parameters: &quot;table&quot;, to instruct PHPDocX that we would like to create a new table row for each of the items of the $aData array, plus an option to indicate to PHPDocX that the table header is not to be repeated in every page when the table spreads through more than one page.</p>
+<p>This block of code:</p>
+<pre class="brush: php; ">
+
+if(empty($_POST[&#039;HTMLCode&#039;]) || $_POST[&#039;HTMLCode&#039;] == &#039;&lt;p&gt;Text with HTML format.&lt;/p&gt;&#039;)//If the user has not included any HTML text we eliminate the associated block
+   $docx-&gt;deleteTemplateBlock(&#039;html&#039;);
+else{
+	  $code = stripslashes($_POST[&#039;HTMLCode&#039;]);
+    $code = &#039;&lt;head&gt;&lt;style type=&quot;text/css&quot;&gt;p{font-family: Arial;font-size:11pt;}li{font-family: Arial;font-size:11pt;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&#039; .  $code . &#039;&lt;/body&gt;&#039;;
+    $docx-&gt;addTemplateVariable(&#039;CHUNK_1&#039;,$code, &#039;html&#039;);
+}
+</pre>
+<p>checks if the user has included any text in the &quot;Rich Text Editor Box&quot; avalaible in the web form and if so includes it as HTML in the resulting Word document with the method: $docx->addTemplateVariable(&#8217;CHUNK_1&#8242;,$code, &#8216;html&#8217;).</p>
+<p>Well, we are almost done. The end of the code replace an existing placeholder image with the image used by the user via the:</p>
+<p>$docx->addTemplateImage(&#8217;IMAGE_1&#8242; , $dir . &#8216;image_&#8217;.$_POST['image'].&#8217;.jpg&#8217;) method.</p>
+<p>And we clean any reamining BLOCK tags with the clearBlocks() method before sending the final docx to the browser.</p>
+<p>We hope that this tutorial has been of help and that you are now able to grasp all the potential uses that you may give to PHPDocX in your professional projects.</p>
+<p><strong>Enjoy!!</strong></p>
+<h3 id="plugin">Appendix: how to use the PDF/DOC/RTF/HTML/ODT conversion plugin</h3>
+<p>Since v2.5 you may download a copy of PHPDocX PRO that includes a plugin for andvanced conversion options.</p>
+<p>This plugin is based on the conversion engine of Open Office so it transforms the resulting Word documents exactly as Open Office would do it.
+<p>This conversion has still some limitations and, for example, word charts are just ignored but it produces pretty good result in the majority of cases.</p>
+<div class="warning2">
+<p><strong>WARNINGS:</strong></p>
+<ul>
+<li>This plugin requires JRE 1.5 or higher to be installed in the web server, although it not requires any coding in Java.</li>
+<li>By the time being only works in LINUX servers (a windows version is on its way).</li>
+<li>There are some methods in PHPDocX that are incompatible with the conversion plugin. We have introduced the enableCompatibilityMode method to inform the user of such incompatibilities.</li>
+</ul>
+</div>
+<p>Its use is extremely simple:</p>
+<pre class="brush: php; ">
+
+require_once &#039;path_to_phpdocx/classes/CreateDocx.inc&#039;;
+
+$docx = new CreateDocx();
+
+$docx-&gt;enableCompatibilityMode();
+
+$text = &#039;Lorem ipsum dolor sit amet, consectetur adipisicing elit, &#039; .
+    &#039;sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut &#039; .
+    &#039;enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut&#039; .
+    &#039;aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit &#039; .
+    &#039;in voluptate velit esse cillum dolore eu fugiat nulla pariatur. &#039; .
+    &#039;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui &#039; .
+    &#039;officia deserunt mollit anim id est laborum.&#039;;
+
+$paramsText = array(
+    &#039;b&#039; =&gt; &#039;single&#039;,
+    &#039;font&#039; =&gt; &#039;Arial&#039;
+);
+
+$docx-&gt;addText($text, $paramsText);
+
+$docx-&gt;createDocx(&#039;example_text&#039;);
+$docx-&gt;transformDocx(&#039;example_text.docx&#039;, &#039;example_text.pdf&#039;);
+</pre>
+<p>Basically one just needs to generate the Word document with PHPDocX as usual and call the transformDocX method with first argument the docx to be converted and as second argument the destination file with the desired extension.</p>
+<div class="warning2">
+<p><strong>WARNINGS:</strong></p>
+<ul>
+<li>If Open Office is not running as a service you may get this error: <strong>Could not run jodconverter</strong>. 
+    If that is the case you should first run the following command in your PHP script: system(dirname(__FILE__) . '/../lib/openoffice/program/soffice -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard') </li>
+</ul>
+</div>
+
+<p>Since v2.5.1 there is also available an interface with MS Word via COM that also allows for multiple format conversions.</p>
+
+<p>We offer here a very simple example of use that is included in the example folder of the package:</p> 
+<pre>
+require_once &#039;path_to_phpdocx/classes/CreateDocx.inc&#039;;
+$docx = new CreateDocx();
+$pathToScript = dirname ( __FILE__ );
+$pathArray = explode("\\", $pathToScript);
+array_pop($pathArray);
+$pathToFile = implode("\\", $pathArray)."\\files\\";
+$targetPath = implode("\\", $pathArray)."\\docx\\";
+$myPath = str_replace("\\", "\\\\", $pathToFile);
+
+$docx->transformDocxUsingMSWord($myPath.'TemplateText.docx', $targetPath.'test.pdf');
+$docx->transformDocxUsingMSWord($myPath.'TemplateText.docx', $targetPath.'test.txt');
+$docx->transformDocxUsingMSWord($myPath.'TemplateText.docx', $targetPath.'test.doc');
+$docx->transformDocxUsingMSWord($myPath.'TemplateText.docx', $targetPath.'test.rtf');
+$docx->transformDocxUsingMSWord($myPath.'TemplateText.docx', $targetPath.'test.html');
+</pre>
+
+<p>Of course, this requires to have a working instance of MS Word (2007 or newer) in the server :-(</p>
+
+<h3 id="utilities">Appendix: Docx utilities</h3>
+<p>Since v2.5.3 the <strong>PRO+ and CORPORATE</strong> versions of PHPDocX come bundled with some general purpose method for the 
+manipulation of Word documents (independetly of the fact that they have been created or not with the help of PHPDocX).</p>
+
+<p>The new class docxUtilities allows, by the time being, for:</p>
+<ul>
+	<li>The full merging of two Word documents:
+		<ul>
+			<li>Paragraphs, tables, lists, ...</li>
+			<li>Styles.</li>
+			<li>Sections (optional).</li>
+			<li>Headers and footers (optional).</li>
+			<li>Images.</li>
+			<li>Charts.</li>
+			<li>Footnotes and endnotes.</li>
+			<li>Comments.</li>
+			<li>Alternative Format Import Parts.</li>
+		</ul>
+	</li>
+	<li>Searching a string of text inside the Word document and:
+		<ul>
+			<li>Replacing it with another string of text.</li>
+			<li>Highlighting it.</li>
+			<li>Removing the container paragraph.</li>
+			<li>Removing all (sub)chapter content if the search string is found in the corresponding (sub)heading.</li>
+		</ul>
+</ul>
+
+Let us now offer you some examples of use.
+
+<h4>Merging Word documents</h4>
+<p>Nowadays, PHPDocX, via its mergeDocx method,  allows for two types of merging that can be selected through the options['mergeType'] parameter:</p>
+<ul>
+	<li>options['mergeType'] = 0 (default), preserves the section structure of the merged document. One may also force to restart, if desired, page numbering in the merged document through the parameter options['numbering'] = &quot;restart&quot; (the default option is to continue the numbering).</li>
+	<li>options['mergeType'] = 1, inserts the content of the merged document at the the end of the first document ignoring its section properties (like headers and footers, page size, margins, borders, etcetera).
+</ul>
+
+The code required is extremely simple:
+
+<pre>
+require_once &#039;path_to_phpdocx/classes/DocxUtilities.inc&#039;;
+
+$newDocx = new DocxUtilities();
+$options = array('mergeType' => 0);
+$newDocx->mergeDocx('first.docx', 'second.docx', 'mergedDocx.docx', $options);	
+</pre>
+
+<h4>Searching and replacing text</h4>
+
+<p>This method allows for the substitution of plain text in a docx document.</p>
+<p>Although this may appear at first sight as a simple task it is not so because of the way Word breaks paragraph contentes into runs of text.</p>
+<p>But, of course, the whole point of this method is to simplify the process and the searchAnd replace method just works as it would have been expected: </p>
+<pre>
+require_once &#039;path_to_phpdocx/classes/DocxUtilities.inc&#039;;
+
+$newDocx = new DocxUtilities();
+$options = array( 'document' => true,
+		'endnotes' => true,
+		'comments' => true,
+		'headersAndFooters' => true,
+		'footnotes' => true);
+
+$newDocx->searchAndReplace('source.docx', 'target.docx', 'search string', 'replacement string', $options);
+</pre>
+
+<h4>Highlighting text</h4>
+
+<p>In certain cases we do not want to replace the text but only highlight some parts of it to call the attention of the reader. For example, to show the results of certain text searches.</p>
+<p> The available searchAndHighlight method does exactly so preserving at the same time all the original formatting of the Word document:</p>
+<pre>
+require_once &#039;path_to_phpdocx/classes/DocxUtilities.inc&#039;;
+
+$newDocx = new DocxUtilities();	
+$options = array( 'highlightColor' => 'green',
+		'document' => true,
+		'endnotes' => true,
+		'comments' => true,
+		'headersAndFooters' => true,
+		'footnotes' => true);
+
+$newDocx->searchAndHighlight('source.docx', 'target.docx', 'search string', $options);	
+</pre>	
+<p>The list of available highlighting colors (yellow is the default value) include: black, blue, cyan, green,	magenta, red,	yellow, white, 	darkBlue,	darkCyan,	darkGreen,	darkMagenta,	darkRed, darkYellow,	darkGray,	lightGray and none.</p>	
+
+<h4>Removing content</h4>
+<p>Another common need is to remove some parts of the document that may be easily identified because they contained a certain chunk of text.</p>
+<p>This may again be easily achieved trough the searchAndRemove method. </p>
+<pre>
+require_once &#039;path_to_phpdocx/classes/DocxUtilities.inc&#039;;
+
+$newDocx = new DocxUtilities();
+$options = array( 'document' => true,
+		'endnotes' => true,
+		'comments' => true,
+		'headersAndFooters' => true,
+		'footnotes' => true);
+
+$newDocx->searchAndRemove('source.docx', 'target.docx', 'search string', $options);	
+</pre>
+
+<p>If one rather prefers to remove a whole (sub)chapter, one may search for the text in the corresponding (sub)heading and use the removeChapter method as follows:</p>
+<pre>
+require_once &#039;path_to_phpdocx/classes/DocxUtilities.inc&#039;;
+
+$newDocx = new DocxUtilities();
+
+$newDocx->removeChapter('source.docx', 'target.docx', 'search string');	
+</pre>
+
+
+<h3 id="debug">Appendix: debugging options</h3>
+<p>PHPDocX uses <strong>log4php</strong> as an external library for debugging.</p>
+<p>The configuration options for <strong>log4php</strong> can be found in the<strong>classes/conf/log4php.properties</strong> file.</p>
+<p>The default setup is:</p>
+<pre>
+log4php.rootLogger = WARN, phpdocx_logger
+
+log4php.appender.phpdocx_logger = LoggerAppenderConsole
+log4php.appender.phpdocx_logger.layout = LoggerLayoutPattern
+log4php.appender.phpdocx_logger.layout.ConversionPattern = %d %p - %m%n
+
+#log4php.rootLogger = DEBUG, phpdocx_logger
+
+#log4php.appender.phpdocx_logger = LoggerAppenderRollingFile
+#log4php.appender.phpdocx_logger.file = ../log/phpdocx.log
+#log4php.appender.phpdocx_logger.layout = LoggerLayoutTTCC
+#log4php.appender.phpdocx_logger.MaxFileSize = 2MB
+#log4php.appender.phpdocx_logger.MaxBackupIndex = 3
+[/code]
+<p>So by default you only get warnings and higher logging levels.</p>
+<p>If you would like to get on screen the maximum level of information provided by PHPDocX you shoud replace <strong>&quot;WARN&quot;</strong> by <strong>&quot;DEBUG&quot;</strong>;
+<p> If you prefer to get the info not directly on screen but in a log file you should comment the first four lines and uncomment the rest of them as follows:</p>
+[code language='php']
+#log4php.rootLogger = WARN, phpdocx_logger
+
+#log4php.appender.phpdocx_logger = LoggerAppenderConsole
+#log4php.appender.phpdocx_logger.layout = LoggerLayoutPattern
+#log4php.appender.phpdocx_logger.layout.ConversionPattern = %d %p - %m%n
+
+log4php.rootLogger = DEBUG, phpdocx_logger
+
+log4php.appender.phpdocx_logger = LoggerAppenderRollingFile
+log4php.appender.phpdocx_logger.file = ../log/phpdocx.log
+log4php.appender.phpdocx_logger.layout = LoggerLayoutTTCC
+log4php.appender.phpdocx_logger.MaxFileSize = 2MB
+log4php.appender.phpdocx_logger.MaxBackupIndex = 3
+</pre>
+<p>&nbsp;</p>
